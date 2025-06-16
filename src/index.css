@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-electric-blue: #005BFF;
+  --color-green-turquoise: #00D2A8;
+  --color-digital-violet: #7F00FF;
+  --color-graphite: #1E1E1E;
+  --color-pearl-gray: #F577FA;
+}
+
+@layer utilities {
+  .bg-brand {
+    background-color: var(--color-electric-blue);
+  }
+
+  .text-brand {
+    color: var(--color-electric-blue);
+  }
+
+  .bg-secondary {
+    background-color: var(--color-green-turquoise);
+  }
+
+  .text-secondary {
+    color: var(--color-green-turquoise);
+  }
+
+  .bg-accent {
+    background-color: var(--color-digital-violet);
+  }
+
+  .text-accent {
+    color: var(--color-digital-violet);
+  }
+
+  .bg-dark {
+    background-color: var(--color-graphite);
+  }
+
+  .text-dark {
+    color: var(--color-graphite);
+  }
+
+  .bg-light {
+    background-color: var(--color-pearl-gray);
+  }
+
+  .text-light {
+    color: var(--color-pearl-gray);
+  }
+}
+
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input, textarea, [contenteditable] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
