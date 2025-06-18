@@ -12,7 +12,7 @@ const NotDone = () => {
                </h2>
                Pour toute demande ou clarification, veuillez contacter notre
                service client chez{" "}
-               <b className="font-bold text-[#005BFF]">GEK INNOVATECH</b>.
+               <b className="font-bold text-white">GEK INNOVATECH</b>.
                <br />
                Merci pour votre compréhension et votre confiance.
                <br />
