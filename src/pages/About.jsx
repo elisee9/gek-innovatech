@@ -32,7 +32,7 @@ const About = () => {
             />
          </Helmet>
 
-         <section className="relative min-h-screen flex items-center justify-center text-white px-4  pt-24 z-10">
+         <section className="relative min-h-screen flex items-center justify-center text-white px-4  pt-28 z-10">
             <motion.div
                initial={{ opacity: 0, y: 40 }}
                animate={{ opacity: 1, y: 0 }}
