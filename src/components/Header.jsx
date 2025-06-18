@@ -133,7 +133,7 @@ const Header = () => {
                            href="https://wa.me/22965426510"
                            target="_blank"
                            rel="noopener noreferrer"
-                           className="bg-[#7F00FF] px-6 py-2 rounded-full text-white font-semibold hover:bg-[#6b00d8] transition mt-4 w-full text-center"
+                           className="bg-[#00D2A8] hover:bg-[#00b795] px-6 py-2 rounded-lg text-black font-semibold transition mt-4 w-full text-center"
                         >
                            WhatsApp
                         </a>

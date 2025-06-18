@@ -38,7 +38,7 @@ const HeroSection = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                <a
                   href="tel:+2290165426510"
-                  className="bg-[#00D2A8] hover:bg-[#00b795] text-black font-semibold px-6 py-3 rounded-full flex items-center gap-2 transition duration-300"
+                  className="bg-[#00D2A8] hover:bg-[#00b795] text-black font-semibold px-6 py-3 rounded-lg flex items-center gap-2 transition duration-300"
                >
                   <FaPhoneAlt /> Appeler
                </a>
@@ -46,7 +46,7 @@ const HeroSection = () => {
                   href="https://wa.me/22965426510"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#7F00FF] hover:bg-[#6b00d8] text-white font-semibold px-6 py-3 rounded-full flex items-center gap-2 transition duration-300"
+                  className="bg-[#00D2A8] hover:bg-[#00b795] text-black font-semibold px-6 py-3 rounded-lg flex items-center gap-2 transition duration-300"
                >
                   <FaWhatsapp /> WhatsApp
                </a>
