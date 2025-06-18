@@ -73,7 +73,7 @@ const About = () => {
                {/* Call-to-Action */}
                <NavLink
                   to="/services"
-                  className="inline-block mt-10 px-8 py-3 text-lg font-semibold bg-[#005BFF] hover:bg-[#0044cc] transition-colors duration-300 rounded-2xl shadow-xl cursor-pointer hover:shadow-[#0044cc]/40"
+                  className="inline-block mt-10 px-8 py-3 mb-3 text-lg font-semibold bg-[#005BFF] hover:bg-[#0044cc] transition-colors duration-300 rounded-2xl shadow-xl cursor-pointer hover:shadow-[#0044cc]/40"
                   onClick={handleLinkClick}
                >
                   Découvrir nos services
