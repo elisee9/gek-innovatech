@@ -70,7 +70,7 @@ const PricingSection = () => {
                      >
                         {plan.recommended && (
                            <div className="absolute top-0 right-0 bg-[#00D2A8] text-black font-bold px-4 py-1 rounded-bl-lg flex items-center">
-                              <FaCrown className="mr-2" /> Best Value
+                              <FaCrown className="mr-2" /> Meilleure offre
                            </div>
                         )}
 
@@ -79,13 +79,13 @@ const PricingSection = () => {
                               {plan.title}
                            </h3>
                            <p className="text-gray-400">{plan.description}</p>
-                           <p className="text-3xl font-bold my-4 text-[#00D2A8]">
+                           <p className="text-2xl font-bold my-4 text-[#00D2A8]">
                               {plan.price}
                               <span className="text-sm text-gray-400 font-normal">
                                  /{plan.period}
                               </span>
                               {plan.oldPrice && (
-                                 <span className="text-xl text-red-500 line-through ml-2">
+                                 <span className="text-lg text-red-500 line-through ml-2">
                                     {plan.oldPrice}
                                  </span>
                               )}
