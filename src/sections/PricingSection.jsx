@@ -9,7 +9,7 @@ import { handleLinkClick } from "../utils/scrollUtils";
 
 const PricingSection = () => {
    return (
-      <section className="relative py-5 px-6 backdrop-blur-sm mt-6" id="plans">
+      <section className="relative py-2 px-6 backdrop-blur-sm mt-6" id="plans">
          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 z-0"></div>
 
          <div className="max-w-7xl mx-auto relative z-10">
@@ -17,12 +17,12 @@ const PricingSection = () => {
                initial={{ opacity: 0, y: 30 }}
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8 }}
-               className="text-center mb-4"
+               className="text-center mb-2"
             >
                <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#00D2A8] to-[#005BFF]">
                   Nos Plans Tarifaires
                </h2>
-               <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+               <p className="text-gray-300 text-lg max-w-xl mx-auto">
                   Des solutions adaptées à chaque étape de votre croissance
                   digitale.
                   <br />

@@ -12,11 +12,11 @@ function PromotionBadge() {
             duration: 0.5,
          }}
          whileHover={{ scale: 1.03 }}
-         className="flex items-center justify-center px-4 py-2 sm:py-12 md:mt-2 sm:mb-4"
+         className="flex items-center justify-center py-2 sm:py-12 md:mt-2 sm:mb-4"
       >
          <div className="relative w-full max-w-4xl">
             {/* Badge principal - Responsive */}
-            <div className="bg-gradient-to-r from-[#00D2A8] to-[#005BFF] text-white py-3 sm:px-2 sm:py-4 md:px-2 md:py-4 rounded-full shadow-lg flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 w-full max-sm:mb-6">
+            <div className="bg-gradient-to-r from-[#00D2A8] to-[#005BFF] text-white py-1 sm:px-1 sm:py-2 md:px-1 md:py-4 rounded-lg shadow-lg flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1 w-full max-sm:mb-3">
                <div className="flex items-center">
                   <span className="font-bold text-sm sm:text-base md:text-xl whitespace-nowrap border-b-6 border-white pb-1 sm:pb-2 md:pb-1">
                      <b>Promotion spéciale</b>

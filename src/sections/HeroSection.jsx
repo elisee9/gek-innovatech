@@ -46,7 +46,7 @@ const HeroSection = () => {
                   href="https://wa.me/22965426510"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#00D2A8] hover:bg-[#00b795] text-black font-semibold px-6 py-3 rounded-lg flex items-center gap-2 transition duration-300"
+                  className=" hover:bg-[#00b795] text-white hover:text-black font-semibold px-6 py-3 rounded-lg flex items-center gap-2 transition duration-300 border-1 border-[#00b795]"
                >
                   <FaWhatsapp /> WhatsApp
                </a>
