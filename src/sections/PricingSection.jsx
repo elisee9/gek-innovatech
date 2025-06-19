@@ -138,7 +138,7 @@ const PricingSection = () => {
                                  : "bg-[#2A2A2A] text-[#00D2A8] border border-[#00D2A8] hover:bg-[#00D2A8]/10 cursor-pointer"
                            }`}
                         >
-                           <NavLink to="/notpay" onClick={handleLinkClick}>Choisir ce plan</NavLink>
+                           <NavLink to="/notpay" onClick={handleLinkClick}>Obtenir ce plan</NavLink>
                         </motion.button>
                      </motion.div>
                   );
