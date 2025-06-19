@@ -56,7 +56,7 @@ const BackgroundVideo = () => {
             className="absolute inset-0 w-full h-full object-cover"
             preload="auto"
          >
-            <source src="/video/video1.mp4" type="video/mp4" />
+            <source src="/video/video1.webm" type="video/webm" />
          </video>
          {/* Couche d'ombre floue */}
          <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />

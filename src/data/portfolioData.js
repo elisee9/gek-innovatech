@@ -6,7 +6,7 @@ const portfolioExamples = [
    {
       id: 1,
       title: "Site Vitrine – Salon de Beauté",
-      image: "/images/portfolio/salon.png",
+      image: "/images/portfolio/salon.webp",
       link: "https://gek-beaute-elegance.netlify.app", // Lien avec une offre spécifique
       description:
          "Site élégant pour présenter les services d'un salon avec prise de rendez-vous.",
@@ -15,7 +15,7 @@ const portfolioExamples = [
    {
       id: 2,
       title: "Site Restaurant",
-      image: "/images/portfolio/restaurant.png",
+      image: "/images/portfolio/restaurant.webp",
       link: "/notdone",
       description:
          "Menu interactif, galerie photo et formulaire de réservation.",
@@ -24,7 +24,7 @@ const portfolioExamples = [
    {
       id: 3,
       title: "Coaching Personnel",
-      image: "/images/portfolio/coach.png",
+      image: "/images/portfolio/coach.webp",
       link: "/notdone",
       description:
          "Site pour coachs ou formateurs avec blog et espace contact.",
@@ -33,7 +33,7 @@ const portfolioExamples = [
    {
       id: 4,
       title: "E-commerce Minimaliste",
-      image: "/images/portfolio/shop.png",
+      image: "/images/portfolio/shop.webp",
       link: "/notdone",
       description: "Petite boutique en ligne avec catalogue et panier simple.",
       planId: "standard",
@@ -41,7 +41,7 @@ const portfolioExamples = [
    {
       id: 5,
       title: "Artiste Photographe",
-      image: "/images/portfolio/photo.png",
+      image: "/images/portfolio/photo.webp",
       link: "/notdone",
       description: "Portfolio avec galerie dynamique et formulaire de contact.",
       planId: "basic",
@@ -49,7 +49,7 @@ const portfolioExamples = [
    {
       id: 6,
       title: "Association ou ONG",
-      image: "/images/portfolio/ngo.png",
+      image: "/images/portfolio/ngo.webp",
       link: "/notdone",
       description:
          "Présentation des actions, appel aux dons et formulaire de contact.",
