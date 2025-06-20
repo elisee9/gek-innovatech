@@ -57,7 +57,7 @@ const Header = () => {
                      key={link.name}
                      to={link.path}
                      className={({ isActive }) =>
-                        `group inline-block relative transition-all duration-300 font-medium ${
+                        `transition font-medium ${
                            isActive
                               ? "text-[#00D2A8]"
                               : "text-white hover:text-[#00D2A8]"
@@ -65,7 +65,10 @@ const Header = () => {
                      }
                      onClick={handleLinkClick}
                   >
-                     {link.name}
+                     <span className="hover:text-[#00D2A8] transition-colors duration-200">
+                        {link.name}
+                     </span>
+                     <span className="block h-0.5 w-0 group-hover:w-full bg-[#00D2A8] transition-all duration-300"></span>
                   </NavLink>
                ))}
                <a
