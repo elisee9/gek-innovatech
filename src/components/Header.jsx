@@ -57,7 +57,7 @@ const Header = () => {
                      key={link.name}
                      to={link.path}
                      className={({ isActive }) =>
-                        `transition font-medium ${
+                        `group inline-block relative transition-all duration-300 font-medium ${
                            isActive
                               ? "text-[#00D2A8]"
                               : "text-white hover:text-[#00D2A8]"
