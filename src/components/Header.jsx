@@ -143,7 +143,7 @@ const Header = () => {
                   </motion.div>
                </>
             )}
-            <div className="w-full bg-[#1E1E1E]/30 border-t-2 border-[#005BFF]">
+            <div className="w-full bg-[#1E1E1E]/30 border-t-1 border-[#005BFF]">
                <PhraseAccroche />
             </div>
          </AnimatePresence>
