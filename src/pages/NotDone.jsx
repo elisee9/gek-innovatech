@@ -8,14 +8,12 @@ const NotDone = () => {
             </h1>
             <p className="text-lg text-white/80 md:w-1/3 mb-6 text-center bg-[#00d2a866] p-4 rounded-lg shadow-lg">
                <h2 className="font-bold text-white text-center mb-2">
-                  <em>Ce site ne vous est pas accessible pour le moment.</em>
+                  <p>Ce site ne vous est pas accessible pour le moment.</p>
                </h2>
                Pour toute demande ou clarification, veuillez contacter notre
                service client chez{" "}
-               <b className="font-bold text-white">GEK INNOVATECH</b>.
-               <br />
+               <b className="font-bold text-white">GEK INNOVATECH</b>
                Merci pour votre compréhension et votre confiance.
-               <br />
                N’hésitez pas à nous laisser un message via WhatsApp si besoin.
             </p>
 
