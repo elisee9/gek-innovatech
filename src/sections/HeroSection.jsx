@@ -38,7 +38,7 @@ const HeroSection = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                <a
                   href="tel:+2290165426510"
-                  className="bg-[#00D2A8] hover:bg-[#00b795] text-black font-semibold px-6 py-3 rounded-lg flex items-center gap-2 transition duration-300"
+                  className="bg-[#00D2A8] hover:bg-[#00b795] text-black font-semibold px-8 py-3 rounded-lg flex items-center gap-2 transition duration-300"
                >
                   <FaPhoneAlt /> Appeler
                </a>

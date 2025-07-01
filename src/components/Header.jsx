@@ -115,9 +115,9 @@ const Header = () => {
                      animate={{ x: 0 }}
                      exit={{ x: "100%" }}
                      transition={{ type: "tween", duration: 0.3 }}
-                     className="fixed top-0 right-0 h-80 w-60 bg-gray-800 z-40 overflow-y-auto rounded-l-3xl"
+                     className="fixed top-0 right-0 h-screen w-70 bg-gray-800/60 z-40 overflow-y-auto pt-16  "
                   >
-                     <div className="h-full flex flex-col justify-center items-center gap-1 p-3 ">
+                     <div className="h-full flex flex-col  gap-5 px-8 ">
                         {navLinks.map((link) => (
                            <NavLink
                               key={link.name}
