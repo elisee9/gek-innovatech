@@ -6,11 +6,106 @@ import PhraseAccroche from "./PhraseAccroche";
 import { handleLinkClick } from "../utils/scrollUtils";
 
 const navLinks = [
-   { name: "Accueil", path: "/" },
-   { name: "À Propos", path: "/about" },
-   { name: "Services", path: "/services" },
-   { name: "Nos Offres", path: "/plans" },
-   { name: "Contact", path: "/contact" },
+   {
+      name: "Accueil",
+      path: "/",
+      icon: (
+         <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+         >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+         </svg>
+      ),
+   },
+   {
+      name: "À Propos",
+      path: "/about",
+      icon: (
+         <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+         >
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+         </svg>
+      ),
+   },
+   {
+      name: "Services",
+      path: "/services",
+      icon: (
+         <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+         >
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+         </svg>
+      ),
+   },
+   {
+      name: "Nos Offres",
+      path: "/plans",
+      icon: (
+         <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+         >
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+         </svg>
+      ),
+   },
+   {
+      name: "Contact",
+      path: "/contact",
+      icon: (
+         <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+         >
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+         </svg>
+      ),
+   },
 ];
 
 const Header = () => {
@@ -59,14 +154,29 @@ const Header = () => {
                      <NavLink
                         to={link.path}
                         onClick={handleLinkClick}
-                        className="font-medium transition text-white hover:text-[#00D2A8]"
+                        className={({ isActive }) =>
+                           `font-medium transition ${
+                              isActive
+                                 ? "text-[#005BFF]"
+                                 : "text-white hover:text-[#00D2A8]"
+                           }`
+                        }
                      >
                         {link.name}
                      </NavLink>
-                     {hoveredIndex === index && (
+                     {(hoveredIndex === index ||
+                        navLinks.findIndex(
+                           (l) => location.pathname === l.path
+                        ) === index) && (
                         <motion.div
                            layoutId="hoverUnderline"
-                           className="absolute bottom-0 left-0 w-full h-[2px] bg-[#00D2A8] rounded"
+                           className={`absolute bottom-0 left-0 w-full h-[2px] rounded ${
+                              navLinks.findIndex(
+                                 (l) => location.pathname === l.path
+                              ) === index
+                                 ? "bg-[#005BFF]"
+                                 : "bg-[#00D2A8]"
+                           }`}
                            transition={{
                               type: "spring",
                               stiffness: 300,
@@ -90,7 +200,7 @@ const Header = () => {
             {/* Mobile Nav Toggle */}
             <button
                className={`md:hidden text-white text-2xl cursor-pointer z-50 transition-opacity duration-200 ${
-                  isOpen ? "opacity-80" : "opacity-100"
+                  isOpen ? "opacity-80 mt-6 pr-3" : "opacity-100"
                }`}
                onClick={() => setIsOpen(!isOpen)}
                aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
@@ -115,19 +225,25 @@ const Header = () => {
                      animate={{ x: 0 }}
                      exit={{ x: "100%" }}
                      transition={{ type: "tween", duration: 0.3 }}
-                     className="fixed top-0 right-0 h-screen w-70 bg-gray-800/60 z-40 overflow-y-auto pt-16  "
+                     className="fixed top-6 right-1 h-screen/2 w-70 bg-gray-800 z-40 overflow-y-auto py-16 text-justify rounded-lg shadow-lg"
                   >
-                     <div className="h-full flex flex-col  gap-5 px-8 ">
+                     <div className="h-full flex flex-col gap-5 px-8">
                         {navLinks.map((link) => (
                            <NavLink
                               key={link.name}
                               to={link.path}
-                              className="text-xl font-semibold text-white py-2 hover:text-[#00D2A8]"
+                              className={({ isActive }) =>
+                                 `text-xl font-semibold flex flex-row gap-8 py-2 hover:text-[#00D2A8] transition-colors
+            ${isActive ? "text-[#005BFF]" : "text-white"}`
+                              }
                               onClick={() => {
                                  handleLinkClick();
                                  setIsOpen(false);
                               }}
                            >
+                              <span className="flex-shrink-0 pt-1 text-[#00b795]">
+                                 {link.icon}
+                              </span>
                               {link.name}
                            </NavLink>
                         ))}
