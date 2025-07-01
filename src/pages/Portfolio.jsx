@@ -34,7 +34,7 @@ const Portfolio = () => {
          <section className="min-h-screen py-16 px-4 md:px-10 mt-24 text-white">
             <div className="max-w-6xl mx-auto text-center">
                <h2 className="text-4xl font-bold mb-4">
-                  Nos <span className="text-[#00D2A8]">Réalisations</span>
+                  Nos <span className="text-[#005BFF]">Réalisations</span>
                </h2>
                <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-12">
                   Découvrez quelques exemples de sites que nous pouvons adapter
