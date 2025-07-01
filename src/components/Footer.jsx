@@ -47,7 +47,7 @@ function Footer() {
                      onClick={handleScrollTop}
                   >
                      Nos{" "}
-                     <span className="text-[#00D2A8]">
+                     <span className="text-[#005BFF]">
                         Réalisations <span className="font-black">→</span>
                      </span>
                   </NavLink>
@@ -69,7 +69,7 @@ function Footer() {
                            className={({ isActive }) =>
                               `group inline-block relative transition-all duration-300 ${
                                  isActive
-                                    ? "text-[#00D2A8] font-medium"
+                                    ? "text-[#005BFF] font-medium"
                                     : "text-gray-300"
                               }`
                            }

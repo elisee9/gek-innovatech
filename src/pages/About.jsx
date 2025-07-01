@@ -53,7 +53,7 @@ const About = () => {
                   , parfaitement alignées avec vos objectifs.
                   <br />
                   Chez{" "}
-                  <span className="text-[#00D2A8] font-semibold">
+                  <span className="text-[#005BFF] font-semibold">
                      GEK INNOVATECH
                   </span>
                   , chaque projet est une opportunité de sublimer votre image en

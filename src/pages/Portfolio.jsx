@@ -69,7 +69,7 @@ const Portfolio = () => {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
                         whileHover={{ scale: 1.06 }}
-                        className="bg-[#1C1C1C] p-3 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-white/5 cursor-pointer hover:border-[#00D2A8] hover:shadow-[#00D2A8]/40"
+                        className="bg-[#1C1C1C] p-3 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-white/5 cursor-pointer hover:border-[#005BFF] hover:shadow-[#005BFF]/40"
                      >
                         <a
                            href={example.link}

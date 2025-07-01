@@ -46,7 +46,7 @@ const Services = () => {
                >
                   <Link
                      to="/contact"
-                     className="inline-block bg-[#00D2A8] text-black font-semibold py-3 px-8 rounded-full hover:bg-[#00BFA0] transition-colors duration-300 cursor-pointer hover:border-[#00D2A8] hover:shadow-[#00D2A8]/40 shadow-lg"
+                     className="inline-block bg-[#005BFF] text-white font-semibold py-3 px-8 rounded-full hover:bg-[#005BFF] transition-colors duration-300 cursor-pointer hover:border-[#005BFF] hover:shadow-[#005BFF]/40 shadow-lg"
                      onClick={handleLinkClick}
                   >
                      Discutons de votre projet

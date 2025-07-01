@@ -16,22 +16,18 @@ const navLinks = [
 const Header = () => {
    const [isOpen, setIsOpen] = useState(false);
    const menuRef = useRef(null);
+   const [hoveredIndex, setHoveredIndex] = useState(null);
 
    useEffect(() => {
       document.body.style.overflow = isOpen ? "hidden" : "auto";
-
-      // Fonction pour fermer le menu quand on clique à l'extérieur
       const handleClickOutside = (event) => {
          if (menuRef.current && !menuRef.current.contains(event.target)) {
             setIsOpen(false);
          }
       };
-
-      // Ajout de l'écouteur d'événement
       if (isOpen) {
          document.addEventListener("mousedown", handleClickOutside);
       }
-
       return () => {
          document.body.style.overflow = "auto";
          document.removeEventListener("mousedown", handleClickOutside);
@@ -51,31 +47,41 @@ const Header = () => {
             </NavLink>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-8 text-white">
-               {navLinks.map((link) => (
-                  <NavLink
+            <nav className="hidden md:flex items-center gap-8 text-white relative">
+               {navLinks.map((link, index) => (
+                  <div
                      key={link.name}
-                     to={link.path}
-                     className={({ isActive }) =>
-                        `transition font-medium ${
-                           isActive
-                              ? "text-[#00D2A8]"
-                              : "text-white hover:text-[#00D2A8]"
-                        }`
-                     }
-                     onClick={handleLinkClick}
+                     onMouseEnter={() => setHoveredIndex(index)}
+                     onTouchStart={() => setHoveredIndex(index)}
+                     onMouseLeave={() => setHoveredIndex(null)}
+                     className="relative px-2 py-1"
                   >
-                     <span className="hover:text-[#00D2A8] transition-colors duration-200">
+                     <NavLink
+                        to={link.path}
+                        onClick={handleLinkClick}
+                        className="font-medium transition text-white hover:text-[#00D2A8]"
+                     >
                         {link.name}
-                     </span>
-                     <span className="block h-0.5 w-0 group-hover:w-full bg-[#00D2A8] transition-all duration-300"></span>
-                  </NavLink>
+                     </NavLink>
+                     {hoveredIndex === index && (
+                        <motion.div
+                           layoutId="hoverUnderline"
+                           className="absolute bottom-0 left-0 w-full h-[2px] bg-[#00D2A8] rounded"
+                           transition={{
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 30,
+                           }}
+                        />
+                     )}
+                  </div>
                ))}
+
                <a
                   href="https://wa.me/22965426510"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#00D2A8] hover:bg-[#00b795] px-5 py-2 rounded-lg font-medium text-white transition"
+                  className="ml-6 bg-[#00D2A8] hover:bg-[#00b795] px-5 py-2 rounded-lg font-medium text-white transition"
                >
                   WhatsApp
                </a>
@@ -103,7 +109,6 @@ const Header = () => {
                      exit={{ opacity: 0 }}
                      className="fixed inset-0 bg-black/70 z-30"
                   />
-
                   <motion.div
                      ref={menuRef}
                      initial={{ x: "100%" }}
@@ -117,13 +122,7 @@ const Header = () => {
                            <NavLink
                               key={link.name}
                               to={link.path}
-                              className={({ isActive }) =>
-                                 `text-xl font-semibold transition w-full text-center py-2 ${
-                                    isActive
-                                       ? "text-[#00D2A8]"
-                                       : "text-white hover:text-[#00D2A8] "
-                                 }`
-                              }
+                              className="text-xl font-semibold text-white py-2 hover:text-[#00D2A8]"
                               onClick={() => {
                                  handleLinkClick();
                                  setIsOpen(false);
@@ -144,7 +143,7 @@ const Header = () => {
                   </motion.div>
                </>
             )}
-            <div className="w-full bg-[#1E1E1E]/30 border-t-2 border-[#00d2a8a6]">
+            <div className="w-full bg-[#1E1E1E]/30 border-t-2 border-[#005BFF]">
                <PhraseAccroche />
             </div>
          </AnimatePresence>
@@ -153,5 +152,6 @@ const Header = () => {
 };
 
 export default Header;
+
 // Ce code définit un composant d'en-tête réactif pour un site web, incluant un logo, des liens de navigation et un bouton pour ouvrir/fermer le menu mobile.
 // Il utilise la bibliothèque Framer Motion pour les animations et gère l'état d'ouverture du menu mobile avec un hook useState.

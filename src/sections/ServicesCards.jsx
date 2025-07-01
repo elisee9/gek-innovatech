@@ -79,7 +79,7 @@ const ServicesCards = () => {
                transition={{ duration: 0.6 }}
                className="text-4xl md:text-5xl font-bold mb-4"
             >
-               Nos <span className="text-[#00D2A8]">Services</span>
+               Nos <span className="text-[#005BFF]">Services</span>
             </motion.h2>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-12">
                Découvrez l’ensemble des solutions que nous proposons pour
@@ -95,7 +95,7 @@ const ServicesCards = () => {
                      transition={{ duration: 0.1, delay: index * 0.1 }}
                      viewport={{ once: true }}
                      whileHover={{ scale: 1.06 }}
-                     className="bg-[#1C1C1C] p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-white/5 cursor-pointer hover:border-[#00D2A8] hover:shadow-[#00D2A8]/40"
+                     className="bg-[#1C1C1C] p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-white/5 cursor-pointer hover:border-[#005BFF] hover:shadow-[#005BFF]/40"
                   >
                      <div className="mb-4">{service.icon}</div>
                      <h3 className="text-xl font-semibold mb-2">

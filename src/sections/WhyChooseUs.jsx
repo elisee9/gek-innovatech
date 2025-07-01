@@ -38,7 +38,7 @@ const WhyChooseUs = () => {
                transition={{ duration: 0.6 }}
                className="text-4xl md:text-5xl font-bold mb-8"
             >
-               Pourquoi <span className="text-[#00D2A8]">nous choisir</span> ?
+               Pourquoi <span className="text-[#005BFF]">nous choisir</span> ?
             </motion.h2>
 
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">

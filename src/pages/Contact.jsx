@@ -100,7 +100,7 @@ const Contact = () => {
                   transition={{ duration: 0.6 }}
                   className="text-4xl md:text-5xl font-bold mb-4"
                >
-                  Contactez-<span className="text-[#00D2A8]">nous</span>
+                  Contactez-<span className="text-[#005BFF]">nous</span>
                </motion.h2>
                <p className="text-gray-300 text-lg">
                   Une question ? Un projet ? Remplissez le formulaire ci-dessous
@@ -118,21 +118,21 @@ const Contact = () => {
                   name="name"
                   placeholder="Votre nom"
                   required
-                  className="w-full p-3 rounded-md bg-[#2A2A2A] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00D2A8]"
+                  className="w-full p-3 rounded-md bg-[#2A2A2A] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#005BFF]"
                />
                <input
                   type="email"
                   name="email"
                   placeholder="Votre email"
                   required
-                  className="w-full p-3 rounded-md bg-[#2A2A2A] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00D2A8]"
+                  className="w-full p-3 rounded-md bg-[#2A2A2A] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#005BFF]"
                />
                <textarea
                   name="message"
                   rows="5"
                   placeholder="Votre message"
                   required
-                  className="w-full p-3 rounded-md bg-[#2A2A2A] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00D2A8]"
+                  className="w-full p-3 rounded-md bg-[#2A2A2A] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#005BFF]"
                ></textarea>
 
                <div className="flex justify-end">
@@ -140,7 +140,7 @@ const Contact = () => {
                      whileHover={{ scale: 1.05 }}
                      whileTap={{ scale: 0.95 }}
                      type="submit"
-                     className="bg-[#00D2A8] hover:bg-[#00b091] text-black font-semibold px-6 py-3 rounded-lg transition shadow-lg hover:shadow-[#00D2A8]/40 cursor-pointer"
+                     className="bg-[#005BFF] hover:bg-[#005BFF] text-white font-semibold px-6 py-3 rounded-lg transition shadow-lg hover:shadow-[#005BFF]/40 cursor-pointer"
                   >
                      Envoyer
                   </motion.button>
