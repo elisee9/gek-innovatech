@@ -130,7 +130,7 @@ const Header = () => {
    }, [isOpen]);
 
    return (
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#1E1E1E]/80 backdrop-blur-lg shadow-md pb-2">
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#1E1E1E]/80 backdrop-blur-lg shadow-2xl pb-2">
          <div className="w-full bg-[#1E1E1E]/30 border-b-2 border-[#00D2A8] rounded-b-2xl mt-0">
             <PhraseAccroche />
          </div>
