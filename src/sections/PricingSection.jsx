@@ -9,7 +9,7 @@ import { handleLinkClick } from "../utils/scrollUtils";
 
 const PricingSection = () => {
    return (
-      <section className="relative py-2 px-6 backdrop-blur-sm mt-6" id="plans">
+      <section className="relative py-2 px-6 backdrop-blur-sm pt-16" id="plans">
          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 z-0"></div>
 
          <div className="max-w-7xl mx-auto relative z-10">
