@@ -131,7 +131,7 @@ const Header = () => {
 
    return (
       <header className="fixed top-0 left-0 w-full z-50 bg-[#1E1E1E]/80 backdrop-blur-lg shadow-md pb-2">
-         <div className="w-full bg-[#1E1E1E]/30 border-b-2 border-[#00D2A8] rounded-b-2xl mt-1">
+         <div className="w-full bg-[#1E1E1E]/30 border-b-2 border-[#00D2A8] rounded-b-2xl mt-0">
             <PhraseAccroche />
          </div>
          <div className="max-w-7xl mx-auto pl-6 py-3 flex justify-between items-center">
@@ -202,7 +202,7 @@ const Header = () => {
 
             {/* Mobile Nav Toggle */}
             <button
-               className={`md:hidden text-[#00D2A8] text-2xl cursor-pointer z-50 transition-opacity duration-200 ${
+               className={`md:hidden text-[#00D2A8] text-2xl cursor-pointer z-50 transition-opacity duration-200 pr-6 ${
                   isOpen ? "opacity-80 mt-6 pr-3" : "opacity-100"
                }`}
                onClick={() => setIsOpen(!isOpen)}
