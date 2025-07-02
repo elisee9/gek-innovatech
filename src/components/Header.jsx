@@ -130,8 +130,11 @@ const Header = () => {
    }, [isOpen]);
 
    return (
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#1E1E1E]/80 backdrop-blur-lg shadow-md">
-         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#1E1E1E]/80 backdrop-blur-lg shadow-md pb-2">
+         <div className="w-full bg-[#1E1E1E]/30 border-b-2 border-[#00D2A8] rounded-b-2xl mt-1">
+            <PhraseAccroche />
+         </div>
+         <div className="max-w-7xl mx-auto pl-6 py-3 flex justify-between items-center">
             {/* Logo */}
             <NavLink
                to="/"
@@ -141,8 +144,7 @@ const Header = () => {
                <span className="text-[#005BFF]">GEK</span> INNOVATECH
             </NavLink>
 
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-8 text-white relative">
+            <nav className="hidden md:flex items-center gap-8 text-white relative pr-6">
                {navLinks.map((link, index) => (
                   <div
                      key={link.name}
@@ -170,17 +172,18 @@ const Header = () => {
                         ) === index) && (
                         <motion.div
                            layoutId="hoverUnderline"
-                           className={`absolute bottom-0 left-0 w-full h-[2px] rounded ${
+                           className={`absolute left-0 w-full h-[2px] rounded ${
                               navLinks.findIndex(
                                  (l) => location.pathname === l.path
                               ) === index
                                  ? "bg-[#005BFF]"
                                  : "bg-[#00D2A8]"
                            }`}
+                           style={{ bottom: "-10px" }} // Ajoute de l'espace entre le texte et la ligne
                            transition={{
                               type: "spring",
                               stiffness: 300,
-                              damping: 30,
+                              damping: 40,
                            }}
                         />
                      )}
@@ -199,7 +202,7 @@ const Header = () => {
 
             {/* Mobile Nav Toggle */}
             <button
-               className={`md:hidden text-white text-2xl cursor-pointer z-50 transition-opacity duration-200 ${
+               className={`md:hidden text-[#00D2A8] text-2xl cursor-pointer z-50 transition-opacity duration-200 ${
                   isOpen ? "opacity-80 mt-6 pr-3" : "opacity-100"
                }`}
                onClick={() => setIsOpen(!isOpen)}
@@ -225,7 +228,7 @@ const Header = () => {
                      animate={{ x: 0 }}
                      exit={{ x: "100%" }}
                      transition={{ type: "tween", duration: 0.3 }}
-                     className="fixed top-6 right-1 h-screen/2 w-70 bg-gray-800 z-40 overflow-y-auto py-16 text-justify rounded-lg shadow-lg"
+                     className="fixed top-6 right-1 h-screen/2 w-70 bg-gray-800 z-40 overflow-y-auto py-16 text-justify rounded-2xl shadow-lg"
                   >
                      <div className="h-full flex flex-col gap-5 px-8">
                         {navLinks.map((link) => (
@@ -259,9 +262,6 @@ const Header = () => {
                   </motion.div>
                </>
             )}
-            <div className="w-full bg-[#1E1E1E]/30 border-t-1 border-[#005BFF]">
-               <PhraseAccroche />
-            </div>
          </AnimatePresence>
       </header>
    );
