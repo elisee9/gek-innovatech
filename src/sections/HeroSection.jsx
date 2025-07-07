@@ -28,7 +28,7 @@ const HeroSection = () => {
                Transformez votre image digitale. Marquez les esprits.
             </h2>
 
-            <p className="text-lg md:text-xl text-gray-200 sm:text-left max-w-2xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-8">
                Nous créons des sites web ultra-performants, au design raffiné et
                sur-mesure pour booster votre visibilité. Attirez plus de
                clients, affirmez votre présence en ligne et démarquez-vous

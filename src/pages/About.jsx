@@ -43,7 +43,7 @@ const About = () => {
                   À propos de{" "}
                   <span className="text-[#005BFF]">GEK INNOVATECH</span>
                </h1>
-               <p className="text-lg md:text-xl text-gray-300 leading-relaxed space-y-4 lg:text-justify sm:text-left md:text-left">
+               <p className="text-lg md:text-xl text-gray-300 leading-relaxed space-y-4 text-justify">
                   Nous sommes une équipe passionnée par le{" "}
                   <strong>design</strong>, la <strong>performance</strong> et l’
                   <strong>innovation</strong>.
