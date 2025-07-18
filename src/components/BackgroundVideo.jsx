@@ -59,7 +59,7 @@ const BackgroundVideo = () => {
             <source src="/video/video1.webm" type="video/webm" />
          </video>
          {/* Couche d'ombre floue */}
-         <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+         <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
       </div>
    );
 };
