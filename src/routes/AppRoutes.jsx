@@ -33,16 +33,20 @@ const router = createBrowserRouter([
             element: <PaiementAnnule />,
          },
          {
-            path:"/portfolio", element: <Portfolio />
-         },
-         {
-            path:"/notdone", element: <NotDone/>
-         },
-         {
-            path:"notpay", element: <NotPay/>
+            path: "/portfolio",
+            element: <Portfolio />,
          },
       ],
    },
+   {
+      path: "/notdone",
+      element: <NotDone />,
+   },
+   {
+      path: "notpay",
+      element: <NotPay />,
+   },
+
    { path: "*", element: <NotFound /> },
 ]);
 
