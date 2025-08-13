@@ -7,19 +7,18 @@ const NotPay = () => {
             <h1 className="text-4xl font-bold text-green-600 mb-4">
                Information !
             </h1>
-            <div className="text-white md:w-1/3 bg-[#00d2a866] p-6 rounded-xl shadow-lg mb-6">
-               <h2 className="text-xl font-semibold mb-3 text-white">
+            <div className="text-gray-600 md:w-1/3 bg-[#00b091] p-6 rounded-xl shadow-lg mb-6">
+               <h2 className="text-xl font-semibold mb-3">
                   <p>
                      Le paiement en ligne direct n’est pas encore disponible
                      pour le moment.
                   </p>
                </h2>
-               <p className="text-base text-center text-white/80">
+               <p className="text-base text-center">
                   Pour passer votre commande, veuillez cliquer sur le bouton
                   ci-dessous afin de remplir le formulaire de contact. Nous vous
-                  remercions pour votre confiance.
-                  N’hésitez pas à nous laisser un message sur WhatsApp pour
-                  toute question ou précision.
+                  remercions pour votre confiance. N’hésitez pas à nous laisser
+                  un message sur WhatsApp pour toute question ou précision.
                </p>
             </div>
 
