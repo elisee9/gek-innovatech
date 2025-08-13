@@ -4,10 +4,10 @@ const NotPay = () => {
    return (
       <>
          <div className="mt-32 flex flex-col justify-center items-center text-center p-4">
-            <h1 className="text-4xl font-bold text-green-600 mb-4">
+            <h1 className="text-4xl font-bold text-[#00b091] mb-4">
                Information !
             </h1>
-            <div className="text-gray-600 md:w-1/3 bg-[#00b091] p-6 rounded-xl shadow-lg mb-6">
+            <div className="text-gray-600 md:w-1/3 bg-white shadow-12 p-6 rounded-xl shadow-xl mb-6">
                <h2 className="text-xl font-semibold mb-3">
                   <p>
                      Le paiement en ligne direct n’est pas encore disponible

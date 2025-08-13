@@ -3,18 +3,22 @@ const NotDone = () => {
    return (
       <>
          <div className="mt-32 flex flex-col justify-center items-center text-center p-4">
-            <h1 className="text-4xl font-bold text-green-600 mb-4">
+            <h1 className="text-4xl font-bold text-[#00b091] mb-4">
                Information !
             </h1>
-            <p className="text-lg text-white/80 md:w-1/3 mb-6 text-center bg-[#00d2a866] p-4 rounded-lg shadow-lg">
-               <h2 className="font-bold text-white text-center mb-2">
+            <p className="text-gray-600 md:w-1/3 bg-white shadow-12 p-6 rounded-xl shadow-xl mb-6">
+               <h2 className="text-xl font-semibold mb-3">
                   <p>Ce site ne vous est pas accessible pour le moment.</p>
                </h2>
-               Pour toute demande ou clarification, veuillez contacter notre
-               service client chez{" "}
-               <b className="font-bold text-white">GEK INNOVATECH. </b>
-               Merci pour votre compréhension et votre confiance.
-               N’hésitez pas à nous laisser un message via WhatsApp si besoin.
+               <p className="text-base text-center">
+                  Pour toute demande ou clarification, veuillez contacter notre
+                  service client chez{" "}
+                  <b className="font-bold text-[#005BFF]">
+                     <a href="/contact">GEK INNOVATECH</a>.{" "}
+                  </b>
+                  Merci pour votre compréhension et votre confiance. N’hésitez
+                  pas à nous laisser un message via WhatsApp si besoin.
+               </p>
             </p>
 
             <a

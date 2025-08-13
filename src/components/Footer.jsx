@@ -123,11 +123,12 @@ function Footer() {
          </div>
 
          <div className="text-center text-sm text-gray-400 mt-10 border-t border-gray-700 pt-4">
-            &copy;{" "}
+            Copyright &copy;{" "}
             {new Date()
                .toLocaleString("fr-FR", { month: "long", year: "numeric" })
                .replace(/^\p{L}/u, (c) => c.toUpperCase())}{" "}
-            GEK INNOVATECH. Tous droits réservés.
+            <span className="text-[#005BFF] font-bold"><a href="/">GEK INNOVATECH</a></span>. Tous droits
+            réservés.
          </div>
       </footer>
    );
