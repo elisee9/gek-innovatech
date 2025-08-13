@@ -123,7 +123,12 @@ function Footer() {
          </div>
 
          <div className="text-center text-sm text-gray-400 mt-10 border-t border-gray-700 pt-4">
-            © {new Date().getFullYear()} GEK INNOVATECH. Tous droits réservés.
+            &copy;{" "}
+            {new Date().toLocaleString("fr-FR", {
+               month: "long",
+               year: "numeric",
+            })}
+            GEK INNOVATECH. Tous droits réservés.
          </div>
       </footer>
    );
