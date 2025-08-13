@@ -43,7 +43,7 @@ function Footer() {
                   vos besoins. <br />
                   <NavLink
                      to="/portfolio"
-                     className="inline-block text-white font-semibold py-3 px-4 text-xl cursor-pointer"
+                     className="inline-block text-white font-semibold py-3 text-xl cursor-pointer"
                      onClick={handleScrollTop}
                   >
                      Nos{" "}
