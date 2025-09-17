@@ -1,7 +1,4 @@
 
-## 📌 README.md pour GEK INNOVATECH
-
-```markdown
 # 🚀 GEK INNOVATECH - Site Officiel
 
 Bienvenue sur le dépôt du site officiel **GEK INNOVATECH**, une startup spécialisée dans la création de solutions numériques modernes et innovantes.
@@ -107,4 +104,3 @@ Le projet est déployé sur **Netlify**.
 
 © Septembre 2025 **GEK INNOVATECH**. Tous droits réservés.
 
-```
