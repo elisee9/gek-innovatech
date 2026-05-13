@@ -1,0 +1,377 @@
+{
+  "common": {
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "backHome": "Back to home",
+    "contactUs": "Contact us",
+    "discussProject": "Discuss your project",
+    "viewPortfolio": "Our Work",
+    "seeExample": "View example",
+    "author": "GEK INNOVATECH"
+  },
+  "meta": {
+    "home": {
+      "title": "GEK INNOVATECH | Modern & High-Performance Web Design",
+      "description": "GEK INNOVATECH helps you build professional, custom websites optimized for search engines.",
+      "keywords": "GEK INNOVATECH, web agency, website creation, custom website, digital, Benin",
+      "ogTitle": "GEK INNOVATECH | Modern Web Design",
+      "ogDescription": "Agency specialized in building high-performance, beautifully designed websites."
+    },
+    "about": {
+      "title": "About GEK INNOVATECH",
+      "description": "Discover the story, mission and values of GEK INNOVATECH, your trusted digital partner.",
+      "keywords": "GEK INNOVATECH, story, mission, web agency, Benin, team",
+      "ogTitle": "About | GEK INNOVATECH",
+      "ogDescription": "Learn more about our team and our vision."
+    },
+    "services": {
+      "title": "Our Services | GEK INNOVATECH",
+      "description": "Discover GEK INNOVATECH's web services: showcase sites, e-commerce, SEO optimization, site redesign.",
+      "keywords": "web services, website creation, SEO, e-commerce, website maintenance, GEK INNOVATECH",
+      "ogTitle": "Our Services | GEK INNOVATECH",
+      "ogDescription": "A wide range of services to boost your online presence."
+    },
+    "plans": {
+      "title": "Our Plans | GEK INNOVATECH",
+      "description": "Choose from our web plans tailored to your needs and budget. Flexible and professional solutions.",
+      "keywords": "website plans, website pricing, packages, web plans, GEK INNOVATECH",
+      "ogTitle": "Our Plans | GEK INNOVATECH",
+      "ogDescription": "Compare our packages and choose the plan that suits you."
+    },
+    "contact": {
+      "title": "Contact Us | GEK INNOVATECH",
+      "description": "A question or a project? Contact our team to discuss your digital needs.",
+      "keywords": "contact, website quote, GEK INNOVATECH, web support, website development",
+      "ogTitle": "Contact | GEK INNOVATECH",
+      "ogDescription": "Reach out to our agency to launch your digital project."
+    },
+    "merci": {
+      "title": "Payment Successful | GEK INNOVATECH",
+      "description": "Thank you for your trust. Your payment was completed successfully."
+    },
+    "paiementAnnule": {
+      "title": "Payment Cancelled | GEK INNOVATECH",
+      "description": "The payment was cancelled. You can try again at any time."
+    },
+    "notFound": {
+      "title": "Page Not Found | GEK INNOVATECH"
+    },
+    "portfolio": {
+      "title": "Our Work | GEK INNOVATECH",
+      "description": "Explore our web projects: showcase sites, e-commerce, coaching, restaurant. Real examples we can adapt to your business.",
+      "keywords": "web portfolio, agency projects, website creation, site examples, GEK INNOVATECH, Benin",
+      "ogTitle": "Our Work | GEK INNOVATECH",
+      "ogDescription": "Browse our projects and see how we transform your online presence."
+    }
+  },
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "plans": "Our Plans",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "tagline": "We build modern, fast websites tailored to your needs.",
+    "usefulLinks": "Useful links",
+    "contact": "Contact",
+    "copyright": "All rights reserved.",
+    "mentions": "Legal Notice & Terms"
+  },
+  "hero": {
+    "welcome": "Welcome to",
+    "subtitle": "Transform your digital image. Leave a lasting impression.",
+    "description": "We build ultra-high-performance websites with refined, custom design to boost your visibility. Attract more clients, assert your online presence, and stand out from the competition — for the long term."
+  },
+  "phraseAccroche": {
+    "phrases": [
+      "Premium tech partner for ambitious businesses.",
+      "Ultra-optimized websites & web applications.",
+      "Certified Google SEO.",
+      "Turnkey digital strategy.",
+      "Custom developments with guarantee.",
+      "Certified technical expertise."
+    ]
+  },
+  "about": {
+    "title": "About",
+    "p1": "We are a team passionate about design, performance and innovation.",
+    "p2": "Our mission is to transform your ideas into elegant, fast and effective web solutions, perfectly aligned with your goals.",
+    "p3": "At <brand>GEK INNOVATECH</brand>, every project is an opportunity to elevate your online image, strengthen your digital presence and captivate your audience.",
+    "p4": "Through a user-experience-first approach and the latest technologies, we design intuitive interfaces, smooth animations and uncompromising performance.",
+    "tagline": "Your online success starts here.",
+    "cta": "Discover our services"
+  },
+  "services": {
+    "title": "Our",
+    "titleAccent": "Services",
+    "subtitle": "Explore the full range of solutions we offer to support your digital success.",
+    "items": [
+      {
+        "title": "Web Development",
+        "description": "High-performance, modern websites optimized for all screen sizes, with strong natural search engine optimization."
+      },
+      {
+        "title": "Mobile Applications",
+        "description": "Smooth and ergonomic applications for iOS and Android, designed with your mobile audience in mind."
+      },
+      {
+        "title": "Marketing & Analytics",
+        "description": "Targeted campaigns, precise tracking, and tools to boost your visibility and performance."
+      },
+      {
+        "title": "Launch & Maintenance",
+        "description": "We support you after go-live with ongoing support, updates, and personalized enhancements."
+      },
+      {
+        "title": "UI/UX Design",
+        "description": "Elegant and intuitive interfaces that improve user experience and drive engagement."
+      },
+      {
+        "title": "SEO & Search Ranking",
+        "description": "Boost your position on search engines through modern and effective SEO practices."
+      },
+      {
+        "title": "Cloud Hosting",
+        "description": "Fast and secure cloud solutions to guarantee the high availability of your services."
+      },
+      {
+        "title": "Web Security",
+        "description": "Protect your data and your clients' data with advanced cybersecurity solutions."
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Our Pricing Plans",
+    "subtitle": "Solutions tailored to every stage of your digital growth. Choose the plan that best fits your needs.",
+    "recommended": "Best value",
+    "premiumBadge": "Full Package",
+    "delivery": "Delivery in",
+    "getplan": "Get this plan",
+    "seeExample": "View example",
+    "period": "one-time",
+    "plans": [
+      {
+        "id": 1,
+        "title": "Starter Plan",
+        "description": "Ideal for getting started quickly",
+        "deliveryTime": "5 days",
+        "features": [
+          "Simple landing page (1 page) or 3 pages (bonus)",
+          "Color and text customization",
+          "Free hosting (Vercel)",
+          "Basic contact form",
+          "Direct WhatsApp and call buttons",
+          "Basic Google indexing",
+          ".vercel.app domain name",
+          "Responsive design (mobile-friendly)",
+          "Technical support for 1 week"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Pro Plan",
+        "description": "Professional solution for small and medium businesses",
+        "deliveryTime": "1 week",
+        "features": [
+          "Everything in Starter",
+          "Multi-page website (up to 5 pages)",
+          "Shared domain name (yourbusiness.gek-innovatech.netlify.app)",
+          "Optimized SEO (basic metadata)",
+          "1 month maintenance included",
+          "Post-delivery modification (1 time)",
+          "Social media integration",
+          "Basic Google Analytics",
+          "SSL certificate included",
+          "Priority support"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Premium Plan",
+        "description": "Custom solution for maximum visibility",
+        "deliveryTime": "2 weeks",
+        "features": [
+          "Everything in Pro",
+          "Custom domain name (.com / .fr etc.)",
+          "Website up to 10 pages",
+          "Professional hosting (Hostinger)",
+          "3 professional email addresses (@yourdomain.com)",
+          "Advanced SEO (schema.org, sitemap)",
+          "Google Maps integration and reviews",
+          "2 months maintenance included",
+          "Unlimited revisions for 15 days",
+          "Daily backup",
+          "Detailed statistics",
+          "1-hour training included"
+        ]
+      }
+    ]
+  },
+  "whyChooseUs": {
+    "title": "Why",
+    "titleAccent": "choose us",
+    "items": [
+      {
+        "title": "Optimal performance",
+        "description": "Our solutions are designed to be fast, fluid and perfectly optimized to deliver an exceptional user experience."
+      },
+      {
+        "title": "Reliability & security",
+        "description": "We ensure enhanced security to protect your data and your clients' data using the best practices in the industry."
+      },
+      {
+        "title": "Creativity & innovation",
+        "description": "Every project is an opportunity to innovate. We blend design and technology to create unique experiences."
+      },
+      {
+        "title": "Dedicated technical support",
+        "description": "We remain available to support you after delivery, with fast, human and responsive assistance."
+      }
+    ]
+  },
+  "contactSection": {
+    "title": "Have a project in mind?",
+    "subtitle": "Our team is ready to help you bring your ideas to life. Let's talk about it now.",
+    "btn": "Contact us"
+  },
+  "contact": {
+    "title": "Contact",
+    "titleAccent": "us",
+    "subtitle": "A question? A project? Fill in the form below and our team will get back to you promptly.",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Your email address",
+    "messagePlaceholder": "Your message",
+    "submit": "Send",
+    "sending": "Sending...",
+    "success": "Message sent successfully.",
+    "error": "An error occurred while sending. Please try again."
+  },
+  "merci": {
+    "title": "Payment successful",
+    "message": "Your payment has been completed successfully. Thank you for your trust. You will receive a confirmation email shortly. Please send us a message on WhatsApp with your payment receipt.",
+    "backHome": "Back to home"
+  },
+  "paiementAnnule": {
+    "title": "Payment cancelled",
+    "message": "Your payment was cancelled. If you encountered an issue, feel free to contact us directly.",
+    "backHome": "Back to home",
+    "contactUs": "Contact us"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "code": "404",
+    "message": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home"
+  },
+  "portfolio": {
+    "headingBefore": "Our",
+    "headingAccent": "Work",
+    "subtitle": "Explore examples of sites we can adapt to your needs.",
+    "requestSite": "Request this type of site →",
+    "noExamples": "No examples available for this plan yet.",
+    "filters": {
+      "all": "All",
+      "basic": "Starter Plan",
+      "standard": "Pro Plan",
+      "premium": "Premium Plan"
+    },
+    "items": [
+      {
+        "id": 1,
+        "title": "Showcase Site — Beauty Salon",
+        "description": "Elegant site presenting salon services with online appointment booking."
+      },
+      {
+        "id": 2,
+        "title": "Restaurant Website",
+        "description": "Interactive menu, photo gallery and online reservation form."
+      },
+      {
+        "id": 3,
+        "title": "Personal Coaching",
+        "description": "Site for coaches or trainers with integrated blog and contact space."
+      },
+      {
+        "id": 4,
+        "title": "Minimalist E-commerce",
+        "description": "Small online store with product catalogue and streamlined cart."
+      },
+      {
+        "id": 5,
+        "title": "Photographer Portfolio",
+        "description": "Portfolio with dynamic gallery and contact form."
+      },
+      {
+        "id": 6,
+        "title": "Association or NGO",
+        "description": "Presentation of activities, donation call and contact form."
+      }
+    ]
+  },
+  "notDone": {
+    "title": "Site being deployed",
+    "message": "This site is not yet accessible. It will be available very soon.",
+    "detail": "For any question or information, contact our team directly.",
+    "backHome": "Back to home",
+    "contactUs": "Contact us"
+  },
+  "notPay": {
+    "title": "Online payment coming soon",
+    "message": "Direct online payment is not yet activated. To place your order, contact us directly via the form or on WhatsApp.",
+    "cta": "Contact us"
+  },
+  "mentions": {
+    "meta": {
+      "title": "Legal Notice | GEK INNOVATECH",
+      "description": "Legal notice and privacy policy of GEK INNOVATECH."
+    },
+    "title": "Legal Notice & Terms",
+    "updated": "Last updated:",
+    "editor": {
+      "title": "Website Publisher",
+      "type": "Digital services company",
+      "country": "Country",
+      "email": "Email",
+      "phone": "Phone",
+      "website": "Website"
+    },
+    "hosting": {
+      "title": "Hosting",
+      "text": "This site is hosted, developed and maintained directly by GEK INNOVATECH. All infrastructure, security and performance is managed in-house by our technical and security team."
+    },
+    "ip": {
+      "title": "Intellectual Property",
+      "text1": "All content on this site (texts, images, logos, graphics) is the exclusive property of GEK INNOVATECH and is protected by applicable intellectual property laws.",
+      "text2": "Any reproduction, distribution or use without prior written authorization is strictly prohibited."
+    },
+    "data": {
+      "title": "Personal Data",
+      "text1": "Data collected via the contact form (name, email, message) is used solely to respond to your requests and is never shared with third parties.",
+      "text2": "In accordance with GDPR principles, you have the right to access, correct and delete your data.",
+      "rights": "To exercise these rights, contact us"
+    },
+    "cookies": {
+      "title": "Cookies",
+      "text1": "This site uses analytical cookies (Google Analytics) to measure audience and improve user experience.",
+      "text2": "You can accept or decline cookies via the banner displayed on your first visit."
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "text": "GEK INNOVATECH strives to keep information up to date and accurate but cannot be held liable for errors or omissions, or for any direct or indirect damages resulting from the use of this site."
+    },
+    "law": {
+      "title": "Applicable Law",
+      "text": "These legal notices are governed by Beninese law. Any dispute relating to the use of the site shall be submitted to the competent jurisdiction of the Republic of Benin."
+    }
+  },
+  "cookies": {
+    "title": "We use cookies.",
+    "text": "We use analytical cookies to improve your experience on our site.",
+    "learnMore": "Learn more",
+    "accept": "Accept",
+    "decline": "Decline"
+  }
+}

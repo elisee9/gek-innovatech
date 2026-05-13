@@ -1,15 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const PhraseAccroche = () => {
-   const phrases = [
-      "Partenaire tech premium pour entreprises ambitieuses.",
-      "Sites & apps web ultra-optimisés.",
-      "Référencement Google certifié(SEO).",
-      "Stratégie digitale clé en main.",
-      "Développements sur mesure avec garantie.",
-      "Expertise technique labellisée.",
-   ];
+   const { t } = useTranslation();
+   const phrases = t("phraseAccroche.phrases", { returnObjects: true });
 
    const [currentIndex, setCurrentIndex] = useState(0);
    const [isVisible, setIsVisible] = useState(true);
@@ -17,15 +12,14 @@ const PhraseAccroche = () => {
    useEffect(() => {
       const animationCycle = setInterval(() => {
          setIsVisible(false);
-
          setTimeout(() => {
             setCurrentIndex((prev) => (prev + 1) % phrases.length);
             setIsVisible(true);
-         }, 1000); // Temps de fondu entre les phrases
-      }, 10000); // 6s animation + 2s pause
+         }, 1000);
+      }, 10000);
 
       return () => clearInterval(animationCycle);
-   }, []);
+   }, [phrases.length]);
 
    return (
       <div className="relative w-full h-10 overflow-hidden py-1">
@@ -33,15 +27,12 @@ const PhraseAccroche = () => {
             {isVisible && (
                <motion.div
                   key={currentIndex}
-                  initial={{ x: "100vw", opacity: 0 }} // Commence hors écran à droite
+                  initial={{ x: "100vw", opacity: 0 }}
                   animate={{
-                     x: "-100%", // Va jusqu'au bout à gauche
-                     opacity: [0, 1, 1, 0], // Fondu entrant/sortant
+                     x: "-100%",
+                     opacity: [0, 1, 1, 0],
                      transition: {
-                        x: {
-                           duration: 10,
-                           ease: "linear",
-                        },
+                        x: { duration: 10, ease: "linear" },
                         opacity: {
                            duration: 12,
                            times: [0, 0.1, 0.9, 1],
@@ -60,4 +51,3 @@ const PhraseAccroche = () => {
 };
 
 export default PhraseAccroche;
-// Ce code définit un composant React qui affiche une phrase d'accroche animée pour un site web.

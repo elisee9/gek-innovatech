@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#005BFF"/>
+      <stop offset="100%" stop-color="#00D2A8"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E1E1E"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="30%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#005BFF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#005BFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="70%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#00D2A8" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#00D2A8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#g2)"/>
+  <!-- Glow overlays -->
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Subtle grid dots -->
+  <g fill="#ffffff" fill-opacity="0.04">
+    <circle cx="60"  cy="60"  r="1.5"/><circle cx="180" cy="60"  r="1.5"/><circle cx="300" cy="60"  r="1.5"/>
+    <circle cx="420" cy="60"  r="1.5"/><circle cx="540" cy="60"  r="1.5"/><circle cx="660" cy="60"  r="1.5"/>
+    <circle cx="780" cy="60"  r="1.5"/><circle cx="900" cy="60"  r="1.5"/><circle cx="1020" cy="60" r="1.5"/>
+    <circle cx="1140" cy="60" r="1.5"/>
+    <circle cx="60"  cy="180" r="1.5"/><circle cx="180" cy="180" r="1.5"/><circle cx="300" cy="180" r="1.5"/>
+    <circle cx="420" cy="180" r="1.5"/><circle cx="540" cy="180" r="1.5"/><circle cx="660" cy="180" r="1.5"/>
+    <circle cx="780" cy="180" r="1.5"/><circle cx="900" cy="180" r="1.5"/><circle cx="1020" cy="180" r="1.5"/>
+    <circle cx="1140" cy="180" r="1.5"/>
+    <circle cx="60"  cy="300" r="1.5"/><circle cx="180" cy="300" r="1.5"/><circle cx="300" cy="300" r="1.5"/>
+    <circle cx="420" cy="300" r="1.5"/><circle cx="540" cy="300" r="1.5"/><circle cx="660" cy="300" r="1.5"/>
+    <circle cx="780" cy="300" r="1.5"/><circle cx="900" cy="300" r="1.5"/><circle cx="1020" cy="300" r="1.5"/>
+    <circle cx="1140" cy="300" r="1.5"/>
+    <circle cx="60"  cy="420" r="1.5"/><circle cx="180" cy="420" r="1.5"/><circle cx="300" cy="420" r="1.5"/>
+    <circle cx="420" cy="420" r="1.5"/><circle cx="540" cy="420" r="1.5"/><circle cx="660" cy="420" r="1.5"/>
+    <circle cx="780" cy="420" r="1.5"/><circle cx="900" cy="420" r="1.5"/><circle cx="1020" cy="420" r="1.5"/>
+    <circle cx="1140" cy="420" r="1.5"/>
+    <circle cx="60"  cy="540" r="1.5"/><circle cx="180" cy="540" r="1.5"/><circle cx="300" cy="540" r="1.5"/>
+    <circle cx="420" cy="540" r="1.5"/><circle cx="540" cy="540" r="1.5"/><circle cx="660" cy="540" r="1.5"/>
+    <circle cx="780" cy="540" r="1.5"/><circle cx="900" cy="540" r="1.5"/><circle cx="1020" cy="540" r="1.5"/>
+    <circle cx="1140" cy="540" r="1.5"/>
+  </g>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#g1)"/>
+
+  <!-- Diamond icon — center (600, 265), scale ×5 from logo -->
+  <polygon points="600,145 720,265 600,385 480,265"
+           fill="none" stroke="url(#g1)" stroke-width="5" stroke-linejoin="round"/>
+  <polygon points="600,205 665,265 600,325 535,265"
+           fill="url(#g1)" fill-opacity="0.08"/>
+  <circle cx="600" cy="145" r="10" fill="#005BFF"/>
+  <circle cx="720" cy="265" r="10" fill="#00D2A8"/>
+  <circle cx="600" cy="385" r="8"  fill="#00D2A8" fill-opacity="0.5"/>
+  <circle cx="480" cy="265" r="8"  fill="#005BFF" fill-opacity="0.5"/>
+  <!-- Circuit stubs -->
+  <line x1="600" y1="128" x2="600" y2="145" stroke="#005BFF" stroke-width="3"/>
+  <line x1="720" y1="265" x2="742" y2="265" stroke="#00D2A8" stroke-width="3"/>
+
+  <!-- GEK wordmark -->
+  <text x="600" y="490"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900" font-size="72" fill="#005BFF"
+        text-anchor="middle">GEK</text>
+
+  <!-- INNOVATECH -->
+  <text x="600" y="548"
+        font-family="Arial, sans-serif"
+        font-weight="400" font-size="28" fill="#00D2A8"
+        text-anchor="middle" letter-spacing="8">INNOVATECH</text>
+
+  <!-- Tagline -->
+  <text x="600" y="600"
+        font-family="Arial, sans-serif"
+        font-weight="300" font-size="16" fill="#ffffff"
+        text-anchor="middle" fill-opacity="0.45" letter-spacing="3">AGENCE WEB · DESIGN · PERFORMANCE</text>
+</svg>

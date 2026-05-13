@@ -1,51 +1,54 @@
-import HeroSection from "../sections/HeroSection";
+﻿import HeroSection from "../sections/HeroSection";
 import PricingSection from "../sections/PricingSection";
 import ContactSection from "../sections/ContactSection";
 import WhyChooseUs from "../sections/WhyChooseUs";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+   const { t } = useTranslation();
+
    return (
       <>
          <Helmet>
-            <title>
-               GEK INNOVATECH | Création de sites web modernes et performants
-            </title>
-            <meta
-               name="description"
-               content="GEK INNOVATECH vous accompagne dans la création de sites web professionnels, sur mesure et optimisés pour le référencement."
-            />
-            <meta
-               name="keywords"
-               content="GEK INNOVATECH, agence web, création site internet, site web sur mesure, digital, Bénin"
-            />
-            <meta name="author" content="GEK INNOVATECH" />
-            <meta
-               property="og:title"
-               content="GEK INNOVATECH | Création de sites web modernes"
-            />
-            <meta
-               property="og:description"
-               content="Agence spécialisée dans la création de sites web performants et designs."
-            />
+            <title>{t("meta.home.title")}</title>
+            <meta name="description" content={t("meta.home.description")} />
+            <meta name="keywords" content={t("meta.home.keywords")} />
+            <meta name="author" content={t("common.author")} />
+            <meta name="robots" content="index, follow" />
+            <meta property="og:title" content={t("meta.home.ogTitle")} />
+            <meta property="og:description" content={t("meta.home.ogDescription")} />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content="https://gekinnova.com/" />
-            <meta
-               property="og:image"
-               content="https://gekinnova.com/images/og-home.jpg"
-            />
+            <meta property="og:url" content="https://gek-innovatech.netlify.app/" />
+            <meta property="og:image" content="https://gek-innovatech.netlify.app/og-image.png" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={t("meta.home.ogTitle")} />
+            <meta name="twitter:description" content={t("meta.home.ogDescription")} />
+            <meta name="twitter:image" content="https://gek-innovatech.netlify.app/og-image.png" />
+            <link rel="canonical" href="https://gek-innovatech.netlify.app/" />
+            <script type="application/ld+json">{JSON.stringify({
+               "@context": "https://schema.org",
+               "@type": "ProfessionalService",
+               "name": "GEK INNOVATECH",
+               "url": "https://gek-innovatech.netlify.app",
+               "logo": "https://gek-innovatech.netlify.app/og-image.png",
+               "description": "Agence web spécialisée dans la création de sites web performants, modernes et sur mesure.",
+               "telephone": "+2290165426510",
+               "email": "contact@gekinnovatech.com",
+               "address": { "@type": "PostalAddress", "addressCountry": "BJ" },
+               "areaServed": "Worldwide",
+               "serviceType": ["Web Design", "Web Development", "SEO", "Mobile Applications"],
+               "priceRange": "€€"
+            })}</script>
          </Helmet>
 
-         {/* Section d'introduction */}
          <HeroSection />
-         {/* Aperçu seulement, pas tout le contenu */}
          <section id="plans">
             <PricingSection previewOnly />
          </section>
          <section id="contact">
-            <ContactSection previewOnly />
+            <ContactSection />
          </section>
-         {/* Section WhyChooseUs */}
          <div className="mt-6 mb-10">
             <WhyChooseUs />
          </div>

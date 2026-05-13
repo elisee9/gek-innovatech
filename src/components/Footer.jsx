@@ -1,23 +1,22 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { FaWhatsapp, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+﻿import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import { useTranslation } from "react-i18next";
+import { Phone, MessageCircle, Mail } from "lucide-react";
+import Logo from "./Logo";
 
 function Footer() {
+   const { t } = useTranslation();
+
    const handleScrollTop = () => {
-      window.scrollTo({
-         top: 0,
-         behavior: "smooth",
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
    };
 
    const navLinks = [
-      { name: "Accueil", path: "/" },
-      { name: "À Propos", path: "/about" },
-      { name: "Nos Services", path: "/services" },
-      { name: "Nos Tarifs", path: "/plans" },
-      { name: "Contact", path: "/contact" },
+      { name: t("header.home"), path: "/" },
+      { name: t("header.about"), path: "/about" },
+      { name: t("header.services"), path: "/services" },
+      { name: t("header.plans"), path: "/plans" },
+      { name: t("header.contact"), path: "/contact" },
    ];
 
    return (
@@ -29,38 +28,32 @@ function Footer() {
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.5 }}
             >
-               <h2 className="text-2xl font-bold mb-3">
-                  <NavLink
-                     to="/"
-                     className="hover:text-white"
-                     onClick={handleScrollTop}
-                  >
-                     <span className="text-[#005BFF]">GEK</span> INNOVATECH
+               <div className="mb-3">
+                  <NavLink to="/" onClick={handleScrollTop} aria-label="GEK INNOVATECH">
+                     <Logo width={130} />
                   </NavLink>
-               </h2>
+               </div>
                <p className="text-gray-400">
-                  Nous développons des sites web modernes, rapides et adaptés à
-                  vos besoins. <br />
+                  {t("footer.tagline")}
+                  <br />
                   <NavLink
                      to="/portfolio"
                      className="inline-block text-white font-semibold py-3 text-xl cursor-pointer"
                      onClick={handleScrollTop}
                   >
-                     Nos{" "}
-                     <span className="text-[#005BFF]">
-                        Réalisations <span className="font-black">→</span>
-                     </span>
+                     {t("common.viewPortfolio")}{" "}
+                     <span className="text-[#005BFF] font-black">→</span>
                   </NavLink>
                </p>
             </motion.div>
 
-            {/*  Liens  */}
+            {/* Liens */}
             <motion.div
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ delay: 0.1, duration: 0.5 }}
             >
-               <h3 className="text-lg font-semibold mb-3">Liens utiles</h3>
+               <h3 className="text-lg font-semibold mb-3">{t("footer.usefulLinks")}</h3>
                <ul className="text-gray-300 space-y-2">
                   {navLinks.map((link) => (
                      <li key={link.path}>
@@ -68,9 +61,7 @@ function Footer() {
                            to={link.path}
                            className={({ isActive }) =>
                               `group inline-block relative transition-all duration-300 ${
-                                 isActive
-                                    ? "text-[#005BFF] font-medium"
-                                    : "text-gray-300"
+                                 isActive ? "text-[#005BFF] font-medium" : "text-gray-300"
                               }`
                            }
                            onClick={handleScrollTop}
@@ -91,51 +82,64 @@ function Footer() {
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ delay: 0.2, duration: 0.5 }}
             >
-               <h3 className="text-lg font-semibold mb-3">Contact</h3>
-               <div className="text-gray-300 space-y-2 text-sm">
-                  <div className="flex items-center gap-2 group">
-                     <FaPhoneAlt className="text-[#00D2A8] group-hover:scale-110 transition-transform duration-300" />
-                     <span>+229 01 65 42 6510</span>
-                  </div>
-                  <div className="flex items-center gap-2 group">
-                     <FaWhatsapp className="text-green-500 group-hover:text-green-400 transition duration-300" />
-                     <a
-                        href="https://wa.me/22965426510"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-green-400 transition"
-                     >
-                        WhatsApp : +229 65 42 65 10
-                     </a>
-                  </div>
-                  <div className="flex items-center gap-2 group">
-                     <FaEnvelope className="text-yellow-400 group-hover:text-yellow-300 transition duration-300" />
-                     <NavLink
-                        to="/contact"
-                        className="hover:text-yellow-300 transition"
-                        onClick={handleScrollTop}
-                     >
-                        contact@gekinnovatech.com
-                     </NavLink>
-                  </div>
+               <h3 className="text-lg font-semibold mb-3">{t("footer.contact")}</h3>
+               <div className="text-gray-300 space-y-4 text-sm">
+                  <a
+                     href="tel:+2290165426510"
+                     className="flex items-center gap-3 group hover:text-[#00D2A8] transition"
+                  >
+                     <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#00D2A8]/10 transition">
+                        <Phone size={14} className="text-[#00D2A8]" strokeWidth={1.8} />
+                     </span>
+                     <span className="font-medium">+229 01 65 42 6510</span>
+                  </a>
+                  <a
+                     href="https://wa.me/2290165426510"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex items-center gap-3 group hover:text-[#00D2A8] transition"
+                  >
+                     <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#00D2A8]/10 transition">
+                        <MessageCircle size={14} className="text-[#00D2A8]" strokeWidth={1.8} />
+                     </span>
+                     <span className="font-medium">+229 01 65 42 65 10</span>
+                  </a>
+                  <NavLink
+                     to="/contact"
+                     onClick={handleScrollTop}
+                     className="flex items-center gap-3 group hover:text-[#00D2A8] transition"
+                  >
+                     <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#00D2A8]/10 transition">
+                        <Mail size={14} className="text-[#00D2A8]" strokeWidth={1.8} />
+                     </span>
+                     <span className="font-medium">contact@gekinnovatech.com</span>
+                  </NavLink>
                </div>
             </motion.div>
          </div>
 
-         <div className="text-center text-sm text-gray-400 mt-10 border-t border-gray-700 pt-4">
-            Copyright &copy;{" "}
-            {new Date()
-               .toLocaleString("fr-FR", { month: "long", year: "numeric" })
-               .replace(/^\p{L}/u, (c) => c.toUpperCase())}{" "}
-            <span className="text-[#005BFF] font-bold"><a href="/">GEK INNOVATECH</a></span>. Tous droits
-            réservés.
+         <div className="text-center text-sm text-gray-400 mt-10 border-t border-gray-700 pt-4 space-y-2">
+            <div>
+               &copy;{" "}
+               {new Date().getFullYear()}{" "}
+               <a href="/" className="text-[#005BFF] font-bold hover:text-[#00D2A8] transition">
+                  GEK INNOVATECH
+               </a>
+               {" — "}
+               {t("footer.copyright")}
+            </div>
+            <div>
+               <NavLink
+                  to="/mentions-legales"
+                  onClick={handleScrollTop}
+                  className="hover:text-[#00D2A8] transition underline underline-offset-2"
+               >
+                  {t("footer.mentions")}
+               </NavLink>
+            </div>
          </div>
       </footer>
    );
 }
 
 export default Footer;
-
-// Ce code définit le pied de page du site web de GEK INNOVATECH.
-// Il utilise la bibliothèque Framer Motion pour animer l'apparition des éléments.
-// Le pied de page contient des informations de contact, des liens vers d'autres pages du site et une mention légale sur les droits d'auteur.

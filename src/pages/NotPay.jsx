@@ -1,36 +1,29 @@
-import { handleLinkClick } from "../utils/scrollUtils";
-import { NavLink } from "react-router-dom";
-const NotPay = () => {
-   return (
-      <>
-         <div className="mt-32 flex flex-col justify-center items-center text-center p-4">
-            <h1 className="text-4xl font-bold text-[#00b091] mb-4">
-               Information !
-            </h1>
-            <div className="text-gray-600 md:w-1/3 bg-white shadow-12 p-6 rounded-xl shadow-xl mb-6">
-               <h2 className="text-xl font-semibold mb-3">
-                  <p>
-                     Le paiement en ligne direct n’est pas encore disponible
-                     pour le moment.
-                  </p>
-               </h2>
-               <p className="text-base text-center">
-                  Pour passer votre commande, veuillez cliquer sur le bouton
-                  ci-dessous afin de remplir le formulaire de contact. Nous vous
-                  remercions pour votre confiance. N’hésitez pas à nous laisser
-                  un message sur WhatsApp pour toute question ou précision.
-               </p>
-            </div>
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-            <NavLink
+const NotPay = () => {
+   const { t } = useTranslation();
+
+   return (
+      <div className="min-h-screen bg-[#1E1E1E] flex flex-col items-center justify-center text-white px-4 text-center">
+         <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-md"
+         >
+            <div className="w-12 h-0.5 bg-[#005BFF] mx-auto mb-6" />
+            <h1 className="text-3xl font-bold mb-4">{t("notPay.title")}</h1>
+            <p className="text-gray-300 text-lg mb-8">{t("notPay.message")}</p>
+            <Link
                to="/contact"
-               className="bg-[#00D2A8] hover:bg-[#00b091] text-black font-semibold px-8 py-4 rounded-xl transition shadow-lg hover:shadow-[#00D2A8]/40 cursor-pointer"
-               onClick={handleLinkClick}
+               className="block w-full text-center sm:w-auto sm:inline-block px-8 py-3 sm:px-12 bg-[#005BFF] text-white font-semibold rounded-lg hover:bg-[#0044cc] transition shadow-lg hover:shadow-[#005BFF]/40"
             >
-               Contactez-nous
-            </NavLink>
-         </div>
-      </>
+               {t("notPay.cta")}
+            </Link>
+         </motion.div>
+      </div>
    );
 };
 

@@ -1,117 +1,100 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import PhraseAccroche from "./PhraseAccroche";
+import Logo from "./Logo";
 import { handleLinkClick } from "../utils/scrollUtils";
+import { useTranslation } from "react-i18next";
 
-const navLinks = [
-   {
-      name: "Accueil",
-      path: "/",
-      icon: (
-         <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-         >
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-         </svg>
-      ),
-   },
-   {
-      name: "À Propos",
-      path: "/about",
-      icon: (
-         <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-         >
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M12 16v-4"></path>
-            <path d="M12 8h.01"></path>
-         </svg>
-      ),
-   },
-   {
-      name: "Services",
-      path: "/services",
-      icon: (
-         <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-         >
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-         </svg>
-      ),
-   },
-   {
-      name: "Nos Offres",
-      path: "/plans",
-      icon: (
-         <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-         >
-            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-         </svg>
-      ),
-   },
-   {
-      name: "Contact",
-      path: "/contact",
-      icon: (
-         <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-         >
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-         </svg>
-      ),
-   },
+const FrFlag = () => (
+   <svg width="20" height="14" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" className="rounded-sm flex-shrink-0">
+      <rect width="300" height="600" fill="#002395" />
+      <rect x="300" width="300" height="600" fill="#fff" />
+      <rect x="600" width="300" height="600" fill="#ED2939" />
+   </svg>
+);
+
+const GbFlag = () => (
+   <svg width="20" height="14" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" className="rounded-sm flex-shrink-0">
+      <rect width="60" height="30" fill="#012169" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4" />
+      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10" />
+      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6" />
+   </svg>
+);
+
+const LANGS = [
+   { code: "fr", label: "FR", Flag: FrFlag },
+   { code: "en", label: "EN", Flag: GbFlag },
 ];
 
+const LanguageSwitcher = ({ mobile = false }) => {
+   const { i18n } = useTranslation();
+   const currentLang = i18n.language;
+
+   const switchLang = (lang) => {
+      i18n.changeLanguage(lang);
+      localStorage.setItem("lang", lang);
+   };
+
+   if (mobile) {
+      return (
+         <div className="flex gap-3 mt-2">
+            {LANGS.map(({ code, label, Flag }) => (
+               <button
+                  key={code}
+                  onClick={() => switchLang(code)}
+                  className={`flex items-center gap-2 text-sm font-semibold px-3 py-1.5 rounded-lg transition ${
+                     currentLang === code
+                        ? "bg-[#005BFF] text-white"
+                        : "text-gray-300 hover:text-white hover:bg-white/10"
+                  }`}
+               >
+                  <Flag />
+                  {label}
+               </button>
+            ))}
+         </div>
+      );
+   }
+
+   return (
+      <div className="flex items-center gap-1 ml-4 border border-white/20 rounded-lg overflow-hidden">
+         {LANGS.map(({ code, label, Flag }, i) => (
+            <div key={code} className="flex items-center">
+               {i > 0 && <span className="text-white/20 text-xs">|</span>}
+               <button
+                  onClick={() => switchLang(code)}
+                  className={`flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 transition ${
+                     currentLang === code
+                        ? "bg-[#005BFF] text-white"
+                        : "text-gray-300 hover:text-white hover:bg-white/10"
+                  }`}
+               >
+                  <Flag />
+                  {label}
+               </button>
+            </div>
+         ))}
+      </div>
+   );
+};
+
 const Header = () => {
+   const { t } = useTranslation();
    const [isOpen, setIsOpen] = useState(false);
    const menuRef = useRef(null);
    const [hoveredIndex, setHoveredIndex] = useState(null);
+
+   const navLinks = [
+      { name: t("header.home"), path: "/" },
+      { name: t("header.about"), path: "/about" },
+      { name: t("header.services"), path: "/services" },
+      { name: t("header.plans"), path: "/plans" },
+      { name: t("header.contact"), path: "/contact" },
+   ];
 
    useEffect(() => {
       document.body.style.overflow = isOpen ? "hidden" : "auto";
@@ -136,12 +119,8 @@ const Header = () => {
          </div>
          <div className="max-w-7xl mx-auto pl-6 py-3 flex justify-between items-center">
             {/* Logo */}
-            <NavLink
-               to="/"
-               className="text-white text-2xl font-bold"
-               onClick={handleLinkClick}
-            >
-               <span className="text-[#005BFF]">GEK</span> INNOVATECH
+            <NavLink to="/" onClick={() => handleLinkClick()} aria-label="GEK INNOVATECH — Accueil">
+               <Logo width={145} />
             </NavLink>
 
             <nav className="hidden md:flex items-center gap-8 text-white relative pr-6">
@@ -155,7 +134,7 @@ const Header = () => {
                   >
                      <NavLink
                         to={link.path}
-                        onClick={handleLinkClick}
+                        onClick={() => handleLinkClick()}
                         className={({ isActive }) =>
                            `font-medium transition ${
                               isActive
@@ -179,7 +158,7 @@ const Header = () => {
                                  ? "bg-[#005BFF]"
                                  : "bg-[#00D2A8]"
                            }`}
-                           style={{ bottom: "-10px" }} // Ajoute de l'espace entre le texte et la ligne
+                           style={{ bottom: "-10px" }}
                            transition={{
                               type: "spring",
                               stiffness: 300,
@@ -191,13 +170,15 @@ const Header = () => {
                ))}
 
                <a
-                  href="https://wa.me/22965426510"
+                  href="https://wa.me/2290165426510"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="ml-6 bg-[#00D2A8] hover:bg-[#00b795] px-5 py-2 rounded-lg font-medium text-white transition"
+                  className="ml-2 bg-[#00D2A8] hover:bg-[#00b795] px-5 py-2 rounded-lg font-medium text-white transition"
                >
-                  WhatsApp
+                  {t("common.whatsapp")}
                </a>
+
+               <LanguageSwitcher />
             </nav>
 
             {/* Mobile Nav Toggle */}
@@ -206,7 +187,7 @@ const Header = () => {
                   isOpen ? "opacity-80 mt-6 pr-3" : "opacity-100"
                }`}
                onClick={() => setIsOpen(!isOpen)}
-               aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+               aria-label={isOpen ? t("header.closeMenu") : t("header.openMenu")}
             >
                {isOpen ? <FaTimes /> : <FaBars />}
             </button>
@@ -236,28 +217,27 @@ const Header = () => {
                               key={link.name}
                               to={link.path}
                               className={({ isActive }) =>
-                                 `text-xl font-semibold flex flex-row gap-8 py-2 hover:text-[#00D2A8] transition-colors
-            ${isActive ? "text-[#005BFF]" : "text-white"}`
+                                 `text-xl font-semibold py-2 hover:text-[#00D2A8] transition-colors ${
+                                    isActive ? "text-[#005BFF]" : "text-white"
+                                 }`
                               }
                               onClick={() => {
                                  handleLinkClick();
                                  setIsOpen(false);
                               }}
                            >
-                              <span className="flex-shrink-0 pt-1 text-[#00b795]">
-                                 {link.icon}
-                              </span>
                               {link.name}
                            </NavLink>
                         ))}
                         <a
-                           href="https://wa.me/22965426510"
+                           href="https://wa.me/2290165426510"
                            target="_blank"
                            rel="noopener noreferrer"
                            className="bg-[#00D2A8] hover:bg-[#00b795] px-6 py-2 rounded-lg text-black font-semibold transition mt-4 w-full text-center"
                         >
-                           WhatsApp
+                           {t("common.whatsapp")}
                         </a>
+                        <LanguageSwitcher mobile />
                      </div>
                   </motion.div>
                </>
@@ -268,6 +248,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// Ce code définit un composant d'en-tête réactif pour un site web, incluant un logo, des liens de navigation et un bouton pour ouvrir/fermer le menu mobile.
-// Il utilise la bibliothèque Framer Motion pour les animations et gère l'état d'ouverture du menu mobile avec un hook useState.

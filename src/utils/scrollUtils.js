@@ -1,4 +1,4 @@
 export const handleLinkClick = (setIsOpen) => {
-   setIsOpen(false);
+   if (typeof setIsOpen === "function") setIsOpen(false);
    window.scrollTo({ top: 0, behavior: "smooth" });
 };

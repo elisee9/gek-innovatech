@@ -1,77 +1,24 @@
-import React from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import {
-   FaLaptopCode,
-   FaMobileAlt,
-   FaChartLine,
-   FaRocket,
-   FaPaintBrush,
-   FaSearch,
-   FaCloud,
-   FaShieldAlt,
-   // FaUserGraduate, // Commenté pour éviter l'erreur de non-utilisation
-} from "react-icons/fa";
+   Code2,
+   Smartphone,
+   BarChart3,
+   Rocket,
+   Palette,
+   Search,
+   Cloud,
+   ShieldCheck,
+} from "lucide-react";
 
-const services = [
-   {
-         icon: <FaLaptopCode className="text-4xl text-[#00D2A8]" />,
-         title: "Développement Web",
-         description:
-            "Des sites performants, modernes et optimisés pour tous les écrans, avec un excellent référencement naturel (SEO).",
-      },
-      {
-         icon: <FaMobileAlt className="text-4xl text-green-500" />,
-         title: "Applications Mobiles",
-         description:
-            "Des applications fluides et ergonomiques, pour iOS et Android, pensées pour votre audience mobile.",
-      },
-      {
-         icon: <FaChartLine className="text-4xl text-orange-400" />,
-         title: "Marketing & Analyse",
-         description:
-            "Des campagnes ciblées, un suivi précis et des outils pour booster votre visibilité et vos performances.",
-      },
-      {
-         icon: <FaRocket className="text-4xl text-pink-500" />,
-         title: "Lancement & Maintenance",
-         description:
-            "Nous vous accompagnons après la mise en ligne avec un support, des mises à jour et des évolutions personnalisées.",
-      },
-      {
-         icon: <FaPaintBrush className="text-4xl text-pink-400" />,
-         title: "Design UI/UX",
-         description:
-            "Des interfaces élégantes et intuitives qui améliorent l’expérience utilisateur et l'engagement.",
-      },
-      {
-         icon: <FaSearch className="text-4xl text-yellow-400" />,
-         title: "SEO & Référencement",
-         description:
-            "Boostez votre position sur les moteurs de recherche grâce à des pratiques SEO modernes et efficaces.",
-      },
-      {
-         icon: <FaCloud className="text-4xl text-blue-400" />,
-         title: "Hébergement Cloud",
-         description:
-            "Des solutions cloud rapides et sécurisées pour garantir la haute disponibilité de vos services.",
-      },
-      {
-         icon: <FaShieldAlt className="text-4xl text-red-500" />,
-         title: "Sécurité Web",
-         description:
-            "Protégez vos données et celles de vos clients grâce à des solutions de cybersécurité avancées.",
-      },
-      // {
-      //    icon: <FaUserGraduate className="text-4xl text-purple-500" />,
-      //    title: "Formation & Support",
-      //    description:
-      //       "Des formations personnalisées et un support technique réactif pour vous accompagner dans votre projet.",
-      // },
-];
+const SERVICE_ICONS = [Code2, Smartphone, BarChart3, Rocket, Palette, Search, Cloud, ShieldCheck];
 
 const ServicesCards = () => {
+   const { t } = useTranslation();
+   const items = t("services.items", { returnObjects: true });
+
    return (
-      <section className="">
+      <section>
          <div className="max-w-7xl mx-auto text-center">
             <motion.h2
                initial={{ opacity: 0, y: 30 }}
@@ -79,33 +26,38 @@ const ServicesCards = () => {
                transition={{ duration: 0.6 }}
                className="text-4xl md:text-5xl font-bold mb-4"
             >
-               Nos <span className="text-[#005BFF]">Services</span>
+               {t("services.title")}{" "}
+               <span className="text-[#005BFF]">{t("services.titleAccent")}</span>
             </motion.h2>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-12">
-               Découvrez l’ensemble des solutions que nous proposons pour
-               accompagner votre succès numérique.
+               {t("services.subtitle")}
             </p>
 
-            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 px-4">
-               {services.map((service, index) => (
-                  <motion.div
-                     key={index}
-                     initial={{ opacity: 0, y: 40 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.1, delay: index * 0.1 }}
-                     viewport={{ once: true }}
-                     whileHover={{ scale: 1.06 }}
-                     className="bg-[#1C1C1C] p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-white/5 cursor-pointer hover:border-[#005BFF] hover:shadow-[#005BFF]/40"
-                  >
-                     <div className="mb-4">{service.icon}</div>
-                     <h3 className="text-xl font-semibold mb-2">
-                        {service.title}
-                     </h3>
-                     <p className="text-gray-400 text-sm leading-relaxed">
-                        {service.description}
-                     </p>
-                  </motion.div>
-               ))}
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 px-4">
+               {items.map((service, index) => {
+                  const Icon = SERVICE_ICONS[index];
+                  return (
+                     <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.07 }}
+                        viewport={{ once: true }}
+                        whileHover={{ y: -6 }}
+                        className="bg-[#1C1C1C] p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-white/5 hover:border-[#005BFF] hover:shadow-[#005BFF]/20 text-left group"
+                     >
+                        <div className="w-12 h-12 rounded-xl bg-[#005BFF]/10 flex items-center justify-center mb-5 group-hover:bg-[#005BFF]/20 transition duration-300">
+                           <Icon size={22} className="text-[#005BFF]" strokeWidth={1.6} />
+                        </div>
+                        <h3 className="text-lg font-semibold mb-2 text-white">
+                           {service.title}
+                        </h3>
+                        <p className="text-gray-400 text-sm leading-relaxed">
+                           {service.description}
+                        </p>
+                     </motion.div>
+                  );
+               })}
             </div>
          </div>
       </section>

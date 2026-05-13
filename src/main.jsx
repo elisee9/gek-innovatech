@@ -4,7 +4,7 @@ import App from "./App";
 import { ToastContainer } from "react-toastify";
 import "./index.css";
 import { HelmetProvider } from "react-helmet-async";
-// Importing necessary libraries and components
+import "./i18n/i18n";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>

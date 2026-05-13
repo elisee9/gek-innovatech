@@ -1,0 +1,377 @@
+{
+  "common": {
+    "whatsapp": "WhatsApp",
+    "call": "Appeler",
+    "backHome": "Retour à l'accueil",
+    "contactUs": "Contactez-nous",
+    "discussProject": "Discutons de votre projet",
+    "viewPortfolio": "Nos Réalisations",
+    "seeExample": "Voir un exemple",
+    "author": "GEK INNOVATECH"
+  },
+  "meta": {
+    "home": {
+      "title": "GEK INNOVATECH | Création de sites web modernes et performants",
+      "description": "GEK INNOVATECH vous accompagne dans la création de sites web professionnels, sur mesure et optimisés pour le référencement.",
+      "keywords": "GEK INNOVATECH, agence web, création site internet, site web sur mesure, digital, Bénin",
+      "ogTitle": "GEK INNOVATECH | Création de sites web modernes",
+      "ogDescription": "Agence spécialisée dans la création de sites web performants et designs."
+    },
+    "about": {
+      "title": "À propos de GEK INNOVATECH",
+      "description": "Découvrez l'histoire, la mission et les valeurs de GEK INNOVATECH, votre partenaire digital de confiance.",
+      "keywords": "GEK INNOVATECH, histoire, mission, agence web, Bénin, équipe",
+      "ogTitle": "À propos | GEK INNOVATECH",
+      "ogDescription": "Apprenez-en plus sur notre équipe et notre vision."
+    },
+    "services": {
+      "title": "Nos Services | GEK INNOVATECH",
+      "description": "Découvrez les services web de GEK INNOVATECH : création de sites vitrine, e-commerce, optimisation SEO, refonte de site.",
+      "keywords": "services web, création site, SEO, e-commerce, maintenance site web, GEK INNOVATECH",
+      "ogTitle": "Nos Services | GEK INNOVATECH",
+      "ogDescription": "Une large gamme de services pour booster votre présence en ligne."
+    },
+    "plans": {
+      "title": "Nos Offres | GEK INNOVATECH",
+      "description": "Choisissez parmi nos offres web adaptées à vos besoins et à votre budget. Des solutions flexibles et professionnelles.",
+      "keywords": "offres site web, prix site internet, plans, forfaits web, GEK INNOVATECH",
+      "ogTitle": "Nos Offres | GEK INNOVATECH",
+      "ogDescription": "Comparez nos forfaits et choisissez l'offre qui vous convient."
+    },
+    "contact": {
+      "title": "Contactez-nous | GEK INNOVATECH",
+      "description": "Une question ou un projet ? Contactez notre équipe pour échanger sur vos besoins digitaux.",
+      "keywords": "contact, devis site web, GEK INNOVATECH, assistance web, développement site web",
+      "ogTitle": "Contact | GEK INNOVATECH",
+      "ogDescription": "Prenez contact avec notre agence pour lancer votre projet digital."
+    },
+    "merci": {
+      "title": "Paiement Réussi | GEK INNOVATECH",
+      "description": "Merci pour votre confiance. Votre paiement a été effectué avec succès."
+    },
+    "paiementAnnule": {
+      "title": "Paiement Annulé | GEK INNOVATECH",
+      "description": "Le paiement a été annulé. Vous pouvez réessayer à tout moment."
+    },
+    "notFound": {
+      "title": "Page introuvable | GEK INNOVATECH"
+    },
+    "portfolio": {
+      "title": "Nos Réalisations | GEK INNOVATECH",
+      "description": "Découvrez nos projets web : sites vitrine, e-commerce, coaching, restaurant. Exemples concrets adaptables à votre activité.",
+      "keywords": "réalisations web, portfolio agence, création site internet, exemples sites, GEK INNOVATECH, Bénin",
+      "ogTitle": "Nos Réalisations | GEK INNOVATECH",
+      "ogDescription": "Explorez nos projets et voyez comment nous transformons votre présence en ligne."
+    }
+  },
+  "header": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "services": "Services",
+    "plans": "Nos Offres",
+    "contact": "Contact",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "footer": {
+    "tagline": "Nous développons des sites web modernes, rapides et adaptés à vos besoins.",
+    "usefulLinks": "Liens utiles",
+    "contact": "Contact",
+    "copyright": "Tous droits réservés.",
+    "mentions": "Mentions légales & CGU"
+  },
+  "hero": {
+    "welcome": "Bienvenue chez",
+    "subtitle": "Transformez votre image digitale. Marquez les esprits.",
+    "description": "Nous créons des sites web ultra-performants, au design raffiné et sur-mesure pour booster votre visibilité. Attirez plus de clients, affirmez votre présence en ligne et démarquez-vous durablement de la concurrence."
+  },
+  "phraseAccroche": {
+    "phrases": [
+      "Partenaire tech premium pour entreprises ambitieuses.",
+      "Sites & applications web ultra-optimisés.",
+      "Référencement Google certifié (SEO).",
+      "Stratégie digitale clé en main.",
+      "Développements sur mesure avec garantie.",
+      "Expertise technique labellisée."
+    ]
+  },
+  "about": {
+    "title": "À propos de",
+    "p1": "Nous sommes une équipe passionnée par le design, la performance et l'innovation.",
+    "p2": "Notre mission est de transformer vos idées en solutions web élégantes, rapides et efficaces, parfaitement alignées avec vos objectifs.",
+    "p3": "Chez <brand>GEK INNOVATECH</brand>, chaque projet est une opportunité de sublimer votre image en ligne, de renforcer votre présence digitale et de captiver votre audience.",
+    "p4": "Grâce à une approche centrée sur l'expérience utilisateur et aux technologies les plus récentes, nous concevons des interfaces intuitives, des animations fluides et une performance sans compromis.",
+    "tagline": "Votre succès en ligne commence ici.",
+    "cta": "Découvrir nos services"
+  },
+  "services": {
+    "title": "Nos",
+    "titleAccent": "Services",
+    "subtitle": "Découvrez l'ensemble des solutions que nous proposons pour accompagner votre succès numérique.",
+    "items": [
+      {
+        "title": "Développement Web",
+        "description": "Des sites performants, modernes et optimisés pour tous les écrans, avec un excellent référencement naturel."
+      },
+      {
+        "title": "Applications Mobiles",
+        "description": "Des applications fluides et ergonomiques, pour iOS et Android, pensées pour votre audience mobile."
+      },
+      {
+        "title": "Marketing & Analyse",
+        "description": "Des campagnes ciblées, un suivi précis et des outils pour booster votre visibilité et vos performances."
+      },
+      {
+        "title": "Lancement & Maintenance",
+        "description": "Nous vous accompagnons après la mise en ligne avec un support, des mises à jour et des évolutions personnalisées."
+      },
+      {
+        "title": "Design UI/UX",
+        "description": "Des interfaces élégantes et intuitives qui améliorent l'expérience utilisateur et l'engagement."
+      },
+      {
+        "title": "SEO & Référencement",
+        "description": "Boostez votre position sur les moteurs de recherche grâce à des pratiques SEO modernes et efficaces."
+      },
+      {
+        "title": "Hébergement Cloud",
+        "description": "Des solutions cloud rapides et sécurisées pour garantir la haute disponibilité de vos services."
+      },
+      {
+        "title": "Sécurité Web",
+        "description": "Protégez vos données et celles de vos clients grâce à des solutions de cybersécurité avancées."
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Nos Plans Tarifaires",
+    "subtitle": "Des solutions adaptées à chaque étape de votre croissance digitale. Choisissez le plan qui convient le mieux à vos besoins.",
+    "recommended": "Meilleure offre",
+    "premiumBadge": "Offre Complète",
+    "delivery": "Livraison en",
+    "getplan": "Obtenir ce plan",
+    "seeExample": "Voir un exemple",
+    "period": "unique",
+    "plans": [
+      {
+        "id": 1,
+        "title": "Plan Starter",
+        "description": "Idéal pour se lancer rapidement",
+        "deliveryTime": "5 jours",
+        "features": [
+          "Landing page simple (1 page) ou 3 pages (bonus)",
+          "Personnalisation couleurs et textes",
+          "Hébergement gratuit (Vercel)",
+          "Formulaire de contact basique",
+          "Boutons WhatsApp et appel directs",
+          "Indexation Google basique",
+          "Nom de domaine .vercel.app",
+          "Responsive design (mobile-friendly)",
+          "Support technique pendant 1 semaine"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Plan Pro",
+        "description": "Solution professionnelle pour TPE et PME",
+        "deliveryTime": "1 semaine",
+        "features": [
+          "Tout inclus dans le Starter",
+          "Site multi-pages (jusqu'à 5 pages)",
+          "Nom de domaine partagé (votrebusiness.gek-innovatech.netlify.app)",
+          "SEO optimisé (métadonnées basiques)",
+          "Maintenance 1 mois incluse",
+          "Modification post-livraison (1 fois)",
+          "Intégration réseaux sociaux",
+          "Analytics Google basique",
+          "Certificat SSL inclus",
+          "Support prioritaire"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Plan Premium",
+        "description": "Solution sur-mesure pour visibilité maximale",
+        "deliveryTime": "2 semaines",
+        "features": [
+          "Tout inclus dans le Pro",
+          "Nom de domaine personnalisé (.fr / .com etc.)",
+          "Site jusqu'à 10 pages",
+          "Hébergement professionnel (Hostinger)",
+          "3 emails professionnels (@votredomaine.fr)",
+          "SEO avancé (schema.org, sitemap)",
+          "Intégration Google Maps et avis",
+          "Maintenance 2 mois incluse",
+          "Modifications illimitées pendant 15 jours",
+          "Backup quotidien",
+          "Statistiques détaillées",
+          "Formation 1h offerte"
+        ]
+      }
+    ]
+  },
+  "whyChooseUs": {
+    "title": "Pourquoi",
+    "titleAccent": "nous choisir",
+    "items": [
+      {
+        "title": "Performance optimale",
+        "description": "Nos solutions sont conçues pour être rapides, fluides et parfaitement optimisées pour offrir une expérience utilisateur exceptionnelle."
+      },
+      {
+        "title": "Fiabilité & sécurité",
+        "description": "Nous assurons une sécurité renforcée pour protéger vos données et celles de vos clients avec les meilleures pratiques du marché."
+      },
+      {
+        "title": "Créativité & innovation",
+        "description": "Chaque projet est une opportunité pour innover. Nous combinons design et technologie pour créer des expériences uniques."
+      },
+      {
+        "title": "Support technique dédié",
+        "description": "Nous restons disponibles pour vous accompagner après la livraison, avec un support rapide, humain et réactif."
+      }
+    ]
+  },
+  "contactSection": {
+    "title": "Un projet à concrétiser ?",
+    "subtitle": "Notre équipe est prête à vous accompagner dans la réalisation de vos idées. Discutons-en dès maintenant.",
+    "btn": "Contactez-nous"
+  },
+  "contact": {
+    "title": "Contactez-",
+    "titleAccent": "nous",
+    "subtitle": "Une question ? Un projet ? Remplissez le formulaire ci-dessous et notre équipe vous répondra dans les meilleurs délais.",
+    "namePlaceholder": "Votre nom",
+    "emailPlaceholder": "Votre adresse email",
+    "messagePlaceholder": "Votre message",
+    "submit": "Envoyer",
+    "sending": "Envoi en cours...",
+    "success": "Message envoyé avec succès.",
+    "error": "Une erreur est survenue lors de l'envoi. Veuillez réessayer."
+  },
+  "merci": {
+    "title": "Paiement réussi",
+    "message": "Votre paiement a été effectué avec succès. Merci pour votre confiance. Vous allez recevoir un email de confirmation sous peu. N'oubliez pas de nous laisser un message sur WhatsApp avec votre reçu de paiement.",
+    "backHome": "Retour à l'accueil"
+  },
+  "paiementAnnule": {
+    "title": "Paiement annulé",
+    "message": "Votre paiement a été annulé. Si vous avez rencontré un problème, n'hésitez pas à nous contacter directement.",
+    "backHome": "Retour à l'accueil",
+    "contactUs": "Nous contacter"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "code": "404",
+    "message": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil"
+  },
+  "portfolio": {
+    "headingBefore": "Nos",
+    "headingAccent": "Réalisations",
+    "subtitle": "Découvrez quelques exemples de sites que nous pouvons adapter selon vos besoins.",
+    "requestSite": "Demander ce type de site →",
+    "noExamples": "Aucun exemple disponible pour ce plan pour le moment.",
+    "filters": {
+      "all": "Tous",
+      "basic": "Plan Starter",
+      "standard": "Plan Pro",
+      "premium": "Plan Premium"
+    },
+    "items": [
+      {
+        "id": 1,
+        "title": "Site Vitrine — Salon de Beauté",
+        "description": "Site élégant pour présenter les services d'un salon avec prise de rendez-vous."
+      },
+      {
+        "id": 2,
+        "title": "Site Restaurant",
+        "description": "Menu interactif, galerie photo et formulaire de réservation en ligne."
+      },
+      {
+        "id": 3,
+        "title": "Coaching Personnel",
+        "description": "Site pour coachs ou formateurs avec blog intégré et espace contact."
+      },
+      {
+        "id": 4,
+        "title": "E-commerce Minimaliste",
+        "description": "Petite boutique en ligne avec catalogue produits et panier simplifié."
+      },
+      {
+        "id": 5,
+        "title": "Artiste Photographe",
+        "description": "Portfolio avec galerie dynamique et formulaire de contact."
+      },
+      {
+        "id": 6,
+        "title": "Association ou ONG",
+        "description": "Présentation des actions, appel aux dons et formulaire de contact."
+      }
+    ]
+  },
+  "notDone": {
+    "title": "Site en cours de déploiement",
+    "message": "Ce site n'est pas encore accessible. Il sera disponible très prochainement.",
+    "detail": "Pour toute question ou demande d'information, contactez notre équipe directement.",
+    "backHome": "Retour à l'accueil",
+    "contactUs": "Nous contacter"
+  },
+  "notPay": {
+    "title": "Paiement en ligne bientôt disponible",
+    "message": "Le paiement en ligne direct n'est pas encore activé. Pour passer votre commande, contactez-nous directement via le formulaire ou sur WhatsApp.",
+    "cta": "Nous contacter"
+  },
+  "mentions": {
+    "meta": {
+      "title": "Mentions légales | GEK INNOVATECH",
+      "description": "Mentions légales et politique de confidentialité de GEK INNOVATECH."
+    },
+    "title": "Mentions légales & CGU",
+    "updated": "Dernière mise à jour :",
+    "editor": {
+      "title": "Éditeur du site",
+      "type": "Entreprise de services numériques",
+      "country": "Pays",
+      "email": "Email",
+      "phone": "Téléphone",
+      "website": "Site web"
+    },
+    "hosting": {
+      "title": "Hébergement",
+      "text": "Ce site est hébergé, développé et maintenu directement par GEK INNOVATECH. L'ensemble de l'infrastructure, de la sécurité et des performances est géré en interne par notre équipe technique et notre pôle sécurité."
+    },
+    "ip": {
+      "title": "Propriété intellectuelle",
+      "text1": "L'ensemble des contenus présents sur ce site (textes, images, logos, graphismes) est la propriété exclusive de GEK INNOVATECH et est protégé par les lois en vigueur sur la propriété intellectuelle.",
+      "text2": "Toute reproduction, distribution ou utilisation sans autorisation écrite préalable est strictement interdite."
+    },
+    "data": {
+      "title": "Données personnelles",
+      "text1": "Les données collectées via le formulaire de contact (nom, email, message) sont utilisées uniquement pour répondre à vos demandes et ne sont jamais transmises à des tiers.",
+      "text2": "Conformément aux principes du RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.",
+      "rights": "Pour exercer ces droits, contactez-nous"
+    },
+    "cookies": {
+      "title": "Cookies",
+      "text1": "Ce site utilise des cookies analytiques (Google Analytics) pour mesurer l'audience et améliorer l'expérience utilisateur.",
+      "text2": "Vous pouvez accepter ou refuser les cookies via la bannière affichée lors de votre première visite."
+    },
+    "liability": {
+      "title": "Limitation de responsabilité",
+      "text": "GEK INNOVATECH s'efforce de maintenir les informations à jour et exactes mais ne saurait être tenu responsable des erreurs ou omissions, ni des dommages directs ou indirects résultant de l'utilisation de ce site."
+    },
+    "law": {
+      "title": "Droit applicable",
+      "text": "Les présentes mentions légales sont soumises au droit béninois. Tout litige relatif à l'utilisation du site sera soumis à la juridiction compétente de la République du Bénin."
+    }
+  },
+  "cookies": {
+    "title": "Nous utilisons des cookies.",
+    "text": "Nous utilisons des cookies analytiques pour améliorer votre expérience sur notre site.",
+    "learnMore": "En savoir plus",
+    "accept": "Accepter",
+    "decline": "Refuser"
+  }
+}
