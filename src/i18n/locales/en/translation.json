@@ -7,7 +7,8 @@
     "discussProject": "Discuss your project",
     "viewPortfolio": "Our Work",
     "seeExample": "View example",
-    "author": "GEK INNOVATECH"
+    "author": "GEK INNOVATECH",
+    "contactPage": "Our contact page"
   },
   "meta": {
     "home": {
@@ -340,7 +341,7 @@
     },
     "hosting": {
       "title": "Hosting",
-      "text": "This site is hosted, developed and maintained directly by GEK INNOVATECH. All infrastructure, security and performance is managed in-house by our technical and security team."
+      "text": "This site is designed, hosted and maintained internally by the GEK INNOVATECH team. Our development and security team manages the entire infrastructure, service availability and data protection."
     },
     "ip": {
       "title": "Intellectual Property",
@@ -373,5 +374,14 @@
     "learnMore": "Learn more",
     "accept": "Accept",
     "decline": "Decline"
+  },
+  "chatbot": {
+    "toggle": "Open chat",
+    "close": "Close chat",
+    "subtitle": "Virtual assistant",
+    "welcome": "Hello! 👋 I'm the GEK INNOVATECH assistant. Ask me about our services, pricing, or your web project.",
+    "placeholder": "Ask your question...",
+    "send": "Send",
+    "error": "An error occurred. Please try again or contact our team directly via the Contact page."
   }
 }

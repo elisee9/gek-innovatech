@@ -40,9 +40,9 @@ const MentionsLegales = () => {
                   <p>{t("mentions.editor.country")} : Bénin</p>
                   <p>
                      {t("mentions.editor.email")} :{" "}
-                     <a href="mailto:contact@gekinnovatech.com" className="text-[#00D2A8] hover:underline">
+                     <Link to="/contact" className="text-[#00D2A8] hover:underline">
                         contact@gekinnovatech.com
-                     </a>
+                     </Link>
                   </p>
                   <p>
                      {t("mentions.editor.phone")} :{" "}
@@ -69,9 +69,9 @@ const MentionsLegales = () => {
                   <p>{t("mentions.data.text1")}</p>
                   <p>{t("mentions.data.text2")}</p>
                   <p>{t("mentions.data.rights")} :{" "}
-                     <a href="mailto:contact@gekinnovatech.com" className="text-[#00D2A8] hover:underline">
-                        contact@gekinnovatech.com
-                     </a>
+                     <Link to="/contact" className="text-[#00D2A8] hover:underline">
+                        {t("common.contactPage")}
+                     </Link>
                   </p>
                </Section>
 

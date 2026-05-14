@@ -20,11 +20,10 @@
 
   <!-- Background -->
   <rect width="1200" height="630" fill="url(#g2)"/>
-  <!-- Glow overlays -->
   <rect width="1200" height="630" fill="url(#glow1)"/>
   <rect width="1200" height="630" fill="url(#glow2)"/>
 
-  <!-- Subtle grid dots -->
+  <!-- Grid dots -->
   <g fill="#ffffff" fill-opacity="0.04">
     <circle cx="60"  cy="60"  r="1.5"/><circle cx="180" cy="60"  r="1.5"/><circle cx="300" cy="60"  r="1.5"/>
     <circle cx="420" cy="60"  r="1.5"/><circle cx="540" cy="60"  r="1.5"/><circle cx="660" cy="60"  r="1.5"/>
@@ -51,34 +50,41 @@
   <!-- Top accent line -->
   <rect x="0" y="0" width="1200" height="4" fill="url(#g1)"/>
 
-  <!-- Diamond icon — center (600, 265), scale ×5 from logo -->
-  <polygon points="600,145 720,265 600,385 480,265"
-           fill="none" stroke="url(#g1)" stroke-width="5" stroke-linejoin="round"/>
-  <polygon points="600,205 665,265 600,325 535,265"
-           fill="url(#g1)" fill-opacity="0.08"/>
-  <circle cx="600" cy="145" r="10" fill="#005BFF"/>
-  <circle cx="720" cy="265" r="10" fill="#00D2A8"/>
-  <circle cx="600" cy="385" r="8"  fill="#00D2A8" fill-opacity="0.5"/>
-  <circle cx="480" cy="265" r="8"  fill="#005BFF" fill-opacity="0.5"/>
-  <!-- Circuit stubs -->
-  <line x1="600" y1="128" x2="600" y2="145" stroke="#005BFF" stroke-width="3"/>
-  <line x1="720" y1="265" x2="742" y2="265" stroke="#00D2A8" stroke-width="3"/>
+  <!--
+    Logo × 4.5, centré : x_offset=308, y_offset=221
+    Mark center → (407, 316)
+    Outer half 81 : top(407,235) right(488,316) bottom(407,397) left(326,316)
+    Inner half 45 : top(407,275) right(452,316) bottom(407,356) left(362,316)
+    GEK    x=533 y=320  fs=113
+    Sep    x1=533 x2=880 y=342
+    INNOV  x=533 y=392  fs=45
+    Tagline centré sur wordmark : x=(533+880)/2=706
+  -->
 
-  <!-- GEK wordmark -->
-  <text x="600" y="490"
-        font-family="Arial Black, Arial, sans-serif"
-        font-weight="900" font-size="72" fill="#005BFF"
-        text-anchor="middle">GEK</text>
+  <!-- Mark : anneau diamant evenodd -->
+  <path d="M407,235 L488,316 L407,397 L326,316 Z  M407,275 L452,316 L407,356 L362,316 Z"
+        fill="url(#g1)" fill-rule="evenodd"/>
+  <circle cx="407" cy="316" r="14" fill="url(#g1)"/>
+  <circle cx="407" cy="235" r="9"  fill="#005BFF"/>
+  <circle cx="488" cy="316" r="9"  fill="#00D2A8"/>
+
+  <!-- GEK — blanc -->
+  <text x="533" y="320"
+        font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-size="113" font-weight="800" fill="#FFFFFF" letter-spacing="9">GEK</text>
+
+  <!-- Séparateur -->
+  <line x1="533" y1="342" x2="880" y2="342"
+        stroke="#00D2A8" stroke-width="5" stroke-opacity="0.6"/>
 
   <!-- INNOVATECH -->
-  <text x="600" y="548"
-        font-family="Arial, sans-serif"
-        font-weight="400" font-size="28" fill="#00D2A8"
-        text-anchor="middle" letter-spacing="8">INNOVATECH</text>
+  <text x="533" y="392"
+        font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-size="45" font-weight="500" fill="#00D2A8" letter-spacing="7">INNOVATECH</text>
 
-  <!-- Tagline -->
-  <text x="600" y="600"
-        font-family="Arial, sans-serif"
-        font-weight="300" font-size="16" fill="#ffffff"
-        text-anchor="middle" fill-opacity="0.45" letter-spacing="3">AGENCE WEB · DESIGN · PERFORMANCE</text>
+  <!-- Tagline — centrée sur le wordmark, remontée juste sous INNOVATECH -->
+  <text x="706" y="444"
+        font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-weight="300" font-size="17" fill="#ffffff"
+        text-anchor="middle" fill-opacity="0.4" letter-spacing="3">AGENCE WEB · DESIGN · PERFORMANCE</text>
 </svg>

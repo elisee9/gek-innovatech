@@ -17,7 +17,7 @@ const PricingSection = () => {
    });
 
    return (
-      <section className="relative py-2 px-6 backdrop-blur-sm pt-16" id="plans">
+      <section className="relative py-2 px-6 backdrop-blur-sm pt-8" id="plans">
          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 z-0" />
 
          <div className="max-w-7xl mx-auto relative z-10">
@@ -25,7 +25,7 @@ const PricingSection = () => {
                initial={{ opacity: 0, y: 30 }}
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8 }}
-               className="text-center mb-6"
+               className="text-center mb-12"
             >
                <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#00D2A8] to-[#005BFF]">
                   {t("pricing.title")}

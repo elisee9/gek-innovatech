@@ -19,11 +19,11 @@ const About = () => {
             <meta property="og:description" content={t("meta.about.ogDescription")} />
             <meta property="og:type" content="website" />
             <meta property="og:url" content="https://gek-innovatech.netlify.app/about" />
-            <meta property="og:image" content="https://gek-innovatech.netlify.app/og-image.png" />
+            <meta property="og:image" content="https://gek-innovatech.netlify.app/og-image.jpeg" />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={t("meta.about.ogTitle")} />
             <meta name="twitter:description" content={t("meta.about.ogDescription")} />
-            <meta name="twitter:image" content="https://gek-innovatech.netlify.app/og-image.png" />
+            <meta name="twitter:image" content="https://gek-innovatech.netlify.app/og-image.jpeg" />
             <link rel="canonical" href="https://gek-innovatech.netlify.app/about" />
          </Helmet>
 

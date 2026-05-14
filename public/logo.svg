@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 258 58" role="img" aria-label="GEK INNOVATECH">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 42" role="img" aria-label="GEK INNOVATECH">
   <defs>
     <linearGradient id="gek-mark" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#005BFF"/>
@@ -6,34 +6,24 @@
     </linearGradient>
   </defs>
 
-  <!-- Outer diamond, half=25, center(28,29) -->
-  <polygon points="28,4 53,29 28,54 3,29"
-           fill="none" stroke="url(#gek-mark)" stroke-width="2" stroke-linejoin="round"/>
-  <!-- Inner ring, half=13 -->
-  <polygon points="28,16 41,29 28,42 15,29"
-           fill="none" stroke="url(#gek-mark)" stroke-width="0.75" stroke-opacity="0.3" stroke-linejoin="round"/>
-  <!-- Center dot -->
-  <circle cx="28" cy="29" r="3.5" fill="url(#gek-mark)"/>
-  <!-- Top node -->
-  <circle cx="28" cy="4"  r="2.5" fill="#005BFF"/>
-  <!-- Right node -->
-  <circle cx="53" cy="29" r="2.5" fill="#00D2A8"/>
-  <!-- Bottom node (faded) -->
-  <circle cx="28" cy="54" r="1.5" fill="#00D2A8" fill-opacity="0.3"/>
-  <!-- Left node (faded) -->
-  <circle cx="3"  cy="29" r="1.5" fill="#005BFF" fill-opacity="0.3"/>
+  <!-- Mark : anneau diamant (even-odd) center(22,21) -->
+  <path d="M22,3 L40,21 L22,39 L4,21 Z M22,12 L32,21 L22,30 L12,21 Z"
+        fill="url(#gek-mark)" fill-rule="evenodd"/>
+  <circle cx="22" cy="21" r="3" fill="url(#gek-mark)"/>
+  <circle cx="22" cy="3"  r="2" fill="#005BFF"/>
+  <circle cx="40" cy="21" r="2" fill="#00D2A8"/>
 
-  <!-- GEK – white bold -->
-  <text x="66" y="38"
+  <!-- GEK -->
+  <text x="50" y="22"
         font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif"
-        font-size="28" font-weight="800" fill="#FFFFFF" letter-spacing="2">GEK</text>
+        font-size="25" font-weight="800" fill="#FFFFFF" letter-spacing="2">GEK</text>
 
-  <!-- Vertical separator -->
-  <line x1="138" y1="12" x2="138" y2="46"
-        stroke="#00D2A8" stroke-width="0.75" stroke-opacity="0.45"/>
+  <!-- Séparateur horizontal -->
+  <line x1="50" y1="27" x2="127" y2="27"
+        stroke="#00D2A8" stroke-width="1.2" stroke-opacity="0.6"/>
 
-  <!-- INNOVATECH – teal light -->
-  <text x="146" y="38"
+  <!-- INNOVATECH -->
+  <text x="50" y="38"
         font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif"
-        font-size="15" font-weight="500" fill="#00D2A8" letter-spacing="2">INNOVATECH</text>
+        font-size="10" font-weight="500" fill="#00D2A8" letter-spacing="1.5">INNOVATECH</text>
 </svg>

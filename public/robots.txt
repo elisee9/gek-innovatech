@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /merci
+Disallow: /paiement-annule
+Disallow: /notdone
+Disallow: /notpay
+
+Sitemap: https://gek-innovatech.netlify.app/sitemap.xml

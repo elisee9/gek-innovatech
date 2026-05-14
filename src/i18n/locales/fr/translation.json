@@ -7,7 +7,8 @@
     "discussProject": "Discutons de votre projet",
     "viewPortfolio": "Nos Réalisations",
     "seeExample": "Voir un exemple",
-    "author": "GEK INNOVATECH"
+    "author": "GEK INNOVATECH",
+    "contactPage": "Notre page de contact"
   },
   "meta": {
     "home": {
@@ -340,7 +341,7 @@
     },
     "hosting": {
       "title": "Hébergement",
-      "text": "Ce site est hébergé, développé et maintenu directement par GEK INNOVATECH. L'ensemble de l'infrastructure, de la sécurité et des performances est géré en interne par notre équipe technique et notre pôle sécurité."
+      "text": "Ce site est conçu, hébergé et maintenu en interne par l'équipe de GEK INNOVATECH. Notre équipe de développement et de sécurité assure la gestion complète de l'infrastructure, la disponibilité du service et la protection des données."
     },
     "ip": {
       "title": "Propriété intellectuelle",
@@ -373,5 +374,14 @@
     "learnMore": "En savoir plus",
     "accept": "Accepter",
     "decline": "Refuser"
+  },
+  "chatbot": {
+    "toggle": "Ouvrir le chat",
+    "close": "Fermer le chat",
+    "subtitle": "Assistant virtuel",
+    "welcome": "Bonjour ! 👋 Je suis l'assistant de GEK INNOVATECH. Posez-moi vos questions sur nos services, nos tarifs ou votre projet web.",
+    "placeholder": "Posez votre question...",
+    "send": "Envoyer",
+    "error": "Une erreur est survenue. Veuillez réessayer ou contactez notre équipe directement via la page Contact."
   }
 }
