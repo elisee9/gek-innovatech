@@ -1,0 +1,58 @@
+LOGO GEK INNOVATECH
+===================
+
+Le symbole : les deux signes du code < > forment un losange, avec un point rouge au centre.
+Le nom : GEK en gras, INNOVATECH en dessous, dans la police Barlow (gratuite, sur Google Fonts).
+Le texte du logo est dessiné, pas écrit avec une police : il s'affiche pareil partout.
+
+
+QUEL FICHIER UTILISER ?
+
+logo/  Le logo complet (symbole + nom)
+  gek-logo-couleur      Sur fond blanc ou clair. C'est la version principale.
+  gek-logo-blanc        Sur fond foncé (bleu marine, noir, photo sombre).
+  gek-logo-marine       Une seule couleur, sur fond clair (tampon, gravure, broderie).
+  gek-logo-noir         Une seule couleur noire (photocopie, tampon encreur).
+  gek-logo-blanc-uni    Une seule couleur blanche, sur fond foncé.
+  ...-2000.png          Grande taille (affiches, documents, impression).
+  ...-600.png           Petite taille (signature d'email, documents Word).
+
+symbole/  Le symbole seul, quand la place manque (tampon, coin d'une image, filigrane).
+
+icones/  Icône carrée bleu marine
+  gek-icone-1024, 512, 192   Application, profil, présentation.
+  apple-touch-icon.png       Raccourci sur l'écran d'accueil d'un iPhone.
+  favicon.ico, .svg, -32, -16   Petite icône de l'onglet du navigateur.
+
+reseaux-sociaux/
+  gek-photo-profil-marine-1080       Photo de profil WhatsApp, Facebook, Instagram, LinkedIn.
+  gek-photo-profil-blanc-1080        La même, sur fond blanc.
+  gek-couverture-facebook-1640x624   Image de couverture Facebook.
+
+
+SVG OU PNG ?
+
+  SVG : dessin vectoriel, net à toutes les tailles. À donner à un imprimeur ou à un graphiste, ou pour le web.
+  PNG : image à fond transparent, pour Word, PowerPoint, Canva, WhatsApp et les réseaux sociaux.
+
+
+COULEURS
+
+  Bleu marine          #1D467B   RVB 29, 70, 123     Symbole et GEK sur fond clair
+  Bleu nuit            #00182F   RVB 0, 24, 47       Fond foncé
+  Rouge                #D42A1C   RVB 212, 42, 28     Le point, sur fond clair
+  Rouge sur foncé      #FF5A45   RVB 255, 90, 69     Le point, sur fond foncé
+  Gris bleu            #456189   RVB 69, 97, 137     INNOVATECH sur fond clair
+  Gris bleu clair      #C9D5E8   RVB 201, 213, 232   INNOVATECH sur fond foncé
+  Blanc                #FFFFFF
+
+  Pour l'impression, l'imprimeur convertit ces couleurs en CMJN à partir de ces codes.
+
+
+RÈGLES SIMPLES
+
+  - Laisser de l'espace autour du logo : au moins la moitié de la hauteur du symbole, de chaque côté.
+  - Taille minimum du logo complet : 100 px de large à l'écran, 30 mm à l'impression.
+    Taille minimum du symbole seul : 16 px à l'écran, 8 mm à l'impression.
+  - Ne pas déformer le logo (l'étirer ou l'écraser), ne pas changer ses couleurs, ne pas lui ajouter d'ombre ni d'effet.
+  - Sur un fond foncé ou une photo chargée, prendre la version blanche plutôt que la version couleur.
