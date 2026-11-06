@@ -4,19 +4,19 @@
 const plans = [
    {
       id: 1,
-      amount: 89,
+      amount: 95,
       recommended: false,
-      example: "/notdone",
-   },
-   {
-      id: 2,
-      amount: 189,
-      recommended: true,
       example: "https://gek-beaute-elegance.netlify.app",
    },
    {
+      id: 2,
+      amount: 170,
+      recommended: true,
+      example: "/notdone",
+   },
+   {
       id: 3,
-      amount: 349,
+      amount: 350,
       recommended: false,
       premium: true,
       example: "/notdone",

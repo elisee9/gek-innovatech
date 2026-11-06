@@ -38,6 +38,7 @@ Agence web basée en Afrique (Bénin), spécialisée dans la création de sites 
 
 == NOS SERVICES ==
 • Développement Web : Sites vitrine, e-commerce, landing pages ultra-performants
+• Sites WordPress : site que le client modifie lui-même (textes, photos, articles), boutique en ligne WooCommerce possible
 • Applications Mobiles : iOS et Android, ergonomiques et fluides
 • Marketing & Analytics : Campagnes ciblées, suivi précis, visibilité boostée
 • Lancement & Maintenance : Support post-livraison, mises à jour, améliorations
@@ -47,7 +48,7 @@ Agence web basée en Afrique (Bénin), spécialisée dans la création de sites 
 • Sécurité Web : Protection données, cybersécurité avancée
 
 == NOS OFFRES TARIFAIRES ==
-Plan Starter – €89
+Plan Starter – €95
   • Landing page (1 page) ou 3 pages (bonus)
   • Hébergement gratuit (Vercel), domaine .vercel.app
   • Formulaire de contact, boutons WhatsApp/appel
@@ -55,7 +56,7 @@ Plan Starter – €89
   • Support technique 1 semaine
   • Délai : 1 semaine, mise en ligne comprise
 
-Plan Pro – €189 ★ RECOMMANDÉ
+Plan Pro – €170 ★ RECOMMANDÉ
   • Tout du Plan Starter
   • Site multi-pages (jusqu'à 5 pages)
   • Domaine partagé (votremarque.gek-innovatech.netlify.app)
@@ -64,7 +65,7 @@ Plan Pro – €189 ★ RECOMMANDÉ
   • Support prioritaire
   • Délai : 2 à 3 semaines, mise en ligne comprise
 
-Plan Premium – €349 — Offre Complète
+Plan Premium – €350 — Offre Complète
   • Tout du Plan Pro
   • Domaine personnalisé (.com / .fr / etc.)
   • Site jusqu'à 10 pages, hébergement Hostinger
@@ -73,6 +74,13 @@ Plan Premium – €349 — Offre Complète
   • 2 mois de maintenance, révisions illimitées 15 jours
   • Backup quotidien, statistiques détaillées, formation 1h
   • Délai : 3 semaines à 1 mois ou plus selon le projet, mise en ligne comprise
+
+Site WordPress – sur devis
+  • Site que le client modifie lui-même (textes, photos, articles)
+  • Boutique en ligne WooCommerce possible
+  • Délai : 1 semaine à 1 mois selon le projet
+
+Application mobile (iOS et Android) – sur devis
 
 == CONTACT ==
 Pour démarrer un projet, le plus direct est WhatsApp : +229 01 65 42 65 10 (bouton « Écrire sur WhatsApp » sur le site).

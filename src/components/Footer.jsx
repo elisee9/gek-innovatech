@@ -58,7 +58,7 @@ const Footer = () => {
             <RevealItem>
                <h2 className={colTitle}>{t("footer.servicesTitle")}</h2>
                <ul className="space-y-3">
-                  {services.slice(0, 6).map((service, index) => (
+                  {services.slice(0, 7).map((service, index) => (
                      <li key={index}>
                         <Link to="/services" className={linkCls}>
                            {service.title}

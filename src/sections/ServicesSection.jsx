@@ -1,11 +1,12 @@
-import { BarChart3, Cloud, Code2, Palette, Rocket, Search, ShieldCheck, Smartphone } from "lucide-react";
+import { BarChart3, Cloud, Code2, LayoutTemplate, Palette, Rocket, Search, ShieldCheck, Smartphone } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import SectionHeading from "../components/SectionHeading";
 import Pill from "../components/Pill";
 import DrawIcon from "../components/DrawIcon";
 import { RevealGroup, RevealItem, Unroll } from "../components/Reveal";
 
-const ICONS = [Code2, Smartphone, BarChart3, Rocket, Palette, Search, Cloud, ShieldCheck];
+// Dans l'ordre des services des fichiers de traduction.
+const ICONS = [Code2, LayoutTemplate, Smartphone, BarChart3, Rocket, Palette, Search, Cloud, ShieldCheck];
 
 // Tableau réglé : service, description, et dans quelles offres il est inclus (d'après le détail des offres).
 // Il se déroule à son arrivée, chaque icône se dessine, et la rangée survolée s'éclaire sous la souris.

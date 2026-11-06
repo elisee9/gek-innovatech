@@ -12,9 +12,9 @@
   "meta": {
     "home": {
       "title": "Sites web et applications mobiles au Bénin | GEK INNOVATECH",
-      "description": "Agence web et mobile basée au Bénin : sites professionnels à prix fixe dès 89 €, livrés dès 1 semaine, et applications mobiles sur devis.",
+      "description": "Agence web et mobile basée au Bénin : sites professionnels à prix fixe dès 95 €, livrés dès 1 semaine, et applications mobiles sur devis.",
       "ogTitle": "GEK INNOVATECH | Sites web et applications mobiles",
-      "ogDescription": "Sites web à prix fixe dès 89 €, livrés dès 1 semaine, et applications mobiles sur devis, pour les entreprises d'Afrique et de la diaspora."
+      "ogDescription": "Sites web à prix fixe dès 95 €, livrés dès 1 semaine, et applications mobiles sur devis, pour les entreprises d'Afrique et de la diaspora."
     },
     "about": {
       "title": "Agence web au Bénin : qui sommes-nous | GEK INNOVATECH",
@@ -24,15 +24,15 @@
     },
     "services": {
       "title": "Sites web, applications mobiles et SEO | GEK INNOVATECH",
-      "description": "Création de sites web, applications mobiles, référencement Google, hébergement, maintenance et sécurité, avec un seul interlocuteur.",
+      "description": "Création de sites web et WordPress, applications mobiles, référencement Google, hébergement, maintenance et sécurité, avec un seul interlocuteur.",
       "ogTitle": "Nos services | GEK INNOVATECH",
       "ogDescription": "Tout pour exister en ligne, d'un seul interlocuteur."
     },
     "plans": {
-      "title": "Prix d'un site web : offres dès 89 € | GEK INNOVATECH",
-      "description": "Trois offres à prix fixe pour créer votre site web : Starter à 89 €, Pro à 189 €, Premium à 349 €. Paiement unique, livraison dès 1 semaine.",
+      "title": "Prix d'un site web : offres dès 95 € | GEK INNOVATECH",
+      "description": "Trois offres à prix fixe pour créer votre site web : Starter à 95 €, Pro à 170 €, Premium à 350 €. Paiement unique, livraison dès 1 semaine.",
       "ogTitle": "Nos offres et nos prix | GEK INNOVATECH",
-      "ogDescription": "Starter à 89 €, Pro à 189 €, Premium à 349 € : comparez nos offres et choisissez celle qui vous convient."
+      "ogDescription": "Starter à 95 €, Pro à 170 €, Premium à 350 € : comparez nos offres et choisissez celle qui vous convient."
     },
     "contact": {
       "title": "Demander un devis pour votre site web | GEK INNOVATECH",
@@ -94,7 +94,7 @@
     "titleLine1": "Votre entreprise crédible sur le web et sur mobile,",
     "titleLine2": "prix et délai clairs.",
     "lead": "GEK INNOVATECH conçoit des sites web et des applications mobiles pour les entreprises d'Afrique et de la diaspora. Sites livrés dès 1 semaine, avec un interlocuteur direct sur WhatsApp.",
-    "priceFrom": "À partir de 89 €",
+    "priceFrom": "À partir de 95 €",
     "priceNote": "paiement unique",
     "points": [
       "Prix fixes affichés",
@@ -176,6 +176,12 @@
         "includedKey": "all"
       },
       {
+        "title": "Sites WordPress",
+        "description": "Des sites que vous modifiez vous-même (textes, photos, articles), avec une boutique en ligne WooCommerce si besoin.",
+        "included": "Sur devis",
+        "includedKey": "quote"
+      },
+      {
         "title": "Applications Mobiles",
         "description": "Des applications fluides et ergonomiques, pour iOS et Android, pensées pour votre audience mobile.",
         "included": "Sur devis",
@@ -229,6 +235,15 @@
     "whatsappPlan": "Bonjour GEK INNOVATECH, je suis intéressé(e) par le {{plan}} ({{price}}).",
     "seeExample": "Voir un exemple en ligne",
     "custom": "Un besoin différent, ou plusieurs services à combiner ? Décrivez votre projet : nous vous répondons avec un devis sur mesure.",
+    "wordpress": {
+      "title": "Site WordPress",
+      "text": "Un site que vous modifiez vous-même (textes, photos, articles), avec une boutique en ligne WooCommerce si besoin.",
+      "price": "Sur devis",
+      "deliveryTime": "1\u00a0semaine à 1\u00a0mois",
+      "meta": "Sur devis · 1\u00a0semaine à 1\u00a0mois",
+      "cta": "Demander un devis WordPress",
+      "whatsappMessage": "Bonjour GEK INNOVATECH, je souhaite un devis pour un site WordPress."
+    },
     "plans": [
       {
         "id": 1,
@@ -303,7 +318,8 @@
       "all": "Tous",
       "basic": "Plan Starter",
       "standard": "Plan Pro",
-      "premium": "Plan Premium"
+      "premium": "Plan Premium",
+      "quote": "Sur devis"
     },
     "items": [
       {
@@ -335,6 +351,11 @@
         "id": 6,
         "title": "Association ou ONG",
         "description": "Présentation des actions, appel aux dons et formulaire de contact."
+      },
+      {
+        "id": 7,
+        "title": "Twenty One Nexus",
+        "description": "Site d'un logiciel de recrutement, en français et en anglais : recherche de profils, évaluation et premier contact automatisés."
       }
     ]
   },
@@ -366,8 +387,11 @@
       "starter": "Plan Starter",
       "pro": "Plan Pro",
       "premium": "Plan Premium",
+      "wordpress": "Site WordPress",
+      "mobile": "Application mobile",
       "unsure": "Je ne sais pas encore"
     },
+    "mobileMeta": "Sur devis",
     "message": "Votre projet",
     "messagePh": "Votre activité, le site que vous imaginez, vos délais…",
     "submit": "Envoyer ma demande",

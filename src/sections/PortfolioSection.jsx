@@ -8,7 +8,9 @@ import { RevealWords } from "../components/Reveal";
 const PortfolioSection = () => {
    const { t } = useTranslation();
    const items = usePortfolioItems();
-   const featured = items.find((item) => item.screens);
+   // Le haut de l'accueil montre déjà le projet de la vitrine : cette section en présente un autre quand il y en a un.
+   const live = items.filter((item) => item.screens);
+   const featured = live.find((item) => !item.hero) ?? live[0];
    const examples = items.filter((item) => !item.screens).slice(0, 3);
 
    return (

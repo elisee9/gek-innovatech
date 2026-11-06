@@ -18,8 +18,10 @@ const EMAILJS_TEMPLATE_ID = "template_34a69ni";
 const EMAILJS_PUBLIC_KEY = "k1UfC15R-VW_wFOuS";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-// Dans l'ordre des offres de data/plans.js (Starter, Pro, Premium), puis « je ne sais pas encore ».
-const PLANS = ["starter", "pro", "premium", "unsure"];
+// Dans l'ordre des offres de data/plans.js (Starter, Pro, Premium), puis les demandes sur devis et « je ne sais pas encore ».
+const PLANS = ["starter", "pro", "premium", "wordpress", "mobile", "unsure"];
+// Détail affiché à droite des demandes sur devis (pas de prix publié).
+const QUOTE_META = { wordpress: "pricing.wordpress.meta", mobile: "form.mobileMeta" };
 const MESSAGE_MAX_HEIGHT = 360; // au-delà, la zone de texte défile au lieu de grandir
 const EMPTY = { name: "", email: "", phone: "", plan: "unsure", message: "" };
 
@@ -53,7 +55,11 @@ const ContactForm = ({ titleAs: Title = "h3" }) => {
    const planOptions = PLANS.map((plan, i) => ({
       value: plan,
       label: t(`form.planOptions.${plan}`),
-      meta: plans[i] ? `${formatPrice(plans[i].amount, lang)} · ${planTexts[i]?.deliveryTime}` : null,
+      meta: plans[i]
+         ? `${formatPrice(plans[i].amount, lang)} · ${planTexts[i]?.deliveryTime}`
+         : QUOTE_META[plan]
+           ? t(QUOTE_META[plan])
+           : null,
    }));
 
    // La zone de texte grandit avec le message, sans poignée de redimensionnement.

@@ -8,6 +8,10 @@ import { EASE, VIEWPORT } from "../utils/motion";
 
 const host = (url) => url.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
+// Vitesse de défilement constante, quelle que soit la hauteur de la capture : environ 125 px de capture par seconde
+// sur ordinateur, 250 sur téléphone (une capture plus large défile plus lentement à l'écran), et jamais moins de 16 s.
+const scrollDuration = (height, pxPerSecond) => `${Math.max(16, Math.round(height / pxPerSecond))}s`;
+
 // Cadres d'ordinateur et de téléphone autour des captures pleine page réelles, qui défilent (.site-scroll)
 // tant qu'un parent porte .is-live. Partagés par la vitrine du haut de l'accueil et la section Réalisations.
 export const BROWSER_FRAME =
@@ -17,6 +21,7 @@ export const PHONE_FRAME =
 
 export const BrowserScreen = ({ item, loading = "lazy" }) => {
    const { t } = useTranslation();
+   const [width, height] = item.screens.desktopSize;
    return (
       <>
          <div className="flex items-center gap-3 border-b border-line px-4 py-3">
@@ -31,11 +36,11 @@ export const BrowserScreen = ({ item, loading = "lazy" }) => {
             <img
                src={item.screens.desktop}
                alt={t("portfolio.screenDesktop", { title: item.title })}
-               width="1600"
-               height="2511"
+               width={width}
+               height={height}
                loading={loading}
                className="site-scroll"
-               style={{ "--scroll-dur": "20s" }}
+               style={{ "--scroll-dur": scrollDuration(height, 125) }}
             />
          </div>
       </>
@@ -44,16 +49,17 @@ export const BrowserScreen = ({ item, loading = "lazy" }) => {
 
 export const PhoneScreen = ({ item, loading = "lazy" }) => {
    const { t } = useTranslation();
+   const [width, height] = item.screens.mobileSize;
    return (
       <div className="site-window relative aspect-[9/19.5] overflow-hidden rounded-[16px] bg-white">
          <img
             src={item.screens.mobile}
             alt={t("portfolio.screenMobile", { title: item.title })}
-            width="520"
-            height="4019"
+            width={width}
+            height={height}
             loading={loading}
             className="site-scroll"
-            style={{ "--scroll-dur": "16s", "--scroll-delay": "-4s" }}
+            style={{ "--scroll-dur": scrollDuration(height, 250), "--scroll-delay": "-4s" }}
          />
       </div>
    );

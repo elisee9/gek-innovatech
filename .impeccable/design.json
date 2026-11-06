@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-05T16:39:04+00:00",
+  "generatedAt": "2026-11-06T22:01:42+00:00",
   "title": "Design System: GEK INNOVATECH",
   "extensions": {
     "colorMeta": {
@@ -555,7 +555,7 @@
       "kind": "input",
       "refersTo": "input",
       "description": "Dropdown replacing the native select: combobox field, white list with a red check on the selection and a tabular detail on the right.",
-      "html": "<div class=\"ds-select\"><div class=\"ds-input ds-select-field\"><span>Plan Pro</span></div><ul class=\"ds-select-list\"><li class=\"ds-select-opt\"><span>Plan Starter</span><span class=\"ds-select-meta\">89 € · 1 semaine</span></li><li class=\"ds-select-opt is-selected\"><span>Plan Pro</span><span class=\"ds-select-meta\">189 € · 2 à 3 semaines</span></li></ul></div>",
+      "html": "<div class=\"ds-select\"><div class=\"ds-input ds-select-field\"><span>Plan Pro</span></div><ul class=\"ds-select-list\"><li class=\"ds-select-opt\"><span>Plan Starter</span><span class=\"ds-select-meta\">95 € · 1 semaine</span></li><li class=\"ds-select-opt is-selected\"><span>Plan Pro</span><span class=\"ds-select-meta\">170 € · 2 à 3 semaines</span></li></ul></div>",
       "css": ".ds-select{max-width:340px;font-family:var(--font-sans, Barlow, system-ui, sans-serif);color:var(--color-fg,#1d467b);}.ds-input{width:100%;height:48px;padding:0 16px;border-radius:12px;border:1px solid var(--color-line-strong,rgba(29,70,123,.22));background:var(--color-ink-2,#fff);font-size:16px;box-sizing:border-box;}.ds-select-field{display:flex;align-items:center;justify-content:space-between;gap:12px;}.ds-select-meta{font-size:14px;color:var(--color-subtle,#526c92);font-variant-numeric:tabular-nums;}.ds-select-list{list-style:none;margin:8px 0 0;padding:6px;border-radius:16px;border:1px solid var(--color-line,rgba(29,70,123,.12));background:var(--color-ink-2,#fff);box-shadow:0 28px 60px -30px rgba(29,70,123,.38);}.ds-select-opt{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;padding:8px 12px;border-radius:12px;font-size:15px;color:var(--color-muted,#456189);}.ds-select-opt.is-selected{background:var(--color-ink-3,#edf1f7);font-weight:500;color:var(--color-fg,#1d467b);}"
     },
     {
@@ -587,7 +587,7 @@
       "kind": "card",
       "refersTo": "card",
       "description": "Pricing card: tabular price, ruled delivery line, hairline feature rows.",
-      "html": "<article class=\"ds-plan\"><h3 class=\"ds-plan-title\">Starter</h3><p class=\"ds-plan-desc\">Description à compléter</p><div class=\"ds-plan-price\">89 €</div><p class=\"ds-plan-delivery\">Délai : <strong>1 semaine</strong></p><ul class=\"ds-plan-list\"><li>Fonctionnalité à compléter</li><li>Fonctionnalité à compléter</li></ul></article>",
+      "html": "<article class=\"ds-plan\"><h3 class=\"ds-plan-title\">Starter</h3><p class=\"ds-plan-desc\">Description à compléter</p><div class=\"ds-plan-price\">95 €</div><p class=\"ds-plan-delivery\">Délai : <strong>1 semaine</strong></p><ul class=\"ds-plan-list\"><li>Fonctionnalité à compléter</li><li>Fonctionnalité à compléter</li></ul></article>",
       "css": ".ds-plan{max-width:360px;padding:32px;border-radius:28px;border:1px solid var(--color-line,rgba(29,70,123,.12));background:var(--color-ink-2,#fff);color:var(--color-fg,#1d467b);font-family:var(--font-sans, Barlow, system-ui, sans-serif);}.ds-plan-title{margin:0;font-size:22px;font-weight:600;letter-spacing:-.015em;}.ds-plan-desc{margin:6px 0 0;font-size:15px;color:var(--color-muted,#456189);}.ds-plan-price{margin-top:32px;font-size:52px;font-weight:600;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}.ds-plan-delivery{margin:24px 0 0;padding:14px 0;border-top:1px solid var(--color-line,rgba(29,70,123,.12));border-bottom:1px solid var(--color-line,rgba(29,70,123,.12));font-size:15px;color:var(--color-muted,#456189);}.ds-plan-delivery strong{font-weight:500;color:var(--color-fg,#1d467b);}.ds-plan-list{list-style:none;margin:8px 0 0;padding:0;}.ds-plan-list li{padding:10px 0;font-size:15px;color:var(--color-muted,#456189);}.ds-plan-list li+li{border-top:1px solid var(--color-line,rgba(29,70,123,.12));}"
     },
     {
@@ -595,7 +595,7 @@
       "kind": "custom",
       "refersTo": "figure",
       "description": "Commitment rows: uppercase row label, tabular value, description; hairlines draw left to right on entry.",
-      "html": "<dl class=\"ds-facts\"><div class=\"ds-fact\"><dt>Prix fixe</dt><dd class=\"ds-fact-v\">89 € à 349 €</dd><dd class=\"ds-fact-t\">Payé une seule fois, selon l’offre choisie.</dd></div><div class=\"ds-fact\"><dt>Délai</dt><dd class=\"ds-fact-v\">Dès 1 semaine</dd><dd class=\"ds-fact-t\">Selon l’offre.</dd></div></dl>",
+      "html": "<dl class=\"ds-facts\"><div class=\"ds-fact\"><dt>Prix fixe</dt><dd class=\"ds-fact-v\">95 € à 350 €</dd><dd class=\"ds-fact-t\">Payé une seule fois, selon l’offre choisie.</dd></div><div class=\"ds-fact\"><dt>Délai</dt><dd class=\"ds-fact-v\">Dès 1 semaine</dd><dd class=\"ds-fact-t\">Selon l’offre.</dd></div></dl>",
       "css": ".ds-facts{margin:0;border-top:1px solid var(--color-line,rgba(29,70,123,.12));font-family:var(--font-sans, Barlow, system-ui, sans-serif);color:var(--color-fg,#1d467b);}.ds-fact{display:grid;grid-template-columns:140px minmax(0,240px) 1fr;gap:0 32px;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--color-line,rgba(29,70,123,.12));}.ds-fact dt{font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--color-subtle,#526c92);}.ds-fact dd{margin:0;}.ds-fact-v{font-size:26px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}.ds-fact-t{font-size:16px;line-height:1.6;color:var(--color-muted,#456189);}"
     }
   ],

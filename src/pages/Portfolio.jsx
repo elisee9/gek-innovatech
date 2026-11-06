@@ -12,7 +12,8 @@ const Portfolio = () => {
    const { t } = useTranslation();
    const [selected, setSelected] = useState("all");
    const items = usePortfolioItems();
-   const featured = items.find((item) => item.screens);
+   // Tous les projets en ligne, celui de la vitrine de l'accueil en premier.
+   const live = items.filter((item) => item.screens).sort((a, b) => Number(Boolean(b.hero)) - Number(Boolean(a.hero)));
    const examples = items.filter((item) => !item.screens && (selected === "all" || item.planId === selected));
 
    return (
@@ -20,11 +21,11 @@ const Portfolio = () => {
          <Seo page="portfolio" path="/portfolio" />
 
          <section className="stage mx-auto max-w-[1200px] px-5 py-14 sm:px-8 md:py-20">
-            {featured && (
-               <div className="mb-20">
-                  <FeaturedProject item={featured} titleAs="h2" />
+            {live.map((item) => (
+               <div key={item.id} className="mb-20 md:mb-24">
+                  <FeaturedProject item={item} titleAs="h2" />
                </div>
-            )}
+            ))}
 
             <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
                <h2 className="text-[clamp(1.6rem,2.6vw,2.1rem)] font-semibold tracking-[-0.02em]">

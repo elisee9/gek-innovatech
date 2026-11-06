@@ -131,6 +131,36 @@ const PlanCard = ({ plan, titleAs: Title }) => {
 };
 
 // heading={false} : sur la page Offres, le titre est déjà dans le bandeau.
+// Site WordPress : sur devis, avec son délai. Un encart plutôt qu'une quatrième carte, puisqu'il n'a pas de prix affiché.
+const WordPressOffer = ({ titleAs: Title }) => {
+   const { t } = useTranslation();
+   return (
+      <Reveal className="mt-8">
+         <LitCard className="flex flex-col gap-5 rounded-[24px] border border-line bg-ink-2 px-7 py-6 shadow-card md:flex-row md:items-center md:justify-between md:gap-10">
+            <div className="max-w-[64ch]">
+               <Title className="text-[22px] font-semibold tracking-[-0.015em]">{t("pricing.wordpress.title")}</Title>
+               <p className="mt-1.5 text-[15px] leading-relaxed text-muted">{t("pricing.wordpress.text")}</p>
+               <p className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-[15px] text-muted">
+                  <span className="font-medium text-fg">{t("pricing.wordpress.price")}</span>
+                  <span className="inline-flex items-center gap-2">
+                     <Clock size={16} strokeWidth={1.8} className="text-brand-text" aria-hidden="true" />
+                     {t("pricing.delivery")} <strong className="font-medium text-fg">{t("pricing.wordpress.deliveryTime")}</strong>
+                  </span>
+               </p>
+            </div>
+            <Pill
+               href={whatsappLink(t("pricing.wordpress.whatsappMessage"))}
+               variant="lit"
+               icon={FaWhatsapp}
+               className="self-start md:self-auto"
+            >
+               {t("pricing.wordpress.cta")}
+            </Pill>
+         </LitCard>
+      </Reveal>
+   );
+};
+
 const PricingSection = ({ heading = true }) => {
    const { t, i18n } = useTranslation();
    const lang = i18n.resolvedLanguage || i18n.language;
@@ -151,7 +181,9 @@ const PricingSection = ({ heading = true }) => {
             ))}
          </RevealGroup>
 
-         <Reveal className="mt-8">
+         <WordPressOffer titleAs={heading ? "h3" : "h2"} />
+
+         <Reveal className="mt-4">
             <LitCard className="flex flex-col items-start gap-4 rounded-[24px] border border-line px-7 py-6 sm:flex-row sm:items-center sm:justify-between">
                <p className="max-w-[60ch] text-[16px] text-muted">{t("pricing.custom")}</p>
                <Pill to={{ pathname: "/", hash: "#devis" }}>{t("common.requestQuote")}</Pill>

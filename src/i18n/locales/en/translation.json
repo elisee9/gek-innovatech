@@ -12,9 +12,9 @@
   "meta": {
     "home": {
       "title": "Websites and Mobile Apps in Benin | GEK INNOVATECH",
-      "description": "Web and mobile agency based in Benin: professional websites at a fixed price from €89, delivered in as little as 1 week, and mobile apps on quote.",
+      "description": "Web and mobile agency based in Benin: professional websites at a fixed price from €95, delivered in as little as 1 week, and mobile apps on quote.",
       "ogTitle": "GEK INNOVATECH | Websites and Mobile Apps",
-      "ogDescription": "Websites at a fixed price from €89, delivered in as little as 1 week, and mobile apps on quote, for businesses in Africa and across the diaspora."
+      "ogDescription": "Websites at a fixed price from €95, delivered in as little as 1 week, and mobile apps on quote, for businesses in Africa and across the diaspora."
     },
     "about": {
       "title": "Web Agency in Benin: Who We Are | GEK INNOVATECH",
@@ -24,15 +24,15 @@
     },
     "services": {
       "title": "Websites, Mobile Apps and SEO | GEK INNOVATECH",
-      "description": "Website creation, mobile apps, Google search optimization, hosting, maintenance and security, all from a single point of contact.",
+      "description": "Website and WordPress creation, mobile apps, Google search optimization, hosting, maintenance and security, all from a single point of contact.",
       "ogTitle": "Our Services | GEK INNOVATECH",
       "ogDescription": "Everything you need to be found online, from one team."
     },
     "plans": {
-      "title": "Website Pricing: Plans from €89 | GEK INNOVATECH",
-      "description": "Three fixed-price plans to build your website: Starter at €89, Pro at €189, Premium at €349. One-time payment, delivered in as little as 1 week.",
+      "title": "Website Pricing: Plans from €95 | GEK INNOVATECH",
+      "description": "Three fixed-price plans to build your website: Starter at €95, Pro at €170, Premium at €350. One-time payment, delivered in as little as 1 week.",
       "ogTitle": "Our Plans and Pricing | GEK INNOVATECH",
-      "ogDescription": "Starter at €89, Pro at €189, Premium at €349: compare our plans and choose the one that suits you."
+      "ogDescription": "Starter at €95, Pro at €170, Premium at €350: compare our plans and choose the one that suits you."
     },
     "contact": {
       "title": "Request a Quote for Your Website | GEK INNOVATECH",
@@ -94,7 +94,7 @@
     "titleLine1": "Your business, credible on the web and on mobile,",
     "titleLine2": "clear price and timeline.",
     "lead": "GEK INNOVATECH builds websites and mobile apps for businesses in Africa and across the diaspora. Websites delivered in as little as 1 week, with a direct contact on WhatsApp.",
-    "priceFrom": "From €89",
+    "priceFrom": "From €95",
     "priceNote": "one-time payment",
     "points": [
       "Fixed, published prices",
@@ -176,6 +176,12 @@
         "includedKey": "all"
       },
       {
+        "title": "WordPress Websites",
+        "description": "Websites you update yourself (text, photos, articles), with a WooCommerce online shop if needed.",
+        "included": "On quote",
+        "includedKey": "quote"
+      },
+      {
         "title": "Mobile Applications",
         "description": "Smooth and ergonomic applications for iOS and Android, designed with your mobile audience in mind.",
         "included": "On quote",
@@ -229,6 +235,15 @@
     "whatsappPlan": "Hello GEK INNOVATECH, I'm interested in the {{plan}} ({{price}}).",
     "seeExample": "See a live example",
     "custom": "A different need, or several services to combine? Describe your project and we'll reply with a tailored quote.",
+    "wordpress": {
+      "title": "WordPress Website",
+      "text": "A website you update yourself (text, photos, articles), with a WooCommerce online shop if needed.",
+      "price": "On quote",
+      "deliveryTime": "1\u00a0week to 1\u00a0month",
+      "meta": "On quote · 1\u00a0week to 1\u00a0month",
+      "cta": "Request a WordPress quote",
+      "whatsappMessage": "Hello GEK INNOVATECH, I would like a quote for a WordPress website."
+    },
     "plans": [
       {
         "id": 1,
@@ -303,7 +318,8 @@
       "all": "All",
       "basic": "Starter Plan",
       "standard": "Pro Plan",
-      "premium": "Premium Plan"
+      "premium": "Premium Plan",
+      "quote": "On quote"
     },
     "items": [
       {
@@ -335,6 +351,11 @@
         "id": 6,
         "title": "Association or NGO",
         "description": "Presentation of activities, donation call and contact form."
+      },
+      {
+        "id": 7,
+        "title": "Twenty One Nexus",
+        "description": "Website for a recruitment software, in French and English: automated profile search, scoring and first contact."
       }
     ]
   },
@@ -366,8 +387,11 @@
       "starter": "Starter Plan",
       "pro": "Pro Plan",
       "premium": "Premium Plan",
+      "wordpress": "WordPress website",
+      "mobile": "Mobile app",
       "unsure": "Not sure yet"
     },
+    "mobileMeta": "On quote",
     "message": "Your project",
     "messagePh": "Your business, the site you have in mind, your timeline…",
     "submit": "Send my request",
