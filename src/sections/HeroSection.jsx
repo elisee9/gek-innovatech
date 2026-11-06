@@ -1,58 +1,121 @@
-﻿import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+﻿import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { CircleCheck } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import HeroShowcase from "../components/HeroShowcase";
+import ParticleField from "../components/ParticleField";
+import Pill from "../components/Pill";
+import Magnetic from "../components/Magnetic";
+import DrawIcon from "../components/DrawIcon";
+import SlotText from "../components/SlotText";
+import { RevealText, RevealWords } from "../components/Reveal";
+import { EASE } from "../utils/motion";
+import { whatsappLink } from "../data/contact";
+
+const rise = (delay) => ({
+   initial: { opacity: 0, y: 22 },
+   animate: { opacity: 1, y: 0 },
+   transition: { duration: 0.7, delay, ease: EASE },
+});
 
 const HeroSection = () => {
    const { t } = useTranslation();
    const ref = useRef(null);
-   const isInView = useInView(ref, { once: false });
+   const reduce = useReducedMotion();
+   const points = t("hero.points", { returnObjects: true });
+   const line1 = t("hero.titleLine1");
+   const line2Delay = 0.05 + line1.split(" ").length * 0.045 + 0.04;
+
+   // En quittant le premier écran, le texte remonte pendant que la vitrine descend plus lentement que la page.
+   // Il ne s'efface qu'une fois presque sorti : sur téléphone, le visiteur le lit encore en défilant.
+   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+   const textY = useTransform(scrollYProgress, [0, 1], [0, -110]);
+   const textOpacity = useTransform(scrollYProgress, [0.45, 0.9], [1, 0]);
 
    return (
-      <div className="relative mt-32 w-full flex items-center justify-center text-white overflow-hidden pb-20 md:pb-28 mb-6">
-         <div className="absolute inset-0 z-10" />
+      // Bandeau marine de l'accueil, le plus grand du site : les autres pages ont le leur (PageBanner), le reste est clair.
+      <section ref={ref} className="band-dark relative isolate overflow-hidden">
+         <ParticleField className="terrain-fade" />
+         <div className="relative mx-auto grid max-w-[1200px] items-center gap-6 px-5 pb-14 pt-32 sm:px-8 md:pt-40 lg:grid-cols-[1.08fr_0.92fr] lg:gap-4 lg:pb-20 lg:pt-36">
+            <motion.div style={reduce ? undefined : { y: textY, opacity: textOpacity }} className="relative z-10">
+               {/* Séquence d'ouverture, posée en une seconde environ : les mots du titre montent, le texte sort du flou,
+                   puis les actions et les atouts se posent. Le visiteur peut agir avant la fin. */}
+               {/* Taille réglée pour que l'accroche tienne sur trois lignes, du petit téléphone au grand écran. */}
+               <h1 className="text-[clamp(1.6rem,8.3vw,2.25rem)] font-semibold leading-[1.04] tracking-[-0.035em] sm:text-[clamp(2.25rem,3.9vw,3.5rem)]">
+                  <RevealWords text={line1} trigger="load" delay={0.05} className="block text-fg" />{" "}
+                  <RevealWords text={t("hero.titleLine2")} trigger="load" delay={line2Delay} className="block text-signal" />
+               </h1>
 
-         <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: "easeInOut" }}
-            className="relative z-20 text-center px-6 md:px-10 pt-12 md:pt-16"
-         >
-            <h1 className="text-3xl md:text-5xl font-bold leading-snug mb-5 tracking-tight">
-               {t("hero.welcome")}{" "}
-               <span className="text-[#005BFF]">GEK INNOVATECH</span>
-            </h1>
+               <RevealText
+                  text={t("hero.lead")}
+                  trigger="load"
+                  fade={false}
+                  delay={0.05}
+                  className="mt-7 max-w-[54ch] text-[17px] leading-relaxed text-muted sm:text-[18px]"
+               />
 
-            <h2 className="text-base md:text-xl font-medium text-gray-100 leading-relaxed mb-5 max-w-xl mx-auto">
-               {t("hero.subtitle")}
-            </h2>
+               <motion.div {...rise(0.3)} className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <Magnetic className="flex sm:inline-flex">
+                     <Pill
+                        href={whatsappLink(t("common.whatsappMessage"))}
+                        variant="lit"
+                        size="lg"
+                        icon={FaWhatsapp}
+                        shine
+                        className="w-full sm:w-auto"
+                     >
+                        {t("common.writeWhatsapp")}
+                     </Pill>
+                  </Magnetic>
+                  <Magnetic className="flex sm:inline-flex">
+                     <Pill href="#devis" size="lg" className="w-full sm:w-auto">
+                        {t("common.requestQuote")}
+                     </Pill>
+                  </Magnetic>
+               </motion.div>
 
-            <p className="text-sm md:text-base text-gray-400 max-w-lg mx-auto mb-10 leading-relaxed">
-               {t("hero.description")}
-            </p>
+               <motion.p {...rise(0.38)} className="mt-5 text-[15px] text-subtle">
+                  <SlotText text={t("hero.priceFrom")} trigger="load" delay={0.45} className="tabular font-medium text-fg" />
+                  {" · "}
+                  {t("hero.priceNote")}
+               </motion.p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-2xl mx-auto">
-               <motion.a
-                  href="tel:+2290165426510"
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="block w-full text-center bg-[#00D2A8] hover:bg-[#00b795] text-black font-semibold px-8 py-3 rounded-lg transition duration-300 shadow-lg hover:shadow-[#00D2A8]/40"
-               >
-                  {t("common.call")}
-               </motion.a>
-               <motion.a
-                  href="https://wa.me/2290165426510"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="block w-full text-center hover:bg-[#00b795] text-white hover:text-black font-semibold px-8 py-3 rounded-lg transition duration-300 border border-[#00b795] shadow-lg"
-               >
-                  {t("common.whatsapp")}
-               </motion.a>
-            </div>
-         </motion.div>
-      </div>
+               <div className="relative mt-10 max-w-[520px] pt-6">
+                  <motion.span
+                     aria-hidden="true"
+                     initial={{ scaleX: 0 }}
+                     animate={{ scaleX: 1 }}
+                     transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
+                     className="absolute inset-x-0 top-0 h-px origin-left bg-line"
+                  />
+                  <motion.ul
+                     initial="hidden"
+                     animate="show"
+                     variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07, delayChildren: 0.5 } } }}
+                     className="grid gap-x-8 gap-y-3 sm:grid-cols-2"
+                  >
+                     {points.map((point, i) => (
+                        <motion.li
+                           key={i}
+                           variants={{
+                              hidden: { opacity: 0, x: -10 },
+                              show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: EASE } },
+                           }}
+                           className="flex items-center gap-2 text-[16px] font-medium text-fg"
+                        >
+                           <DrawIcon icon={CircleCheck} delay={0.55 + i * 0.07} size={17} strokeWidth={1.8} className="text-signal" />
+                           {point}
+                        </motion.li>
+                     ))}
+                  </motion.ul>
+               </div>
+            </motion.div>
+
+            {/* Un vrai site livré, au-dessus du paysage de points du bandeau. */}
+            <HeroShowcase progress={scrollYProgress} />
+         </div>
+      </section>
    );
 };
 

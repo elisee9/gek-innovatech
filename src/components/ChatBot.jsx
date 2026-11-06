@@ -1,246 +1,189 @@
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { MessageCircle, Send, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Logo from "./Logo";
 
 const TypingDots = () => (
-  <div className="flex justify-start">
-    <div className="bg-[#2A2A2A] border border-white/5 rounded-2xl rounded-bl-sm px-4 py-3">
-      <div className="flex gap-1 items-center">
-        {[0, 1, 2].map((i) => (
-          <motion.div
-            key={i}
-            className="w-1.5 h-1.5 bg-[#00D2A8] rounded-full"
-            animate={{ opacity: [0.3, 1, 0.3] }}
-            transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.2 }}
-          />
-        ))}
+   <div className="flex justify-start" aria-hidden="true">
+      <div className="rounded-2xl rounded-bl-md border border-line bg-ink-3 px-4 py-3">
+         <div className="flex items-center gap-1">
+            {[0, 1, 2].map((i) => (
+               <motion.span
+                  key={i}
+                  className="h-1.5 w-1.5 rounded-full bg-signal"
+                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.2 }}
+               />
+            ))}
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 );
 
 const ChatBot = () => {
-  const { t, i18n } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
-  // messages ne contient que les échanges réels (pas le message d'accueil)
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const messagesEndRef = useRef(null);
-  const textareaRef = useRef(null);
+   const { t } = useTranslation();
+   const [isOpen, setIsOpen] = useState(false);
+   // Seulement les échanges réels : le message d'accueil est rendu à part, dans la langue courante.
+   const [messages, setMessages] = useState([]);
+   const [input, setInput] = useState("");
+   const [loading, setLoading] = useState(false);
+   const messagesEndRef = useRef(null);
+   const textareaRef = useRef(null);
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+   useEffect(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+   }, [messages, loading]);
 
-  useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => textareaRef.current?.focus(), 200);
-    }
-  }, [isOpen]);
+   useEffect(() => {
+      if (!isOpen) return undefined;
+      const timer = setTimeout(() => textareaRef.current?.focus(), 200);
+      const onKey = (e) => e.key === "Escape" && setIsOpen(false);
+      window.addEventListener("keydown", onKey);
+      return () => {
+         clearTimeout(timer);
+         window.removeEventListener("keydown", onKey);
+      };
+   }, [isOpen]);
 
-  const handleTextareaChange = (e) => {
-    setInput(e.target.value);
-    e.target.style.height = "auto";
-    e.target.style.height = Math.min(e.target.scrollHeight, 96) + "px";
-  };
+   const handleTextareaChange = (e) => {
+      setInput(e.target.value);
+      e.target.style.height = "auto";
+      e.target.style.height = Math.min(e.target.scrollHeight, 96) + "px";
+   };
 
-  const sendMessage = async () => {
-    const trimmed = input.trim();
-    if (!trimmed || loading) return;
+   const sendMessage = async () => {
+      const trimmed = input.trim();
+      if (!trimmed || loading) return;
 
-    const userMessage = { role: "user", content: trimmed };
-    const updatedMessages = [...messages, userMessage];
-    setMessages(updatedMessages);
-    setInput("");
-    if (textareaRef.current) textareaRef.current.style.height = "auto";
-    setLoading(true);
+      const updatedMessages = [...messages, { role: "user", content: trimmed }];
+      setMessages(updatedMessages);
+      setInput("");
+      if (textareaRef.current) textareaRef.current.style.height = "auto";
+      setLoading(true);
 
-    try {
-      const response = await fetch("/.netlify/functions/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: updatedMessages.map((m) => ({
-            role: m.role,
-            content: m.content,
-          })),
-        }),
-      });
+      try {
+         const response = await fetch("/.netlify/functions/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ messages: updatedMessages }),
+         });
+         if (!response.ok) throw new Error("API error");
+         const data = await response.json();
+         setMessages((prev) => [...prev, { role: "assistant", content: data.content }]);
+      } catch {
+         setMessages((prev) => [...prev, { role: "assistant", content: t("chatbot.error") }]);
+      } finally {
+         setLoading(false);
+      }
+   };
 
-      if (!response.ok) throw new Error("API error");
-      const data = await response.json();
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.content },
-      ]);
-    } catch {
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: t("chatbot.error") },
-      ]);
-    } finally {
-      setLoading(false);
-    }
-  };
+   const handleKeyDown = (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+         e.preventDefault();
+         sendMessage();
+      }
+   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  };
+   return (
+      <>
+         {/* Couleurs du bandeau (.on-dark), bleu vif et contour blanc : le bouton ressort sur les pages claires
+             comme sur le bandeau marine, où un fond marine se fondrait. */}
+         <button
+            type="button"
+            onClick={() => setIsOpen((v) => !v)}
+            aria-expanded={isOpen}
+            aria-controls="gek-chat"
+            aria-label={isOpen ? t("chatbot.close") : t("chatbot.toggle")}
+            title={isOpen ? t("chatbot.close") : t("chatbot.toggle")}
+            className="on-dark fixed bottom-5 right-5 z-[60] flex h-16 w-16 items-center justify-center rounded-full border-2 border-fg bg-brand text-fg shadow-chat transition-transform duration-200 hover:scale-105 focus-visible:outline-brand active:scale-95"
+         >
+            {/* Trois appels à l'arrivée sur la page, jamais pendant une conversation. */}
+            {!isOpen && messages.length === 0 && <span aria-hidden="true" className="chat-call absolute inset-0 -z-10 rounded-full bg-brand" />}
+            {isOpen ? <X size={26} /> : <MessageCircle size={26} />}
+         </button>
 
-  return (
-    <>
-      {/* Bouton flottant */}
-      <div className="fixed bottom-6 right-6 z-[10000]">
-        {/* Anneaux pulsants — uniquement quand le chat est fermé */}
-        {!isOpen && (
-          <>
-            <motion.span
-              className="absolute inset-0 rounded-full pointer-events-none"
-              style={{ border: "2px solid #00D2A8" }}
-              animate={{ scale: [1, 2], opacity: [0, 0.6, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-            />
-            <motion.span
-              className="absolute inset-0 rounded-full pointer-events-none"
-              style={{ border: "2px solid #00D2A8" }}
-              animate={{ scale: [1, 2], opacity: [0, 0.6, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 1 }}
-            />
-          </>
-        )}
-
-        <motion.button
-          onClick={() => setIsOpen((v) => !v)}
-          className="w-14 h-14 rounded-full bg-gradient-to-br from-[#005BFF] to-[#00D2A8] flex items-center justify-center shadow-lg shadow-[#005BFF]/30"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label={t("chatbot.toggle")}
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            {isOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.18 }}
-              >
-                <X size={22} className="text-white" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="chat"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.18 }}
-              >
-                <MessageCircle size={22} className="text-white" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.button>
-      </div>
-
-      {/* Panneau de chat */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 16, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 16, scale: 0.96 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed bottom-24 right-6 z-[10000] w-[360px] max-w-[calc(100vw-24px)] rounded-2xl overflow-hidden shadow-2xl shadow-black/60 border border-[#00D2A8]/20 flex flex-col"
-            style={{ maxHeight: "calc(100vh - 120px)" }}
-          >
-            {/* En-tête avec logo */}
-            <div className="bg-gradient-to-r from-[#005BFF] to-[#00D2A8] px-4 py-3 flex items-center gap-3 flex-shrink-0">
-              <div className="flex items-center gap-2.5 flex-1 min-w-0">
-                <img
-                  src="/logo.svg"
-                  alt="GEK INNOVATECH"
-                  className="h-8 w-auto flex-shrink-0"
-                  style={{ filter: "brightness(0) invert(1)" }}
-                />
-                <p className="text-white/80 text-xs truncate">
-                  {t("chatbot.subtitle")}
-                </p>
-              </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="flex-shrink-0 w-8 h-8 rounded-full bg-white/25 hover:bg-white/40 flex items-center justify-center transition-colors"
-                aria-label={t("chatbot.close")}
-              >
-                <X size={16} className="text-white" strokeWidth={2.5} />
-              </button>
-            </div>
-
-            {/* Zone messages */}
-            <div
-              className="bg-[#1A1A1A] flex-1 overflow-y-auto p-4 space-y-3 min-h-0"
-              style={{ maxHeight: "340px" }}
-            >
-              {/* Message d'accueil — toujours dans la langue courante */}
-              <div className="flex justify-start">
-                <div className="max-w-[82%] bg-[#2A2A2A] text-gray-200 rounded-2xl rounded-bl-sm px-4 py-2.5 text-sm leading-relaxed border border-white/5">
-                  {t("chatbot.welcome")}
-                </div>
-              </div>
-
-              {messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-                >
-                  <div
-                    className={`max-w-[82%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap ${
-                      msg.role === "user"
-                        ? "bg-gradient-to-br from-[#005BFF] to-[#0044CC] text-white rounded-br-sm"
-                        : "bg-[#2A2A2A] text-gray-200 rounded-bl-sm border border-white/5"
-                    }`}
-                  >
-                    {msg.content}
+         <AnimatePresence>
+            {isOpen && (
+               <motion.section
+                  id="gek-chat"
+                  aria-label={t("chatbot.subtitle")}
+                  initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 12, scale: 0.98 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  className="fixed bottom-24 right-3 z-[60] flex w-[380px] max-w-[calc(100vw-24px)] origin-bottom-right flex-col overflow-hidden rounded-[24px] border border-line bg-ink-2 shadow-float sm:right-5"
+                  style={{ maxHeight: "min(600px, calc(100dvh - 120px))" }}
+               >
+                  <div className="flex flex-none items-center justify-between gap-3 border-b border-line px-5 py-4">
+                     <div className="flex min-w-0 items-center gap-3">
+                        <Logo width={92} />
+                        <span className="truncate text-[13px] text-subtle">{t("chatbot.subtitle")}</span>
+                     </div>
+                     <button
+                        type="button"
+                        onClick={() => setIsOpen(false)}
+                        className="flex h-9 w-9 flex-none items-center justify-center rounded-full text-muted transition-colors hover:bg-ink-3 hover:text-fg"
+                        aria-label={t("chatbot.close")}
+                     >
+                        <X size={18} />
+                     </button>
                   </div>
-                </div>
-              ))}
 
-              {loading && <TypingDots />}
-              <div ref={messagesEndRef} />
-            </div>
+                  <div className="min-h-0 flex-1 space-y-3 overflow-y-auto p-4" aria-live="polite">
+                     <div className="flex justify-start">
+                        <div className="max-w-[85%] rounded-2xl rounded-bl-md border border-line bg-ink-3 px-4 py-2.5 text-[15px] leading-relaxed text-fg/90">
+                           {t("chatbot.welcome")}
+                        </div>
+                     </div>
 
-            {/* Zone saisie */}
-            <div className="bg-[#1E1E1E] border-t border-white/5 px-3 py-3 flex gap-2 items-end flex-shrink-0">
-              <textarea
-                ref={textareaRef}
-                value={input}
-                onChange={handleTextareaChange}
-                onKeyDown={handleKeyDown}
-                placeholder={t("chatbot.placeholder")}
-                rows={1}
-                className="flex-1 bg-[#2A2A2A] text-white text-sm rounded-xl px-3 py-2 resize-none outline-none border border-white/10 focus:border-[#00D2A8]/50 placeholder-gray-500 transition-colors"
-                style={{ minHeight: "36px", maxHeight: "96px" }}
-              />
-              <motion.button
-                onClick={sendMessage}
-                disabled={!input.trim() || loading}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.94 }}
-                className="w-9 h-9 flex-shrink-0 rounded-xl bg-gradient-to-br from-[#005BFF] to-[#00D2A8] flex items-center justify-center disabled:opacity-40 disabled:cursor-not-allowed transition-opacity mb-px"
-                aria-label={t("chatbot.send")}
-              >
-                <Send size={15} className="text-white" />
-              </motion.button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
+                     {messages.map((msg, i) => (
+                        <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                           <div
+                              className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-[15px] leading-relaxed ${
+                                 msg.role === "user"
+                                    ? "rounded-br-md bg-brand text-ink-2"
+                                    : "rounded-bl-md border border-line bg-ink-3 text-fg/90"
+                              }`}
+                           >
+                              {msg.content}
+                           </div>
+                        </div>
+                     ))}
+
+                     {loading && <TypingDots />}
+                     <div ref={messagesEndRef} />
+                  </div>
+
+                  <div className="flex flex-none items-end gap-2 border-t border-line p-3">
+                     <label htmlFor="gek-chat-input" className="sr-only">
+                        {t("chatbot.placeholder")}
+                     </label>
+                     <textarea
+                        id="gek-chat-input"
+                        ref={textareaRef}
+                        value={input}
+                        onChange={handleTextareaChange}
+                        onKeyDown={handleKeyDown}
+                        placeholder={t("chatbot.placeholder")}
+                        rows={1}
+                        className="max-h-24 min-h-11 flex-1 resize-none rounded-2xl border border-line-strong bg-ink px-4 py-2.5 text-[16px] text-fg placeholder:text-subtle focus:border-brand focus:outline-none"
+                     />
+                     <button
+                        type="button"
+                        onClick={sendMessage}
+                        disabled={!input.trim() || loading}
+                        className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-fg text-ink-2 transition-[background-color,opacity] hover:bg-fg-hover disabled:cursor-not-allowed disabled:opacity-40"
+                        aria-label={t("chatbot.send")}
+                     >
+                        <Send size={17} />
+                     </button>
+                  </div>
+               </motion.section>
+            )}
+         </AnimatePresence>
+      </>
+   );
 };
 
 export default ChatBot;

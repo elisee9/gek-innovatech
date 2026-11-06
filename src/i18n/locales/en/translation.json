@@ -1,50 +1,54 @@
 {
   "common": {
     "whatsapp": "WhatsApp",
-    "call": "Call",
+    "writeWhatsapp": "Message us on WhatsApp",
+    "requestQuote": "Request a quote",
     "backHome": "Back to home",
-    "contactUs": "Contact us",
-    "discussProject": "Discuss your project",
-    "viewPortfolio": "Our Work",
-    "seeExample": "View example",
-    "author": "GEK INNOVATECH",
-    "contactPage": "Our contact page"
+    "contactPage": "our contact page",
+    "whatsappMessage": "Hello GEK INNOVATECH, I would like to build a website.",
+    "skipToContent": "Skip to content",
+    "breadcrumbLabel": "Breadcrumb"
   },
   "meta": {
     "home": {
-      "title": "GEK INNOVATECH | Modern & High-Performance Web Design",
-      "description": "GEK INNOVATECH helps you build professional, custom websites optimized for search engines.",
-      "keywords": "GEK INNOVATECH, web agency, website creation, custom website, digital, Benin",
-      "ogTitle": "GEK INNOVATECH | Modern Web Design",
-      "ogDescription": "Agency specialized in building high-performance, beautifully designed websites."
+      "title": "Websites and Mobile Apps in Benin | GEK INNOVATECH",
+      "description": "Web and mobile agency based in Benin: professional websites at a fixed price from €89, delivered in as little as 1 week, and mobile apps on quote.",
+      "ogTitle": "GEK INNOVATECH | Websites and Mobile Apps",
+      "ogDescription": "Websites at a fixed price from €89, delivered in as little as 1 week, and mobile apps on quote, for businesses in Africa and across the diaspora."
     },
     "about": {
-      "title": "About GEK INNOVATECH",
-      "description": "Discover the story, mission and values of GEK INNOVATECH, your trusted digital partner.",
-      "keywords": "GEK INNOVATECH, story, mission, web agency, Benin, team",
-      "ogTitle": "About | GEK INNOVATECH",
-      "ogDescription": "Learn more about our team and our vision."
+      "title": "Web Agency in Benin: Who We Are | GEK INNOVATECH",
+      "description": "GEK INNOVATECH is a web agency based in Benin. We build professional websites for businesses in Africa and across the diaspora in Europe.",
+      "ogTitle": "About GEK INNOVATECH",
+      "ogDescription": "A web agency based in Benin, a fixed price announced before we start and a direct contact on WhatsApp."
     },
     "services": {
-      "title": "Our Services | GEK INNOVATECH",
-      "description": "Discover GEK INNOVATECH's web services: showcase sites, e-commerce, SEO optimization, site redesign.",
-      "keywords": "web services, website creation, SEO, e-commerce, website maintenance, GEK INNOVATECH",
+      "title": "Websites, Mobile Apps and SEO | GEK INNOVATECH",
+      "description": "Website creation, mobile apps, Google search optimization, hosting, maintenance and security, all from a single point of contact.",
       "ogTitle": "Our Services | GEK INNOVATECH",
-      "ogDescription": "A wide range of services to boost your online presence."
+      "ogDescription": "Everything you need to be found online, from one team."
     },
     "plans": {
-      "title": "Our Plans | GEK INNOVATECH",
-      "description": "Choose from our web plans tailored to your needs and budget. Flexible and professional solutions.",
-      "keywords": "website plans, website pricing, packages, web plans, GEK INNOVATECH",
-      "ogTitle": "Our Plans | GEK INNOVATECH",
-      "ogDescription": "Compare our packages and choose the plan that suits you."
+      "title": "Website Pricing: Plans from €89 | GEK INNOVATECH",
+      "description": "Three fixed-price plans to build your website: Starter at €89, Pro at €189, Premium at €349. One-time payment, delivered in as little as 1 week.",
+      "ogTitle": "Our Plans and Pricing | GEK INNOVATECH",
+      "ogDescription": "Starter at €89, Pro at €189, Premium at €349: compare our plans and choose the one that suits you."
     },
     "contact": {
-      "title": "Contact Us | GEK INNOVATECH",
-      "description": "A question or a project? Contact our team to discuss your digital needs.",
-      "keywords": "contact, website quote, GEK INNOVATECH, web support, website development",
+      "title": "Request a Quote for Your Website | GEK INNOVATECH",
+      "description": "A website project? Message us on WhatsApp or request a quote online, and we'll come back to you with a clear proposal.",
       "ogTitle": "Contact | GEK INNOVATECH",
-      "ogDescription": "Reach out to our agency to launch your digital project."
+      "ogDescription": "Let's talk about your website project."
+    },
+    "portfolio": {
+      "title": "Professional Website Examples | GEK INNOVATECH",
+      "description": "Showcase site, e-commerce, restaurant, coaching, photographer, association: website examples we adapt to your business.",
+      "ogTitle": "Our Work | GEK INNOVATECH",
+      "ogDescription": "Browse our website examples and picture yours."
+    },
+    "mentions": {
+      "title": "Legal Notice | GEK INNOVATECH",
+      "description": "Legal notice and privacy policy of GEK INNOVATECH."
     },
     "merci": {
       "title": "Payment Successful | GEK INNOVATECH",
@@ -57,108 +61,180 @@
     "notFound": {
       "title": "Page Not Found | GEK INNOVATECH"
     },
-    "portfolio": {
-      "title": "Our Work | GEK INNOVATECH",
-      "description": "Explore our web projects: showcase sites, e-commerce, coaching, restaurant. Real examples we can adapt to your business.",
-      "keywords": "web portfolio, agency projects, website creation, site examples, GEK INNOVATECH, Benin",
-      "ogTitle": "Our Work | GEK INNOVATECH",
-      "ogDescription": "Browse our projects and see how we transform your online presence."
+    "notDone": {
+      "title": "Site Being Deployed | GEK INNOVATECH"
+    },
+    "notPay": {
+      "title": "Online Payment Coming Soon | GEK INNOVATECH"
     }
   },
   "header": {
     "home": "Home",
     "about": "About",
     "services": "Services",
-    "plans": "Our Plans",
+    "plans": "Plans",
+    "portfolio": "Our work",
     "contact": "Contact",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "language": "Choose language",
+    "navLabel": "Main navigation",
+    "homeLabel": "GEK INNOVATECH, home"
   },
   "footer": {
     "tagline": "We build modern, fast websites tailored to your needs.",
-    "usefulLinks": "Useful links",
-    "contact": "Contact",
+    "navTitle": "Navigation",
+    "servicesTitle": "Services",
+    "contactTitle": "Contact",
+    "location": "Based in Benin, serving Africa and the diaspora",
     "copyright": "All rights reserved.",
     "mentions": "Legal Notice & Terms"
   },
   "hero": {
-    "welcome": "Welcome to",
-    "subtitle": "Transform your digital image. Leave a lasting impression.",
-    "description": "We build ultra-high-performance websites with refined, custom design to boost your visibility. Attract more clients, assert your online presence, and stand out from the competition — for the long term."
+    "titleLine1": "Your business, credible on the web and on mobile,",
+    "titleLine2": "clear price and timeline.",
+    "lead": "GEK INNOVATECH builds websites and mobile apps for businesses in Africa and across the diaspora. Websites delivered in as little as 1 week, with a direct contact on WhatsApp.",
+    "priceFrom": "From €89",
+    "priceNote": "one-time payment",
+    "points": [
+      "Fixed, published prices",
+      "Mobile-ready",
+      "Visible on Google",
+      "Support after delivery"
+    ]
   },
-  "phraseAccroche": {
-    "phrases": [
-      "Premium tech partner for ambitious businesses.",
-      "Ultra-optimized websites & web applications.",
-      "Certified Google SEO.",
-      "Turnkey digital strategy.",
-      "Custom developments with guarantee.",
-      "Certified technical expertise."
+  "marquee": {
+    "label": "Websites for",
+    "items": [
+      "Beauty salons",
+      "Restaurants",
+      "Coaches and trainers",
+      "Online shops",
+      "Photographers",
+      "Associations and NGOs",
+      "Shopkeepers"
+    ]
+  },
+  "commitments": {
+    "title": "What you know before we start",
+    "subtitle": "Price, timeline and follow-up are stated from the start, plan by plan.",
+    "priceRange": "{{min}} to {{max}}",
+    "rows": [
+      {
+        "label": "Fixed price",
+        "text": "Paid once, depending on the plan you choose. The price is shown before the project starts."
+      },
+      {
+        "label": "Timeline",
+        "value": "From 1 week",
+        "text": "Starter in 1 week, Pro in 2 to 3 weeks, Premium in 3 weeks to 1 month or more depending on the project. Launch included."
+      },
+      {
+        "label": "Contact",
+        "value": "Direct on WhatsApp",
+        "text": "You talk with the GEK INNOVATECH team before, during and after your site goes live."
+      },
+      {
+        "label": "Follow-up",
+        "value": "1 week to 2 months",
+        "text": "One week of technical support (Starter), one month of maintenance (Pro) or two months (Premium)."
+      },
+      {
+        "label": "Demo",
+        "value": "Beauté Élégance",
+        "text": "A site built by GEK INNOVATECH, to visit before you decide."
+      }
     ]
   },
   "about": {
-    "title": "About",
-    "p1": "We are a team passionate about design, performance and innovation.",
-    "p2": "Our mission is to transform your ideas into elegant, fast and effective web solutions, perfectly aligned with your goals.",
-    "p3": "At <brand>GEK INNOVATECH</brand>, every project is an opportunity to elevate your online image, strengthen your digital presence and captivate your audience.",
-    "p4": "Through a user-experience-first approach and the latest technologies, we design intuitive interfaces, smooth animations and uncompromising performance.",
+    "title": "About GEK INNOVATECH",
+    "facts": [
+      { "label": "Based in", "value": "Benin" },
+      { "label": "For", "value": "Shopkeepers, entrepreneurs, freelancers and associations" },
+      { "label": "Where", "value": "In Africa and across the diaspora in Europe" },
+      { "label": "Contact", "value": "WhatsApp, phone and email" }
+    ],
+    "p1": "GEK INNOVATECH is a web agency based in Benin. We build professional websites for shopkeepers, entrepreneurs, freelancers and associations, in Africa and across the diaspora in Europe.",
+    "p2": "The way we work comes down to three commitments: a fixed price announced before we start, from {{min}} to {{max}} depending on the plan; a stated timeline, from 1 week; and a direct contact on WhatsApp, from the first message to the follow-up after launch.",
+    "p3": "At <brand>GEK INNOVATECH</brand>, we also develop mobile apps, work on your Google search ranking, and take care of your site's hosting, maintenance and security.",
+    "p4": "Every site is designed for the phone first, because that is often where your customers find you.",
     "tagline": "Your online success starts here.",
     "cta": "Discover our services"
   },
   "services": {
-    "title": "Our",
-    "titleAccent": "Services",
+    "title": "Everything you need to be found online",
     "subtitle": "Explore the full range of solutions we offer to support your digital success.",
+    "cta": "See plan details",
+    "colService": "Service",
+    "colDescription": "Description",
+    "colIncluded": "Included in",
     "items": [
       {
         "title": "Web Development",
-        "description": "High-performance, modern websites optimized for all screen sizes, with strong natural search engine optimization."
+        "description": "High-performance, modern websites optimized for all screen sizes, with strong natural search engine optimization.",
+        "included": "All plans",
+        "includedKey": "all"
       },
       {
         "title": "Mobile Applications",
-        "description": "Smooth and ergonomic applications for iOS and Android, designed with your mobile audience in mind."
+        "description": "Smooth and ergonomic applications for iOS and Android, designed with your mobile audience in mind.",
+        "included": "On quote",
+        "includedKey": "quote"
       },
       {
         "title": "Marketing & Analytics",
-        "description": "Targeted campaigns, precise tracking, and tools to boost your visibility and performance."
+        "description": "Targeted campaigns, precise tracking, and tools to boost your visibility and performance.",
+        "included": "Pro and Premium",
+        "includedKey": "pro"
       },
       {
         "title": "Launch & Maintenance",
-        "description": "We support you after go-live with ongoing support, updates, and personalized enhancements."
+        "description": "We support you after go-live with ongoing support, updates, and personalized enhancements.",
+        "included": "Pro and Premium",
+        "includedKey": "pro"
       },
       {
         "title": "UI/UX Design",
-        "description": "Elegant and intuitive interfaces that improve user experience and drive engagement."
+        "description": "Elegant and intuitive interfaces that improve user experience and drive engagement.",
+        "included": "All plans",
+        "includedKey": "all"
       },
       {
         "title": "SEO & Search Ranking",
-        "description": "Boost your position on search engines through modern and effective SEO practices."
+        "description": "Boost your position on search engines through modern and effective SEO practices.",
+        "included": "All plans",
+        "includedKey": "all"
       },
       {
         "title": "Cloud Hosting",
-        "description": "Fast and secure cloud solutions to guarantee the high availability of your services."
+        "description": "Fast and secure cloud solutions to guarantee the high availability of your services.",
+        "included": "All plans",
+        "includedKey": "all"
       },
       {
         "title": "Web Security",
-        "description": "Protect your data and your clients' data with advanced cybersecurity solutions."
+        "description": "Protect your data and your clients' data with advanced cybersecurity solutions.",
+        "included": "Pro and Premium",
+        "includedKey": "pro"
       }
     ]
   },
   "pricing": {
-    "title": "Our Pricing Plans",
+    "title": "Clear prices, set in advance",
     "subtitle": "Solutions tailored to every stage of your digital growth. Choose the plan that best fits your needs.",
-    "recommended": "Best value",
-    "premiumBadge": "Full Package",
-    "delivery": "Delivery in",
-    "getplan": "Get this plan",
-    "seeExample": "View example",
-    "period": "one-time",
+    "recommended": "Recommended",
+    "delivery": "Timeline:",
+    "period": "one-time payment",
+    "choose": "Choose the {{plan}}",
+    "whatsappPlan": "Hello GEK INNOVATECH, I'm interested in the {{plan}} ({{price}}).",
+    "seeExample": "See a live example",
+    "custom": "A different need, or several services to combine? Describe your project and we'll reply with a tailored quote.",
     "plans": [
       {
         "id": 1,
         "title": "Starter Plan",
         "description": "Ideal for getting started quickly",
-        "deliveryTime": "5 days",
+        "deliveryTime": "1 week",
         "features": [
           "Simple landing page (1 page) or 3 pages (bonus)",
           "Color and text customization",
@@ -175,7 +251,7 @@
         "id": 2,
         "title": "Pro Plan",
         "description": "Professional solution for small and medium businesses",
-        "deliveryTime": "1 week",
+        "deliveryTime": "2 to 3 weeks",
         "features": [
           "Everything in Starter",
           "Multi-page website (up to 5 pages)",
@@ -193,7 +269,7 @@
         "id": 3,
         "title": "Premium Plan",
         "description": "Custom solution for maximum visibility",
-        "deliveryTime": "2 weeks",
+        "deliveryTime": "3 weeks to 1 month or more",
         "features": [
           "Everything in Pro",
           "Custom domain name (.com / .fr etc.)",
@@ -211,49 +287,108 @@
       }
     ]
   },
-  "whyChooseUs": {
-    "title": "Why",
-    "titleAccent": "choose us",
+  "portfolio": {
+    "sectionTitle": "Our work",
+    "subtitle": "Explore examples of sites we can adapt to your needs.",
+    "viewAll": "See all our work",
+    "live": "Live",
+    "othersTitle": "Other types of sites we build",
+    "screenDesktop": "Screenshot of the {{title}} site on desktop",
+    "screenMobile": "Screenshot of the {{title}} site on a phone",
+    "visit": "Visit the site",
+    "requestSite": "Request this type of site",
+    "filterLabel": "Filter by plan",
+    "noExamples": "No examples available for this plan yet.",
+    "filters": {
+      "all": "All",
+      "basic": "Starter Plan",
+      "standard": "Pro Plan",
+      "premium": "Premium Plan"
+    },
     "items": [
       {
-        "title": "Optimal performance",
-        "description": "Our solutions are designed to be fast, fluid and perfectly optimized to deliver an exceptional user experience."
+        "id": 1,
+        "title": "Showcase site — Beauty salon",
+        "description": "Elegant site presenting salon services with online appointment booking."
       },
       {
-        "title": "Reliability & security",
-        "description": "We ensure enhanced security to protect your data and your clients' data using the best practices in the industry."
+        "id": 2,
+        "title": "Restaurant website",
+        "description": "Interactive menu, photo gallery and online reservation form."
       },
       {
-        "title": "Creativity & innovation",
-        "description": "Every project is an opportunity to innovate. We blend design and technology to create unique experiences."
+        "id": 3,
+        "title": "Personal coaching",
+        "description": "Site for coaches or trainers with integrated blog and contact space."
       },
       {
-        "title": "Dedicated technical support",
-        "description": "We remain available to support you after delivery, with fast, human and responsive assistance."
+        "id": 4,
+        "title": "Minimalist e-commerce",
+        "description": "Small online store with product catalogue and streamlined cart."
+      },
+      {
+        "id": 5,
+        "title": "Photographer portfolio",
+        "description": "Portfolio with dynamic gallery and contact form."
+      },
+      {
+        "id": 6,
+        "title": "Association or NGO",
+        "description": "Presentation of activities, donation call and contact form."
       }
     ]
   },
-  "contactSection": {
-    "title": "Have a project in mind?",
-    "subtitle": "Our team is ready to help you bring your ideas to life. Let's talk about it now.",
-    "btn": "Contact us"
+  "testimonials": {
+    "title": "They trusted us",
+    "rating": "Rating: {{rating}} out of 5"
   },
-  "contact": {
-    "title": "Contact",
-    "titleAccent": "us",
-    "subtitle": "A question? A project? Fill in the form below and our team will get back to you promptly.",
-    "namePlaceholder": "Your name",
-    "emailPlaceholder": "Your email address",
-    "messagePlaceholder": "Your message",
-    "submit": "Send",
-    "sending": "Sending...",
-    "success": "Message sent successfully.",
-    "error": "An error occurred while sending. Please try again."
+  "contactSection": {
+    "title": "Let's talk about your project",
+    "subtitle": "Tell us about your business and the site you have in mind. We'll come back to you with a clear proposal.",
+    "whatsappTitle": "The most direct way: WhatsApp",
+    "whatsappText": "Message us and talk directly with the GEK INNOVATECH team.",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location"
+  },
+  "form": {
+    "title": "Request a quote",
+    "intro": "A few details are all we need to prepare your proposal.",
+    "name": "Full name",
+    "namePh": "Your full name",
+    "email": "Email",
+    "emailPh": "you@example.com",
+    "phone": "Phone / WhatsApp",
+    "optional": "(optional)",
+    "phonePh": "+229 …",
+    "plan": "Plan you're interested in",
+    "planOptions": {
+      "starter": "Starter Plan",
+      "pro": "Pro Plan",
+      "premium": "Premium Plan",
+      "unsure": "Not sure yet"
+    },
+    "message": "Your project",
+    "messagePh": "Your business, the site you have in mind, your timeline…",
+    "submit": "Send my request",
+    "sending": "Sending…",
+    "successTitle": "Request sent",
+    "successText": "Thank you {{name}}, we have received your request. We'll reply to {{email}}.",
+    "again": "Send another request",
+    "errorText": "Sending failed. Please try again in a moment, or message us directly on",
+    "errors": {
+      "name": "Enter your full name (at least 2 characters).",
+      "email": "Enter a valid email address, for example you@example.com.",
+      "message": "Describe your project in a few words (at least 10 characters)."
+    },
+    "privacy": "Your details are only used to answer your request.",
+    "privacyLink": "Legal notice",
+    "langLabel": "Language"
   },
   "merci": {
     "title": "Payment successful",
     "message": "Your payment has been completed successfully. Thank you for your trust. You will receive a confirmation email shortly. Please send us a message on WhatsApp with your payment receipt.",
-    "backHome": "Back to home"
+    "whatsappMessage": "Hello GEK INNOVATECH, I have just completed my payment. Here is my receipt:"
   },
   "paiementAnnule": {
     "title": "Payment cancelled",
@@ -266,51 +401,6 @@
     "code": "404",
     "message": "The page you are looking for does not exist or has been moved.",
     "backHome": "Back to home"
-  },
-  "portfolio": {
-    "headingBefore": "Our",
-    "headingAccent": "Work",
-    "subtitle": "Explore examples of sites we can adapt to your needs.",
-    "requestSite": "Request this type of site →",
-    "noExamples": "No examples available for this plan yet.",
-    "filters": {
-      "all": "All",
-      "basic": "Starter Plan",
-      "standard": "Pro Plan",
-      "premium": "Premium Plan"
-    },
-    "items": [
-      {
-        "id": 1,
-        "title": "Showcase Site — Beauty Salon",
-        "description": "Elegant site presenting salon services with online appointment booking."
-      },
-      {
-        "id": 2,
-        "title": "Restaurant Website",
-        "description": "Interactive menu, photo gallery and online reservation form."
-      },
-      {
-        "id": 3,
-        "title": "Personal Coaching",
-        "description": "Site for coaches or trainers with integrated blog and contact space."
-      },
-      {
-        "id": 4,
-        "title": "Minimalist E-commerce",
-        "description": "Small online store with product catalogue and streamlined cart."
-      },
-      {
-        "id": 5,
-        "title": "Photographer Portfolio",
-        "description": "Portfolio with dynamic gallery and contact form."
-      },
-      {
-        "id": 6,
-        "title": "Association or NGO",
-        "description": "Presentation of activities, donation call and contact form."
-      }
-    ]
   },
   "notDone": {
     "title": "Site being deployed",
@@ -325,10 +415,6 @@
     "cta": "Contact us"
   },
   "mentions": {
-    "meta": {
-      "title": "Legal Notice | GEK INNOVATECH",
-      "description": "Legal notice and privacy policy of GEK INNOVATECH."
-    },
     "title": "Legal Notice & Terms",
     "updated": "Last updated:",
     "editor": {
@@ -341,7 +427,7 @@
     },
     "hosting": {
       "title": "Hosting",
-      "text": "This site is designed, hosted and maintained internally by the GEK INNOVATECH team. Our development and security team manages the entire infrastructure, service availability and data protection."
+      "text": "This site is designed and maintained by the GEK INNOVATECH team and hosted by Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, United States (www.netlify.com)."
     },
     "ip": {
       "title": "Intellectual Property",
@@ -350,7 +436,7 @@
     },
     "data": {
       "title": "Personal Data",
-      "text1": "Data collected via the contact form (name, email, message) is used solely to respond to your requests and is never shared with third parties.",
+      "text1": "Data collected via the contact form (full name, email, phone, message) is used solely to respond to your requests and is never sold. It is transmitted through EmailJS, our email delivery provider. Messages typed into the virtual assistant are processed by Google (Gemini) to generate replies.",
       "text2": "In accordance with GDPR principles, you have the right to access, correct and delete your data.",
       "rights": "To exercise these rights, contact us"
     },
@@ -369,19 +455,19 @@
     }
   },
   "cookies": {
-    "title": "We use cookies.",
-    "text": "We use analytical cookies to improve your experience on our site.",
+    "title": "We use cookies",
+    "text": "Analytical cookies help us improve the site.",
     "learnMore": "Learn more",
     "accept": "Accept",
     "decline": "Decline"
   },
   "chatbot": {
-    "toggle": "Open chat",
-    "close": "Close chat",
+    "toggle": "Open the assistant",
+    "close": "Close the assistant",
     "subtitle": "Virtual assistant",
-    "welcome": "Hello! 👋 I'm the GEK INNOVATECH assistant. Ask me about our services, pricing, or your web project.",
-    "placeholder": "Ask your question...",
+    "welcome": "Hello! I'm the GEK INNOVATECH assistant. Ask me about our services, pricing, or your web project.",
+    "placeholder": "Ask your question…",
     "send": "Send",
-    "error": "An error occurred. Please try again or contact our team directly via the Contact page."
+    "error": "An error occurred. Please try again, or contact our team directly on WhatsApp or via the Contact page."
   }
 }

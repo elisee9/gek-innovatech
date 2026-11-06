@@ -1,65 +1,500 @@
 @import "tailwindcss";
 
 @theme {
-  --color-electric-blue: #005BFF;
-  --color-green-turquoise: #00D2A8;
-  --color-digital-violet: #7F00FF;
-  --color-graphite: #1E1E1E;
-  --color-pearl-gray: #F577FA;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+
+  /* Charte GEK : bleu, rouge, blanc, sur fond clair. Aucun noir : les textes prennent le bleu du bandeau.
+     Toutes les couleurs du site partent de ce bloc, lumières, halos, logo et paysage de points compris :
+     changer de charte, c'est changer ces lignes.
+     Le bandeau du haut de chaque page (.band-dark, plus bas) redéfinit les mêmes noms pour son fond marine. */
+  --color-ink: #f4f6fa;
+  --color-ink-2: #ffffff;
+  --color-ink-3: #edf1f7;
+  --color-line: rgb(29 70 123 / 0.12);
+  --color-line-strong: rgb(29 70 123 / 0.22);
+  --color-shade: rgb(18 48 92);
+
+  --color-fg: #1d467b;
+  --color-fg-hover: #143560;
+  --color-muted: #456189;
+  --color-dim: #526c92;
+  --color-subtle: #526c92;
+
+  /* Le bleu est la marque : logo, titres, textes, liens, focus, boutons de validation, bandeau du haut.
+     Le rouge est l'action : son fond (signal-fill) habille les boutons WhatsApp, en texte blanc ;
+     le rouge des marques (signal) sert aux coches, aux points « en ligne » et au mot mis en valeur d'un titre. */
+  --color-brand: #1d467b;
+  --color-brand-deep: #00182f;
+  --color-brand-band: #1d467b;
+  --color-brand-text: #1d467b;
+  --color-signal: #cc2219;
+  --color-signal-fill: #d42a1c;
+  --color-signal-fill-hover: #b81e15;
+  --color-on-signal: #ffffff;
+  --color-danger: #b42318;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Ombres et lueurs, tirées des couleurs ci-dessus (shade : l'encre marine des ombres, noire dans le bandeau). */
+  --shadow-card: 0 1px 2px color-mix(in oklab, var(--color-shade) 5%, transparent), 0 14px 34px -22px color-mix(in oklab, var(--color-shade) 30%, transparent);
+  --shadow-float: 0 1px 2px color-mix(in oklab, var(--color-shade) 6%, transparent), 0 28px 60px -30px color-mix(in oklab, var(--color-shade) 38%, transparent);
+  --shadow-frame: 0 40px 90px -42px color-mix(in oklab, var(--color-shade) 55%, transparent);
+  --shadow-lit: inset 0 1px 0 rgb(255 255 255 / 0.3), 0 12px 28px -14px color-mix(in oklab, var(--color-signal) 60%, transparent);
+  --shadow-lit-hover: inset 0 1px 0 rgb(255 255 255 / 0.3), 0 18px 38px -14px color-mix(in oklab, var(--color-signal) 75%, transparent);
+  --shadow-lit-bar: inset 0 1px 0 rgb(255 255 255 / 0.3), 0 18px 40px -14px color-mix(in oklab, var(--color-signal) 55%, transparent);
+  --shadow-spark: 0 0 10px 2px color-mix(in oklab, var(--color-signal) 40%, transparent);
+  --shadow-featured: 0 40px 90px -50px color-mix(in oklab, var(--color-brand) 60%, transparent);
+  --shadow-featured-hover: 0 50px 110px -46px color-mix(in oklab, var(--color-brand) 75%, transparent);
+  --shadow-chat: 0 14px 32px -8px color-mix(in oklab, var(--color-shade) 60%, transparent);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    background-color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: color-mix(in oklab, var(--color-fg) 14%, var(--color-ink)) var(--color-ink);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-signal-fill);
+    color: var(--color-on-signal);
+  }
+
+  input,
+  textarea,
+  select {
+    caret-color: var(--color-signal);
+  }
+
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+  }
+
+  /* Tailwind laisse la flèche sur les boutons : tout ce qui se clique montre la main. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-text);
+    outline-offset: 3px;
+  }
+
+  /* Remplissage automatique du navigateur : le champ garde les couleurs du site au lieu du jaune ou du bleu système. */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-fg);
+    -webkit-box-shadow: 0 0 0 1000px var(--color-ink-2) inset;
+    caret-color: var(--color-signal);
+    transition: background-color 9999s ease-out 0s;
+  }
+
+  input:autofill {
+    filter: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--color-fg) 14%, var(--color-ink));
+    border: 2px solid var(--color-ink);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--color-fg) 22%, var(--color-ink));
+  }
+}
+
+@layer components {
+  /* Bandeau du haut de chaque page : fond marine en dégradé, et les mêmes noms de couleurs redéfinis pour lui.
+     Tout composant posé dedans (boutons, vitrine, fil d'Ariane, paysage de points) passe en clair sur foncé sans autre réglage.
+     .on-dark ne prend que les couleurs, sans le fond : l'en-tête transparent posé sur le bandeau. */
+  .on-dark,
+  .band-dark {
+    --color-ink: #00182f;
+    --color-ink-2: #0b2a4a;
+    --color-ink-3: #13365c;
+    --color-line: rgb(255 255 255 / 0.12);
+    --color-line-strong: rgb(255 255 255 / 0.2);
+    --color-shade: rgb(0 8 20);
+    --color-fg: #ffffff;
+    --color-fg-hover: #dbe6f5;
+    --color-muted: #c9d5e8;
+    --color-dim: #8fa3c0;
+    --color-subtle: #a9b7cc;
+    --color-brand: #3f78c9;
+    --color-brand-text: #9dbbea;
+    --color-signal: #ff5a45;
+    color: var(--color-fg);
+  }
+
+  .band-dark {
+    background: linear-gradient(160deg, var(--color-brand-deep) 0%, var(--color-brand-band) 100%);
+  }
+
+  /* Lumière de scène relancée derrière chaque titre de section. */
+  .stage {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .stage::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 560px;
+    /* Centre décalé vers le bas : le halo s'éteint avant le bord haut de la section, sans ligne visible. */
+    background: radial-gradient(46% 50% at 50% 38%, color-mix(in oklab, var(--color-brand) 4%, transparent), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    transform-origin: 50% 38%;
+    transition:
+      opacity 1.4s var(--ease-expo),
+      transform 1.8s var(--ease-expo);
+  }
+
+  /* Avec le script (useStageLights), le projecteur s'allume quand la section entre en scène. */
+  .stage-js .stage:not(.is-lit)::before {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  /* Surface éclairée (useLight) : halo intérieur et bord allumé à l'endroit du pointeur. */
+  .lit-card {
+    position: relative;
+    isolation: isolate;
+    --mx: 50%;
+    --my: 0%;
+    --lit: 0;
+  }
+
+  .lit-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(480px circle at var(--mx) var(--my), color-mix(in oklab, var(--color-brand) 6%, transparent), transparent 62%);
+    opacity: var(--lit);
+    transition: opacity 0.5s ease-out;
+    pointer-events: none;
+  }
+
+  .lit-card::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: 1;
+    padding: 1px;
+    border-radius: inherit;
+    background: radial-gradient(
+      320px circle at var(--mx) var(--my),
+      color-mix(in oklab, var(--color-signal) 95%, transparent),
+      color-mix(in oklab, var(--color-brand-text) 55%, transparent) 42%,
+      transparent 72%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: var(--lit);
+    transition: opacity 0.5s ease-out;
+    pointer-events: none;
+  }
+
+  .lit-card--soft::before {
+    background: radial-gradient(420px circle at var(--mx) var(--my), color-mix(in oklab, var(--color-brand-text) 10%, transparent), transparent 65%);
+  }
+
+  .lit-card--soft::after {
+    display: none;
+  }
+
+  /* Lumière qui tourne autour du bord de l'offre recommandée.
+     Un disque conique tourne (transform seul) derrière la carte ; .orbit-cover, posé 1 px à l'intérieur du bord,
+     ne laisse voir que l'arête. Pas de masque : Firefox le dessine mal sur une carte inclinée en 3D. */
+  .orbit-ring {
+    position: absolute;
+    inset: -1px;
+    z-index: -3;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Halo : copie floutée de l'arc fin, qui déborde doucement de la carte (grands écrans seulement). */
+  .orbit-glow {
+    position: absolute;
+    inset: -1px;
+    z-index: -4;
+    display: none;
+    overflow: hidden;
+    border-radius: inherit;
+    filter: blur(14px);
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  .orbit-glow::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 25px;
+    background: var(--color-ink);
+  }
+
+  @media (min-width: 1024px) {
+    .orbit-glow {
+      display: block;
+    }
+  }
+
+  .orbit-ring::before,
+  .orbit-glow::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 300%;
+    aspect-ratio: 1;
+    background: conic-gradient(
+      transparent 0 58%,
+      color-mix(in oklab, var(--color-brand-text) 85%, transparent) 74%,
+      var(--color-signal) 84%,
+      transparent 94%
+    );
+    transform: translate(-50%, -50%) rotate(0turn);
+  }
+
+  /* Le cache couvre l'intérieur à 1 px du bord : l'arc se lit sur 2 px. */
+  .orbit-cover {
+    position: absolute;
+    inset: 1px;
+    z-index: -2;
+    border-radius: 26px;
+    pointer-events: none;
+  }
+
+  /* Fond de l'offre recommandée, repris par le cache qui ne laisse voir que l'arête de l'anneau de lumière. */
+  .featured-fill {
+    background-image: linear-gradient(180deg, color-mix(in oklab, var(--color-brand) 16%, transparent), var(--color-ink-2) 55%);
+  }
+
+  /* Halo derrière la vitrine du haut de l'accueil, et brume colorée derrière le bloc contact. */
+  .glow-hero {
+    background: radial-gradient(
+      circle at 40% 45%,
+      color-mix(in oklab, var(--color-brand) 32%, transparent),
+      color-mix(in oklab, var(--color-signal) 12%, transparent) 45%,
+      transparent 70%
+    );
+  }
+
+  /* Paysage de points au doigt : dessiné une fois, il avance et recule doucement vers l'horizon (compositeur seul). */
+  @media (prefers-reduced-motion: no-preference) {
+    .terrain-drift {
+      transform-origin: 50% 30%;
+      animation: terrain-drift 14s ease-in-out infinite alternate;
+    }
+  }
+
+  /* Bandeaux : le texte occupe la gauche, les points s'y effacent pour le laisser lisible et reprennent à droite.
+     Sur téléphone, le texte prend toute la largeur et le paysage y est déjà très discret : rien à effacer. */
+  @media (min-width: 768px) {
+    .terrain-fade {
+      -webkit-mask-image: linear-gradient(90deg, rgb(255 255 255 / 0.22) 0 48%, #fff 80%);
+      mask-image: linear-gradient(90deg, rgb(255 255 255 / 0.22) 0 48%, #fff 80%);
+    }
+  }
+
+  /* Lueur rasante sur l'horizon du paysage de points (ParticleField), à 30 % de la hauteur, 34 % sur téléphone. */
+  .terrain-glow {
+    background: radial-gradient(60vw 19vw at 50% 30%, color-mix(in oklab, var(--color-brand) 16%, transparent), transparent);
+  }
+
+  @media (max-width: 639px) {
+    .terrain-glow {
+      background: radial-gradient(60vw 19vw at 50% 34%, color-mix(in oklab, var(--color-brand) 16%, transparent), transparent);
+    }
+  }
+
+  .glow-contact {
+    background:
+      radial-gradient(50% 60% at 30% 40%, color-mix(in oklab, var(--color-brand) 8%, transparent), transparent 70%),
+      radial-gradient(40% 50% at 75% 60%, color-mix(in oklab, var(--color-signal) 5%, transparent), transparent 70%);
+  }
+
+  /* Anneau du bouton de chat : invisible au repos, il s'élargit trois fois à l'arrivée sur la page (voir plus bas). */
+  .chat-call {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Reflet qui traverse le bouton WhatsApp à intervalles : le seul contrôle allumé attire l'œil. */
+  .shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.55) 50%, transparent 70%);
+    transform: translateX(-130%);
+    pointer-events: none;
+  }
+
+  /* Icône au trait (DrawIcon) : masquée une fois mesurée, dessinée à son entrée dans la fenêtre. */
+  .draw-icon.is-armed :is(path, circle, rect, line, polyline, polygon, ellipse) {
+    stroke-dasharray: var(--len);
+    stroke-dashoffset: var(--len);
+    transition: stroke-dashoffset var(--draw-dur, 1.1s) var(--ease-expo) var(--draw-delay, 0s);
+  }
+
+  .draw-icon.is-armed.is-drawn :is(path, circle, rect, line, polyline, polygon, ellipse) {
+    stroke-dashoffset: 0;
+  }
+
+  /* Fenêtre d'un vrai site : la capture pleine page défile lentement de haut en bas, puis remonte. */
+  .site-window {
+    container-type: size;
+  }
+
+  .site-scroll {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .orbit-ring::before,
+    .orbit-glow::before {
+      animation: orbit 7s linear infinite;
+      animation-play-state: paused;
+    }
+
+    .is-live .orbit-ring::before,
+    .is-live .orbit-glow::before {
+      animation-play-state: running;
+    }
+
+    .shine::after {
+      animation: shine 6s var(--ease-expo) 2.2s infinite;
+    }
+
+    .chat-call {
+      animation: chat-call 2.2s ease-out 1.2s 3;
+    }
+
+    .site-scroll {
+      animation: site-scroll var(--scroll-dur, 18s) cubic-bezier(0.45, 0, 0.25, 1) var(--scroll-delay, 0s) infinite alternate;
+      animation-play-state: paused;
+    }
+
+    .is-live .site-scroll {
+      animation-play-state: running;
+    }
+  }
+}
+
+/* Sans mouvement, un arc figé ressemblerait à un défaut de bordure : l'anneau et son halo disparaissent. */
+@media (prefers-reduced-motion: reduce) {
+  .orbit-ring,
+  .orbit-glow {
+    display: none;
+  }
+}
+
+@keyframes orbit {
+  to {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+
+@keyframes chat-call {
+  from {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-130%);
+  }
+  24%,
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+@keyframes terrain-drift {
+  to {
+    transform: scale(1.06) translateY(1.5%);
+  }
+}
+
+@keyframes site-scroll {
+  0%,
+  12% {
+    transform: translateY(0);
+  }
+  88%,
+  100% {
+    transform: translateY(calc(-100% + 100cqh));
+  }
 }
 
 @layer utilities {
-  .bg-brand {
-    background-color: var(--color-electric-blue);
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
-
-  .text-brand {
-    color: var(--color-electric-blue);
-  }
-
-  .bg-secondary {
-    background-color: var(--color-green-turquoise);
-  }
-
-  .text-secondary {
-    color: var(--color-green-turquoise);
-  }
-
-  .bg-accent {
-    background-color: var(--color-digital-violet);
-  }
-
-  .text-accent {
-    color: var(--color-digital-violet);
-  }
-
-  .bg-dark {
-    background-color: var(--color-graphite);
-  }
-
-  .text-dark {
-    color: var(--color-graphite);
-  }
-
-  .bg-light {
-    background-color: var(--color-pearl-gray);
-  }
-
-  .text-light {
-    color: var(--color-pearl-gray);
-  }
-}
-
-* {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-input, textarea, [contenteditable] {
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
 }

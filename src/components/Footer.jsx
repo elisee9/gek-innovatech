@@ -1,145 +1,119 @@
-﻿import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
+﻿import { Link } from "react-router-dom";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { Phone, MessageCircle, Mail } from "lucide-react";
 import Logo from "./Logo";
+import Pill from "./Pill";
+import { RevealGroup, RevealItem } from "./Reveal";
+import { CONTACT, whatsappLink } from "../data/contact";
 
-function Footer() {
+const Footer = () => {
    const { t } = useTranslation();
+   const services = t("services.items", { returnObjects: true });
 
-   const handleScrollTop = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-   };
-
-   const navLinks = [
+   const links = [
       { name: t("header.home"), path: "/" },
       { name: t("header.about"), path: "/about" },
       { name: t("header.services"), path: "/services" },
       { name: t("header.plans"), path: "/plans" },
+      { name: t("header.portfolio"), path: "/portfolio" },
       { name: t("header.contact"), path: "/contact" },
    ];
 
-   return (
-      <footer className="bg-[#1E1E1E] text-white pt-10 pb-6 px-4">
-         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-            {/* Branding */}
-            <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.5 }}
-            >
-               <div className="mb-3">
-                  <NavLink to="/" onClick={handleScrollTop} aria-label="GEK INNOVATECH">
-                     <Logo width={130} />
-                  </NavLink>
-               </div>
-               <p className="text-gray-400">
-                  {t("footer.tagline")}
-                  <br />
-                  <NavLink
-                     to="/portfolio"
-                     className="inline-block text-white font-semibold py-3 text-xl cursor-pointer"
-                     onClick={handleScrollTop}
-                  >
-                     {t("common.viewPortfolio")}{" "}
-                     <span className="text-[#005BFF] font-black">→</span>
-                  </NavLink>
-               </p>
-            </motion.div>
+   const colTitle = "mb-5 text-[13px] font-medium uppercase tracking-[0.08em] text-subtle";
+   const linkCls = "text-[15px] text-muted transition-colors hover:text-fg";
 
-            {/* Liens */}
-            <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.1, duration: 0.5 }}
-            >
-               <h3 className="text-lg font-semibold mb-3">{t("footer.usefulLinks")}</h3>
-               <ul className="text-gray-300 space-y-2">
-                  {navLinks.map((link) => (
+   return (
+      <footer className="border-t border-line">
+         <RevealGroup stagger={0.08} className="mx-auto grid max-w-[1200px] gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+            <RevealItem>
+               <Link to="/" aria-label={t("header.homeLabel")} className="inline-block rounded-lg">
+                  <Logo width={128} />
+               </Link>
+               <p className="mt-5 max-w-[34ch] text-[15px] leading-relaxed text-muted">{t("footer.tagline")}</p>
+               <Pill
+                  href={whatsappLink(t("common.whatsappMessage"))}
+                  variant="lit"
+                  size="sm"
+                  icon={FaWhatsapp}
+                  className="mt-6"
+               >
+                  {t("common.writeWhatsapp")}
+               </Pill>
+            </RevealItem>
+
+            <RevealItem>
+               <h2 className={colTitle}>{t("footer.navTitle")}</h2>
+               <ul className="space-y-3">
+                  {links.map((link) => (
                      <li key={link.path}>
-                        <NavLink
-                           to={link.path}
-                           className={({ isActive }) =>
-                              `group inline-block relative transition-all duration-300 ${
-                                 isActive ? "text-[#005BFF] font-medium" : "text-gray-300"
-                              }`
-                           }
-                           onClick={handleScrollTop}
-                        >
-                           <span className="hover:text-[#00D2A8] transition-colors duration-200">
-                              {link.name}
-                           </span>
-                           <span className="block h-0.5 w-0 group-hover:w-full bg-[#00D2A8] transition-all duration-300"></span>
-                        </NavLink>
+                        <Link to={link.path} className={linkCls}>
+                           {link.name}
+                        </Link>
                      </li>
                   ))}
                </ul>
-            </motion.div>
+            </RevealItem>
 
-            {/* Contact */}
-            <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.2, duration: 0.5 }}
-            >
-               <h3 className="text-lg font-semibold mb-3">{t("footer.contact")}</h3>
-               <div className="text-gray-300 space-y-4 text-sm">
-                  <a
-                     href="tel:+2290165426510"
-                     className="flex items-center gap-3 group hover:text-[#00D2A8] transition"
-                  >
-                     <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#00D2A8]/10 transition">
-                        <Phone size={14} className="text-[#00D2A8]" strokeWidth={1.8} />
-                     </span>
-                     <span className="font-medium">+229 01 65 42 6510</span>
-                  </a>
-                  <a
-                     href="https://wa.me/2290165426510"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="flex items-center gap-3 group hover:text-[#00D2A8] transition"
-                  >
-                     <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#00D2A8]/10 transition">
-                        <MessageCircle size={14} className="text-[#00D2A8]" strokeWidth={1.8} />
-                     </span>
-                     <span className="font-medium">+229 01 65 42 65 10</span>
-                  </a>
-                  <NavLink
-                     to="/contact"
-                     onClick={handleScrollTop}
-                     className="flex items-center gap-3 group hover:text-[#00D2A8] transition"
-                  >
-                     <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#00D2A8]/10 transition">
-                        <Mail size={14} className="text-[#00D2A8]" strokeWidth={1.8} />
-                     </span>
-                     <span className="font-medium">contact@gekinnovatech.com</span>
-                  </NavLink>
-               </div>
-            </motion.div>
-         </div>
+            <RevealItem>
+               <h2 className={colTitle}>{t("footer.servicesTitle")}</h2>
+               <ul className="space-y-3">
+                  {services.slice(0, 6).map((service, index) => (
+                     <li key={index}>
+                        <Link to="/services" className={linkCls}>
+                           {service.title}
+                        </Link>
+                     </li>
+                  ))}
+               </ul>
+            </RevealItem>
 
-         <div className="text-center text-sm text-gray-400 mt-10 border-t border-gray-700 pt-4 space-y-2">
-            <div>
-               &copy;{" "}
-               {new Date().getFullYear()}{" "}
-               <a href="/" className="text-[#005BFF] font-bold hover:text-[#00D2A8] transition">
-                  GEK INNOVATECH
-               </a>
-               {" — "}
-               {t("footer.copyright")}
-            </div>
-            <div>
-               <NavLink
-                  to="/mentions-legales"
-                  onClick={handleScrollTop}
-                  className="hover:text-[#00D2A8] transition underline underline-offset-2"
-               >
+            <RevealItem>
+               <h2 className={colTitle}>{t("footer.contactTitle")}</h2>
+               <ul className="space-y-4 text-[15px]">
+                  <li>
+                     <a href={CONTACT.phoneHref} className={`flex items-center gap-3 ${linkCls}`}>
+                        <Phone size={16} className="text-brand-text" aria-hidden="true" />
+                        <span className="tabular">{CONTACT.phoneDisplay}</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a
+                        href={whatsappLink(t("common.whatsappMessage"))}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-3 ${linkCls}`}
+                     >
+                        <FaWhatsapp size={16} className="text-brand-text" aria-hidden="true" />
+                        {t("common.whatsapp")}
+                     </a>
+                  </li>
+                  <li>
+                     <a href={`mailto:${CONTACT.email}`} className={`flex items-center gap-3 break-all ${linkCls}`}>
+                        <Mail size={16} className="flex-none text-brand-text" aria-hidden="true" />
+                        {CONTACT.email}
+                     </a>
+                  </li>
+                  <li className="flex items-start gap-3 text-muted">
+                     <MapPin size={16} className="mt-1 flex-none text-brand-text" aria-hidden="true" />
+                     {t("footer.location")}
+                  </li>
+               </ul>
+            </RevealItem>
+         </RevealGroup>
+
+         <div className="border-t border-line">
+            <div className="mx-auto flex max-w-[1200px] flex-col gap-3 px-5 py-6 text-[14px] text-subtle sm:flex-row sm:items-center sm:justify-between sm:px-8">
+               <p>
+                  © {new Date().getFullYear()} GEK INNOVATECH. {t("footer.copyright")}
+               </p>
+               <Link to="/mentions-legales" className="transition-colors hover:text-fg">
                   {t("footer.mentions")}
-               </NavLink>
+               </Link>
             </div>
          </div>
       </footer>
    );
-}
+};
 
 export default Footer;

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 42" role="img" aria-label="GEK INNOVATECH">
   <defs>
     <linearGradient id="gek-mark" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#005BFF"/>
-      <stop offset="100%" stop-color="#00D2A8"/>
+      <stop offset="0%" stop-color="#1D467B"/>
+      <stop offset="100%" stop-color="#CC2219"/>
     </linearGradient>
   </defs>
 
@@ -10,20 +10,20 @@
   <path d="M22,3 L40,21 L22,39 L4,21 Z M22,12 L32,21 L22,30 L12,21 Z"
         fill="url(#gek-mark)" fill-rule="evenodd"/>
   <circle cx="22" cy="21" r="3" fill="url(#gek-mark)"/>
-  <circle cx="22" cy="3"  r="2" fill="#005BFF"/>
-  <circle cx="40" cy="21" r="2" fill="#00D2A8"/>
+  <circle cx="22" cy="3"  r="2" fill="#1D467B"/>
+  <circle cx="40" cy="21" r="2" fill="#CC2219"/>
 
   <!-- GEK -->
   <text x="50" y="22"
         font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif"
-        font-size="25" font-weight="800" fill="#FFFFFF" letter-spacing="2">GEK</text>
+        font-size="25" font-weight="800" fill="#1D467B" letter-spacing="2">GEK</text>
 
   <!-- Séparateur horizontal -->
   <line x1="50" y1="27" x2="127" y2="27"
-        stroke="#00D2A8" stroke-width="1.2" stroke-opacity="0.6"/>
+        stroke="#CC2219" stroke-width="1.2" stroke-opacity="0.6"/>
 
   <!-- INNOVATECH -->
   <text x="50" y="38"
         font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif"
-        font-size="10" font-weight="500" fill="#00D2A8" letter-spacing="1.5">INNOVATECH</text>
+        font-size="10" font-weight="500" fill="#CC2219" letter-spacing="1.5">INNOVATECH</text>
 </svg>

@@ -1,40 +1,91 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { handleLinkClick } from "../utils/scrollUtils";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { ArrowRight } from "lucide-react";
+import ContactForm from "../components/ContactForm";
+import Pill from "../components/Pill";
+import LitCard from "../components/LitCard";
+import DrawIcon from "../components/DrawIcon";
+import { Reveal, RevealGroup, RevealItem, RevealText, RevealWords } from "../components/Reveal";
+import { CONTACT, whatsappLink } from "../data/contact";
 
-const ContactSection = () => {
+// heading={false} : sur la page Contact, le titre et son texte sont déjà dans le bandeau.
+const ContactSection = ({ heading = true }) => {
    const { t } = useTranslation();
 
+   const rows = [
+      { Icon: Phone, label: t("contactSection.phone"), value: CONTACT.phoneDisplay, href: CONTACT.phoneHref, tabular: true },
+      { Icon: Mail, label: t("contactSection.email"), value: CONTACT.email, href: `mailto:${CONTACT.email}` },
+      { Icon: MapPin, label: t("contactSection.location"), value: t("footer.location") },
+   ];
+
    return (
-      <section className="text-white py-10 px-6">
-         <div className="max-w-5xl mx-auto text-center">
-            <motion.h2
-               initial={{ opacity: 0, y: 30 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.6 }}
-               className="text-3xl md:text-4xl font-bold mb-4"
-            >
-               {t("contactSection.title")}
-            </motion.h2>
-            <p className="text-gray-300 text-lg mb-8">
-               {t("contactSection.subtitle")}
-            </p>
-            <motion.div
-               whileHover={{ scale: 1.04 }}
-               whileTap={{ scale: 0.97 }}
-               className="block w-full max-w-xs mx-auto sm:w-auto sm:inline-block"
-            >
-               <Link
-                  to="/contact"
-                  className="flex items-center justify-center gap-2 w-full sm:w-auto sm:inline-flex bg-[#00D2A8] hover:bg-[#00b091] text-black font-semibold px-8 py-3 sm:px-12 rounded-lg transition shadow-lg hover:shadow-[#00D2A8]/40 cursor-pointer"
-                  onClick={() => handleLinkClick()}
-               >
-                  {t("contactSection.btn")}
-                  <ArrowRight size={18} strokeWidth={2} />
-               </Link>
-            </motion.div>
+      <section id="devis" className="relative scroll-mt-24">
+         <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-10 mx-auto h-[520px] max-w-[1100px] glow-contact"
+         />
+         <div className="relative mx-auto grid max-w-[1200px] gap-12 px-5 py-14 sm:px-8 md:py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+            <div>
+               {heading && (
+                  <div className="mb-10">
+                     <h2 className="text-[clamp(2.2rem,4.4vw,3.5rem)] font-semibold leading-[1.04] tracking-[-0.03em]">
+                        <RevealWords text={t("contactSection.title")} />
+                     </h2>
+                     <RevealText
+                        text={t("contactSection.subtitle")}
+                        delay={0.3}
+                        className="mt-5 max-w-[46ch] text-[17px] leading-relaxed text-muted"
+                     />
+                  </div>
+               )}
+
+               <Reveal delay={heading ? 0.35 : 0.1}>
+                  <LitCard className="rounded-[24px] border border-signal/25 bg-signal/[0.06] p-6">
+                     <p className="flex items-center gap-3 text-[18px] font-medium">
+                        <span aria-hidden="true" className="relative flex h-9 w-9 flex-none items-center justify-center rounded-full bg-signal/15 text-signal">
+                           <span className="absolute inset-0 rounded-full bg-signal/25 motion-safe:animate-ping [animation-duration:2.4s]" />
+                           <FaWhatsapp className="relative h-[18px] w-[18px]" />
+                        </span>
+                        {t("contactSection.whatsappTitle")}
+                     </p>
+                     <p className="mt-3 text-[15px] leading-relaxed text-muted">{t("contactSection.whatsappText")}</p>
+                     <Pill
+                        href={whatsappLink(t("common.whatsappMessage"))}
+                        variant="lit"
+                        size="lg"
+                        icon={FaWhatsapp}
+                        shine
+                        className="mt-5 w-full sm:w-auto"
+                     >
+                        {t("common.writeWhatsapp")}
+                     </Pill>
+                  </LitCard>
+               </Reveal>
+
+               <RevealGroup as="dl" stagger={0.1} delay={0.45} className="mt-8">
+                  {rows.map(({ Icon, label, value, href, tabular }, index) => (
+                     <RevealItem key={index} lit ruleTop={index === 0} ruleBottom className="group flex items-center gap-4 py-4">
+                        <DrawIcon icon={Icon} delay={0.6 + index * 0.12} size={18} strokeWidth={1.8} className="text-brand-text" />
+                        <dt className="w-24 flex-none text-[14px] text-subtle">{label}</dt>
+                        <dd className={`min-w-0 break-words text-[15px] ${tabular ? "tabular" : ""}`}>
+                           {href ? (
+                              <a href={href} className="text-fg transition-colors hover:text-fg-hover hover:underline">
+                                 {value}
+                              </a>
+                           ) : (
+                              <span className="text-fg">{value}</span>
+                           )}
+                        </dd>
+                     </RevealItem>
+                  ))}
+               </RevealGroup>
+            </div>
+
+            <Reveal delay={0.2}>
+               <LitCard className="rounded-[28px]">
+                  <ContactForm titleAs={heading ? "h3" : "h2"} />
+               </LitCard>
+            </Reveal>
          </div>
       </section>
    );

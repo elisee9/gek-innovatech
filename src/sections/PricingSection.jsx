@@ -1,174 +1,162 @@
-import { motion } from "framer-motion";
-import plans from "../data/plans";
-import { NavLink } from "react-router-dom";
-import { handleLinkClick } from "../utils/scrollUtils";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { ArrowUpRight, Check, Clock } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { Check, Layers, Rocket, Crown } from "lucide-react";
+import plans from "../data/plans";
+import { whatsappLink } from "../data/contact";
+import { formatPrice } from "../utils/formatPrice";
+import { EASE, VIEWPORT } from "../utils/motion";
+import SectionHeading from "../components/SectionHeading";
+import Pill from "../components/Pill";
+import LitCard from "../components/LitCard";
+import SlotText from "../components/SlotText";
+import { Reveal, RevealGroup, RevealItem } from "../components/Reveal";
 
-const PLAN_ICONS = { 1: Layers, 2: Rocket, 3: Crown };
 
-const PricingSection = () => {
+// Les cartes montent de la profondeur en se redressant, l'une après l'autre.
+const cardVariants = {
+   hidden: { opacity: 0, y: 90, rotateX: 16 },
+   show: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.8, ease: EASE } },
+};
+
+const checkVariants = {
+   hidden: { scale: 0, rotate: -60 },
+   show: { scale: 1, rotate: 0, transition: { duration: 0.55, ease: EASE } },
+};
+
+const PlanCard = ({ plan, titleAs: Title }) => {
    const { t } = useTranslation();
-   const planTranslations = t("pricing.plans", { returnObjects: true });
-
-   const mergedPlans = plans.map((plan) => {
-      const tr = planTranslations.find((p) => p.id === plan.id) || {};
-      return { ...plan, ...tr };
-   });
+   const ref = useRef(null);
+   // L'anneau de lumière ne tourne que lorsque la carte est à l'écran.
+   const live = useInView(ref, { margin: "100px 0px" });
+   const featured = plan.recommended === true;
+   const message = t("pricing.whatsappPlan", { plan: plan.title, price: plan.price });
 
    return (
-      <section className="relative py-2 px-6 backdrop-blur-sm pt-8" id="plans">
-         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 z-0" />
+      <motion.article ref={ref} variants={cardVariants} style={{ transformOrigin: "50% 100%" }} className="h-full">
+         <LitCard
+            tilt={featured ? 3.5 : 5}
+            className={`relative flex h-full flex-col rounded-[28px] border p-7 transition-shadow duration-500 sm:p-8 ${
+               featured
+                  ? `border-brand-text/45 featured-fill shadow-featured hover:shadow-featured-hover ${live ? "is-live" : ""}`
+                  : "border-line bg-ink-2 shadow-card hover:shadow-float"
+            }`}
+         >
+            {featured && (
+               <>
+                  <span aria-hidden="true" className="orbit-glow" />
+                  <span aria-hidden="true" className="orbit-ring" />
+                  <span aria-hidden="true" className="orbit-cover featured-fill bg-ink-2" />
+               </>
+            )}
 
-         <div className="max-w-7xl mx-auto relative z-10">
-            <motion.div
-               initial={{ opacity: 0, y: 30 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8 }}
-               className="text-center mb-12"
-            >
-               <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#00D2A8] to-[#005BFF]">
-                  {t("pricing.title")}
-               </h2>
-               <p className="text-gray-300 text-lg max-w-xl mx-auto">
-                  {t("pricing.subtitle")}
-               </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8 cursor-pointer items-stretch">
-               {mergedPlans.map((plan, index) => {
-                  const PlanIcon = PLAN_ICONS[plan.id];
-                  const isPremium = plan.premium === true;
-                  const isRecommended = plan.recommended === true;
-
-                  const cardClass = isPremium
-                     ? "from-[#1A1200] via-[#1E1A00] to-[#1E1E1E] border-2 border-amber-400/70 shadow-[0_0_40px_rgba(251,191,36,0.15)]"
-                     : isRecommended
-                     ? "from-[#005BFF]/20 to-[#00D2A8]/10 border-2 border-[#00D2A8]"
-                     : "from-[#2A2A2A] to-[#1E1E1E] border border-[#00D2A8]/30";
-
-                  const iconColor = isPremium
-                     ? "text-amber-400"
-                     : isRecommended
-                     ? "text-[#00D2A8]"
-                     : "text-gray-300";
-
-                  const iconBg = isPremium
-                     ? "bg-amber-400/15"
-                     : isRecommended
-                     ? "bg-[#00D2A8]/20"
-                     : "bg-white/5";
-
-                  const priceColor = isPremium ? "text-amber-400" : "text-[#00D2A8]";
-
-                  const checkColor = isPremium ? "text-amber-400" : "text-[#00D2A8]";
-
-                  const ctaClass = isPremium
-                     ? "bg-gradient-to-r from-amber-500 to-yellow-400 text-black hover:from-amber-400 hover:to-yellow-300"
-                     : isRecommended
-                     ? "bg-gradient-to-r from-[#00D2A8] to-[#005BFF] text-black"
-                     : "bg-[#2A2A2A] text-[#00D2A8] border border-[#00D2A8] hover:bg-[#00D2A8]/10";
-
-                  return (
-                     <div key={plan.id} className={isPremium ? "md:-translate-y-5" : ""}>
-                     <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                           duration: 0.6,
-                           delay: index * 0.15,
-                           type: "spring",
-                           stiffness: 100,
-                        }}
-                        whileHover={{ y: isPremium ? -14 : -10 }}
-                        className={`flex flex-col h-full relative bg-gradient-to-b ${cardClass} rounded-xl p-8 shadow-lg overflow-hidden`}
-                     >
-                        {isPremium && (
-                           <>
-                              <div className="absolute top-0 right-0 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xs font-bold px-4 py-1 rounded-bl-lg tracking-wide uppercase">
-                                 {t("pricing.premiumBadge")}
-                              </div>
-                              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(251,191,36,0.08),transparent_60%)] pointer-events-none" />
-                           </>
-                        )}
-
-                        {isRecommended && (
-                           <div className="absolute top-0 right-0 bg-[#00D2A8] text-black text-sm font-bold px-4 py-1 rounded-bl-lg">
-                              {t("pricing.recommended")}
-                           </div>
-                        )}
-
-                        {plan.promotion && (
-                           <div className="absolute top-0 left-0 bg-red-600 text-white text-sm font-bold px-3 py-1 rounded-br-lg">
-                              {plan.promotion}
-                           </div>
-                        )}
-
-                        <div className="mb-6 mt-4">
-                           <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${iconBg}`}>
-                              <PlanIcon size={22} className={iconColor} strokeWidth={1.6} />
-                           </div>
-                           <h3 className={`text-2xl font-bold mb-1 ${isPremium ? "text-amber-50" : ""}`}>
-                              {plan.title}
-                           </h3>
-                           <p className="text-gray-400">{plan.description}</p>
-                           <div className="my-4">
-                              <span className={`text-2xl font-bold ${priceColor}`}>
-                                 {plan.price}
-                              </span>
-                              <span className="text-sm text-gray-400 font-normal ml-1">
-                                 / {t("pricing.period")}
-                              </span>
-                              {plan.oldPrice && (
-                                 <span className="text-base text-red-400 line-through ml-3">
-                                    {plan.oldPrice}
-                                 </span>
-                              )}
-                           </div>
-                        </div>
-
-                        <p className="text-gray-400 text-sm mb-4">
-                           {t("pricing.delivery")} <strong className="text-white">{plan.deliveryTime}</strong>
-                        </p>
-
-                        <ul className="space-y-3 mb-6 flex-1">
-                           {(plan.features || []).map((feature, i) => (
-                              <li key={i} className="flex items-start gap-2">
-                                 <Check size={14} className={`${checkColor} mt-0.5 flex-shrink-0`} strokeWidth={2.5} />
-                                 <span className="text-gray-300 text-sm">{feature}</span>
-                              </li>
-                           ))}
-                        </ul>
-
-                        {plan.example && plan.example !== "/notdone" && (
-                           <div className="mb-4">
-                              <a
-                                 href={plan.example}
-                                 target="_blank"
-                                 rel="noopener noreferrer"
-                                 className={`text-sm hover:underline ${isPremium ? "text-amber-400" : "text-[#00D2A8]"}`}
-                              >
-                                 {t("pricing.seeExample")} →
-                              </a>
-                           </div>
-                        )}
-
-                        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                           <NavLink
-                              to="/contact"
-                              onClick={() => handleLinkClick()}
-                              className={`block w-full py-3 rounded-lg font-semibold text-center transition-all cursor-pointer ${ctaClass}`}
-                           >
-                              {t("pricing.getplan")}
-                           </NavLink>
-                        </motion.div>
-                     </motion.div>
-                     </div>
-                  );
-               })}
+            <div className="flex items-start justify-between gap-4">
+               <div>
+                  <Title className="text-[22px] font-semibold tracking-[-0.015em]">{plan.title}</Title>
+                  <p className="mt-1.5 text-[15px] text-muted lg:min-h-[3em]">{plan.description}</p>
+               </div>
+               {featured && (
+                  <span className="flex-none rounded-full bg-brand px-3 py-1 text-[12px] font-medium text-ink-2">
+                     {t("pricing.recommended")}
+                  </span>
+               )}
             </div>
-         </div>
+
+            <div className="mt-8 flex flex-wrap items-end gap-x-3 gap-y-1">
+               <SlotText text={plan.price} delay={0.4} className="tabular text-[52px] font-semibold tracking-[-0.03em]" />
+               <span className="pb-2 text-[15px] text-subtle">{t("pricing.period")}</span>
+            </div>
+
+            <p className="mt-6 flex items-center gap-2 border-y border-line py-3.5 text-[15px] text-muted">
+               <motion.span
+                  aria-hidden="true"
+                  initial={{ rotate: -270, opacity: 0 }}
+                  whileInView={{ rotate: 0, opacity: 1 }}
+                  viewport={VIEWPORT}
+                  transition={{ duration: 0.9, delay: 0.4, ease: EASE }}
+                  className="inline-flex"
+               >
+                  <Clock size={16} strokeWidth={1.8} className="text-brand-text" />
+               </motion.span>
+               {t("pricing.delivery")} <strong className="font-medium text-fg">{plan.deliveryTime}</strong>
+            </p>
+
+            <RevealGroup as="ul" stagger={0.045} delay={0.45} className="mt-2 flex-1">
+               {(plan.features || []).map((feature, index) => (
+                  <RevealItem
+                     as="li"
+                     key={index}
+                     ruleTop={index > 0}
+                     className="flex items-start gap-3 py-2.5 text-[15px] leading-snug text-fg/85"
+                  >
+                     <motion.span variants={checkVariants} className="mt-0.5 inline-flex flex-none">
+                        <Check size={16} strokeWidth={2.2} className="text-signal" aria-hidden="true" />
+                     </motion.span>
+                     {feature}
+                  </RevealItem>
+               ))}
+            </RevealGroup>
+
+            <div className="mt-8 flex flex-col gap-3">
+               <Pill
+                  href={whatsappLink(message)}
+                  variant={featured ? "lit" : "ghost"}
+                  size="lg"
+                  icon={FaWhatsapp}
+                  shine={featured}
+                  className="w-full"
+               >
+                  {t("pricing.choose", { plan: plan.title })}
+               </Pill>
+               {plan.example && plan.example.startsWith("http") && (
+                  <a
+                     href={plan.example}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="group/link inline-flex items-center justify-center gap-1.5 text-[14px] font-medium text-brand-text hover:underline"
+                  >
+                     {t("pricing.seeExample")}
+                     <ArrowUpRight
+                        size={15}
+                        aria-hidden="true"
+                        className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                     />
+                  </a>
+               )}
+            </div>
+         </LitCard>
+      </motion.article>
+   );
+};
+
+// heading={false} : sur la page Offres, le titre est déjà dans le bandeau.
+const PricingSection = ({ heading = true }) => {
+   const { t, i18n } = useTranslation();
+   const lang = i18n.resolvedLanguage || i18n.language;
+   const translations = t("pricing.plans", { returnObjects: true });
+   const merged = plans.map((plan) => ({
+      ...plan,
+      ...(translations.find((p) => p.id === plan.id) || {}),
+      price: formatPrice(plan.amount, lang),
+   }));
+
+   return (
+      <section id="offres" className="stage mx-auto max-w-[1200px] scroll-mt-28 px-5 py-14 sm:px-8 md:py-20">
+         {heading && <SectionHeading className="mb-14" title={t("pricing.title")} subtitle={t("pricing.subtitle")} />}
+
+         <RevealGroup stagger={0.14} className="grid items-stretch gap-5 [perspective:1400px] lg:grid-cols-3">
+            {merged.map((plan) => (
+               <PlanCard key={plan.id} plan={plan} titleAs={heading ? "h3" : "h2"} />
+            ))}
+         </RevealGroup>
+
+         <Reveal className="mt-8">
+            <LitCard className="flex flex-col items-start gap-4 rounded-[24px] border border-line px-7 py-6 sm:flex-row sm:items-center sm:justify-between">
+               <p className="max-w-[60ch] text-[16px] text-muted">{t("pricing.custom")}</p>
+               <Pill to={{ pathname: "/", hash: "#devis" }}>{t("common.requestQuote")}</Pill>
+            </LitCard>
+         </Reveal>
       </section>
    );
 };

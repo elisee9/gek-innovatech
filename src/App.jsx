@@ -1,13 +1,15 @@
-// App.jsx
-import { RouterProvider } from "react-router-dom";
-import router from "./routes/AppRoutes";
-import "react-toastify/dist/ReactToastify.css";
-import "./App.css"; // Assurez-vous d'importer votre fichier CSS
-import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
+import { routes } from "./routes/AppRoutes";
+
+const router = createBrowserRouter(routes);
 
 function App() {
    return (
+      <MotionConfig reducedMotion="user">
          <RouterProvider router={router} />
+      </MotionConfig>
    );
 }
+
 export default App;

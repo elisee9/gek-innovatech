@@ -1,82 +1,51 @@
-﻿import { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
-import PhraseAccroche from "./PhraseAccroche";
-import Logo from "./Logo";
-import { handleLinkClick } from "../utils/scrollUtils";
+﻿import { useEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import Logo from "./Logo";
+import Pill from "./Pill";
+import { whatsappLink } from "../data/contact";
+import { EASE } from "../utils/motion";
 
-const FrFlag = () => (
-   <svg width="20" height="14" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" className="rounded-sm flex-shrink-0">
-      <rect width="300" height="600" fill="#002395" />
-      <rect x="300" width="300" height="600" fill="#fff" />
-      <rect x="600" width="300" height="600" fill="#ED2939" />
-   </svg>
-);
+const LANGS = ["fr", "en"];
 
-const GbFlag = () => (
-   <svg width="20" height="14" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" className="rounded-sm flex-shrink-0">
-      <rect width="60" height="30" fill="#012169" />
-      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
-      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4" />
-      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10" />
-      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6" />
-   </svg>
-);
-
-const LANGS = [
-   { code: "fr", label: "FR", Flag: FrFlag },
-   { code: "en", label: "EN", Flag: GbFlag },
-];
-
-const LanguageSwitcher = ({ mobile = false }) => {
-   const { i18n } = useTranslation();
-   const currentLang = i18n.language;
+const LanguageSwitcher = ({ layoutGroup, className = "" }) => {
+   const { t, i18n } = useTranslation();
+   const current = i18n.resolvedLanguage || i18n.language;
 
    const switchLang = (lang) => {
       i18n.changeLanguage(lang);
-      localStorage.setItem("lang", lang);
+      try {
+         localStorage.setItem("lang", lang);
+      } catch {
+         // Stockage indisponible (navigation privée) : la langue reste valable pour la session.
+      }
    };
 
-   if (mobile) {
-      return (
-         <div className="flex gap-3 mt-2">
-            {LANGS.map(({ code, label, Flag }) => (
-               <button
-                  key={code}
-                  onClick={() => switchLang(code)}
-                  className={`flex items-center gap-2 text-sm font-semibold px-3 py-1.5 rounded-lg transition ${
-                     currentLang === code
-                        ? "bg-[#005BFF] text-white"
-                        : "text-gray-300 hover:text-white hover:bg-white/10"
-                  }`}
-               >
-                  <Flag />
-                  {label}
-               </button>
-            ))}
-         </div>
-      );
-   }
-
    return (
-      <div className="flex items-center gap-1 ml-4 border border-white/20 rounded-lg overflow-hidden">
-         {LANGS.map(({ code, label, Flag }, i) => (
-            <div key={code} className="flex items-center">
-               {i > 0 && <span className="text-white/20 text-xs">|</span>}
-               <button
-                  onClick={() => switchLang(code)}
-                  className={`flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 transition ${
-                     currentLang === code
-                        ? "bg-[#005BFF] text-white"
-                        : "text-gray-300 hover:text-white hover:bg-white/10"
-                  }`}
-               >
-                  <Flag />
-                  {label}
-               </button>
-            </div>
+      <div role="group" aria-label={t("header.language")} className={`items-center rounded-full border border-line p-1 ${className}`}>
+         {LANGS.map((lang) => (
+            <button
+               key={lang}
+               type="button"
+               onClick={() => switchLang(lang)}
+               aria-pressed={current === lang}
+               className={`relative h-8 rounded-full px-3 text-[13px] font-medium uppercase tracking-wide transition-colors duration-300 ${
+                  current === lang ? "text-ink" : "text-muted hover:text-fg"
+               }`}
+            >
+               {/* La pastille blanche glisse d'une langue à l'autre. */}
+               {current === lang && (
+                  <motion.span
+                     layoutId={`lang-chip-${layoutGroup}`}
+                     transition={{ duration: 0.45, ease: EASE }}
+                     className="absolute inset-0 rounded-full bg-fg"
+                  />
+               )}
+               <span className="relative">{lang}</span>
+            </button>
          ))}
       </div>
    );
@@ -84,166 +53,211 @@ const LanguageSwitcher = ({ mobile = false }) => {
 
 const Header = () => {
    const { t } = useTranslation();
-   const [isOpen, setIsOpen] = useState(false);
-   const menuRef = useRef(null);
-   const [hoveredIndex, setHoveredIndex] = useState(null);
+   const { pathname } = useLocation();
+   const [open, setOpen] = useState(false);
+   const [scrolled, setScrolled] = useState(false);
+   const [hovered, setHovered] = useState(null);
+   const menuButton = useRef(null);
 
-   const navLinks = [
+   const links = [
       { name: t("header.home"), path: "/" },
       { name: t("header.about"), path: "/about" },
       { name: t("header.services"), path: "/services" },
       { name: t("header.plans"), path: "/plans" },
+      { name: t("header.portfolio"), path: "/portfolio" },
       { name: t("header.contact"), path: "/contact" },
    ];
 
    useEffect(() => {
-      document.body.style.overflow = isOpen ? "hidden" : "auto";
-      const handleClickOutside = (event) => {
-         if (menuRef.current && !menuRef.current.contains(event.target)) {
-            setIsOpen(false);
-         }
+      setOpen(false);
+   }, [pathname]);
+
+   useEffect(() => {
+      const onScroll = () => setScrolled(window.scrollY > 12);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      return () => window.removeEventListener("scroll", onScroll);
+   }, []);
+
+   useEffect(() => {
+      if (!open) return undefined;
+      document.body.style.overflow = "hidden";
+      // Échap ferme le menu et rend la main au bouton qui l'a ouvert.
+      const onKey = (e) => {
+         if (e.key !== "Escape") return;
+         setOpen(false);
+         menuButton.current?.focus();
       };
-      if (isOpen) {
-         document.addEventListener("mousedown", handleClickOutside);
-      }
+      window.addEventListener("keydown", onKey);
       return () => {
-         document.body.style.overflow = "auto";
-         document.removeEventListener("mousedown", handleClickOutside);
+         document.body.style.overflow = "";
+         window.removeEventListener("keydown", onKey);
       };
-   }, [isOpen]);
+   }, [open]);
+
+   // Chaque page s'ouvre sur un bandeau marine : l'en-tête y reste transparent, en couleurs claires, jusqu'au premier défilement.
+   const solid = scrolled || open;
 
    return (
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#1E1E1E]/80 backdrop-blur-lg shadow-2xl pb-2 mb-10">
-         <div className="w-full bg-[#1E1E1E]/30 border-b-2 border-[#00D2A8] rounded-b-2xl mt-0">
-            <PhraseAccroche />
-         </div>
-         <div className="max-w-7xl mx-auto pl-6 py-3 flex justify-between items-center">
-            {/* Logo */}
-            <NavLink to="/" onClick={() => handleLinkClick()} aria-label="GEK INNOVATECH — Accueil">
-               <Logo width={145} />
-            </NavLink>
+      <motion.header
+         initial={{ y: -28, opacity: 0 }}
+         animate={{ y: 0, opacity: 1 }}
+         transition={{ duration: 0.6, ease: EASE }}
+         className={`fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4 ${solid ? "" : "on-dark"}`}
+      >
+         <div
+            className={`relative mx-auto flex h-16 max-w-[1200px] items-center justify-between rounded-full border pl-5 pr-2.5 transition-[background-color,border-color,box-shadow] duration-300 ${
+               solid ? "border-line bg-ink-2 shadow-float" : "border-transparent bg-transparent"
+            }`}
+         >
+            <Link to="/" aria-label={t("header.homeLabel")} className="rounded-lg">
+               <Logo width={116} />
+            </Link>
 
-            <nav className="hidden md:flex items-center gap-8 text-white relative pr-6">
-               {navLinks.map((link, index) => (
-                  <div
-                     key={link.name}
-                     onMouseEnter={() => setHoveredIndex(index)}
-                     onTouchStart={() => setHoveredIndex(index)}
-                     onMouseLeave={() => setHoveredIndex(null)}
-                     className="relative px-2 py-1"
-                  >
-                     <NavLink
-                        to={link.path}
-                        onClick={() => handleLinkClick()}
-                        className={({ isActive }) =>
-                           `font-medium transition ${
-                              isActive
-                                 ? "text-[#005BFF]"
-                                 : "text-white hover:text-[#00D2A8]"
-                           }`
-                        }
-                     >
-                        {link.name}
-                     </NavLink>
-                     {(hoveredIndex === index ||
-                        navLinks.findIndex(
-                           (l) => location.pathname === l.path
-                        ) === index) && (
-                        <motion.div
-                           layoutId="hoverUnderline"
-                           className={`absolute left-0 w-full h-[2px] rounded ${
-                              navLinks.findIndex(
-                                 (l) => location.pathname === l.path
-                              ) === index
-                                 ? "bg-[#005BFF]"
-                                 : "bg-[#00D2A8]"
-                           }`}
-                           style={{ bottom: "-10px" }}
-                           transition={{
-                              type: "spring",
-                              stiffness: 300,
-                              damping: 40,
-                           }}
-                        />
-                     )}
-                  </div>
-               ))}
-
-               <a
-                  href="https://wa.me/2290165426510"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-2 bg-[#00D2A8] hover:bg-[#00b795] px-5 py-2 rounded-lg font-medium text-white transition"
-               >
-                  {t("common.whatsapp")}
-               </a>
-
-               <LanguageSwitcher />
+            <nav aria-label={t("header.navLabel")} className="hidden lg:block">
+               <ul className="flex items-center gap-0.5" onPointerLeave={() => setHovered(null)}>
+                  {links.map((link) => (
+                     <li key={link.path} onPointerEnter={() => setHovered(link.path)}>
+                        <NavLink
+                           to={link.path}
+                           end={link.path === "/"}
+                           className={({ isActive }) =>
+                              `relative flex items-center gap-2 rounded-full px-3.5 py-2 text-[15px] transition-colors duration-300 ${
+                                 isActive ? "text-fg" : "text-muted hover:text-fg"
+                              }`
+                           }
+                        >
+                           {({ isActive }) => (
+                              <>
+                                 {/* Le fond suit le lien survolé ; le point rouge glisse vers la page ouverte. */}
+                                 {hovered === link.path && (
+                                    <motion.span
+                                       layoutId="nav-hover"
+                                       transition={{ duration: 0.35, ease: EASE }}
+                                       className="absolute inset-0 rounded-full bg-fg/[0.06]"
+                                    />
+                                 )}
+                                 <span aria-hidden="true" className="relative h-1.5 w-1.5">
+                                    {isActive && (
+                                       <motion.span
+                                          layoutId="nav-active"
+                                          transition={{ duration: 0.5, ease: EASE }}
+                                          className="absolute inset-0 rounded-full bg-signal shadow-spark"
+                                       />
+                                    )}
+                                 </span>
+                                 <span className="relative">{link.name}</span>
+                              </>
+                           )}
+                        </NavLink>
+                     </li>
+                  ))}
+               </ul>
             </nav>
 
-            {/* Mobile Nav Toggle */}
-            <button
-               className={`md:hidden text-[#00D2A8] text-2xl cursor-pointer z-50 transition-opacity duration-200 pr-6 ${
-                  isOpen ? "opacity-80 mt-6 pr-3" : "opacity-100"
-               }`}
-               onClick={() => setIsOpen(!isOpen)}
-               aria-label={isOpen ? t("header.closeMenu") : t("header.openMenu")}
-            >
-               {isOpen ? <FaTimes /> : <FaBars />}
-            </button>
+            <div className="flex items-center gap-2">
+               <LanguageSwitcher layoutGroup="bar" className="hidden sm:flex" />
+               <Pill
+                  href={whatsappLink(t("common.whatsappMessage"))}
+                  variant="lit"
+                  size="sm"
+                  icon={FaWhatsapp}
+                  className="hidden sm:inline-flex"
+               >
+                  {t("common.whatsapp")}
+               </Pill>
+               <button
+                  ref={menuButton}
+                  type="button"
+                  onClick={() => setOpen((v) => !v)}
+                  aria-expanded={open}
+                  aria-controls="mobile-menu"
+                  aria-label={open ? t("header.closeMenu") : t("header.openMenu")}
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-line-strong text-fg transition-colors hover:bg-ink-3 lg:hidden"
+               >
+                  {open ? <X size={20} /> : <Menu size={20} />}
+               </button>
+            </div>
          </div>
 
-         {/* Mobile Nav Menu */}
          <AnimatePresence>
-            {isOpen && (
-               <>
-                  <motion.div
-                     initial={{ opacity: 0 }}
-                     animate={{ opacity: 1 }}
-                     exit={{ opacity: 0 }}
-                     className="fixed inset-0 bg-black/70 z-30"
-                  />
-                  <motion.div
-                     ref={menuRef}
-                     initial={{ x: "100%" }}
-                     animate={{ x: 0 }}
-                     exit={{ x: "100%" }}
-                     transition={{ type: "tween", duration: 0.3 }}
-                     className="fixed top-6 right-1 h-screen/2 w-70 bg-gray-800 z-40 overflow-y-auto py-16 text-justify rounded-2xl shadow-lg"
-                  >
-                     <div className="h-full flex flex-col gap-5 px-8">
-                        {navLinks.map((link) => (
-                           <NavLink
-                              key={link.name}
-                              to={link.path}
-                              className={({ isActive }) =>
-                                 `text-xl font-semibold py-2 hover:text-[#00D2A8] transition-colors ${
-                                    isActive ? "text-[#005BFF]" : "text-white"
-                                 }`
-                              }
-                              onClick={() => {
-                                 handleLinkClick();
-                                 setIsOpen(false);
+            {open && (
+               // Voile derrière le menu : toucher à côté le referme.
+               <motion.div
+                  key="veil"
+                  aria-hidden="true"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.22 }}
+                  onClick={() => setOpen(false)}
+                  className="fixed inset-0 -z-10 bg-brand-deep/40 lg:hidden"
+               />
+            )}
+            {/* Choisir un lien referme le menu, même s'il mène à une ancre de la page déjà ouverte (#devis). */}
+            {open && (
+               <motion.div
+                  key="sheet"
+                  id="mobile-menu"
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  onClick={(e) => e.target.closest("a") && setOpen(false)}
+                  className="mx-auto mt-2 max-h-[calc(100dvh-6rem)] max-w-[1200px] overflow-y-auto overscroll-contain rounded-[28px] border border-line bg-ink-2 p-6 shadow-float lg:hidden"
+               >
+                  <nav aria-label={t("header.navLabel")}>
+                     <motion.ul
+                        initial="hidden"
+                        animate="show"
+                        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.045, delayChildren: 0.05 } } }}
+                        className="flex flex-col"
+                     >
+                        {links.map((link) => (
+                           <motion.li
+                              key={link.path}
+                              variants={{
+                                 hidden: { opacity: 0, x: -14 },
+                                 show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: EASE } },
                               }}
+                              className="border-b border-line last:border-b-0"
                            >
-                              {link.name}
-                           </NavLink>
+                              <NavLink
+                                 to={link.path}
+                                 end={link.path === "/"}
+                                 className={({ isActive }) =>
+                                    `flex items-center gap-3 py-3.5 text-[22px] font-medium tracking-[-0.01em] ${
+                                       isActive ? "text-fg" : "text-muted"
+                                    }`
+                                 }
+                              >
+                                 {({ isActive }) => (
+                                    <>
+                                       <span
+                                          aria-hidden="true"
+                                          className={`h-1.5 w-1.5 rounded-full bg-signal ${isActive ? "opacity-100" : "opacity-0"}`}
+                                       />
+                                       {link.name}
+                                    </>
+                                 )}
+                              </NavLink>
+                           </motion.li>
                         ))}
-                        <a
-                           href="https://wa.me/2290165426510"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           className="bg-[#00D2A8] hover:bg-[#00b795] px-6 py-2 rounded-lg text-black font-semibold transition mt-4 w-full text-center"
-                        >
-                           {t("common.whatsapp")}
-                        </a>
-                        <LanguageSwitcher mobile />
-                     </div>
-                  </motion.div>
-               </>
+                     </motion.ul>
+                  </nav>
+                  <div className="mt-6 flex flex-col gap-3">
+                     <Pill href={whatsappLink(t("common.whatsappMessage"))} variant="lit" size="lg" icon={FaWhatsapp}>
+                        {t("common.writeWhatsapp")}
+                     </Pill>
+                     <Pill to={{ pathname: "/", hash: "#devis" }} size="lg">
+                        {t("common.requestQuote")}
+                     </Pill>
+                     <LanguageSwitcher layoutGroup="sheet" className="mt-2 flex self-start sm:hidden" />
+                  </div>
+               </motion.div>
             )}
          </AnimatePresence>
-      </header>
+      </motion.header>
    );
 };
 

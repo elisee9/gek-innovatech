@@ -1,76 +1,65 @@
-﻿import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { useTranslation, Trans } from "react-i18next";
-import { handleLinkClick } from "../utils/scrollUtils";
+﻿import { Trans, useTranslation } from "react-i18next";
+import { FaWhatsapp } from "react-icons/fa";
+import Seo from "../components/Seo";
+import Pill from "../components/Pill";
+import { RevealGroup, RevealItem } from "../components/Reveal";
+import CommitmentsSection from "../sections/CommitmentsSection";
+import ProofSection from "../sections/ProofSection";
+import ContactSection from "../sections/ContactSection";
+import plans from "../data/plans";
+import { whatsappLink } from "../data/contact";
+import { formatPrice } from "../utils/formatPrice";
 
 const About = () => {
-   const { t } = useTranslation();
+   const { t, i18n } = useTranslation();
+   const lang = i18n.resolvedLanguage || i18n.language;
+   const amounts = plans.map((p) => p.amount);
+   const prices = { min: formatPrice(Math.min(...amounts), lang), max: formatPrice(Math.max(...amounts), lang) };
+   const facts = t("about.facts", { returnObjects: true });
 
    return (
       <>
-         <Helmet>
-            <title>{t("meta.about.title")}</title>
-            <meta name="description" content={t("meta.about.description")} />
-            <meta name="keywords" content={t("meta.about.keywords")} />
-            <meta name="author" content={t("common.author")} />
-            <meta name="robots" content="index, follow" />
-            <meta property="og:title" content={t("meta.about.ogTitle")} />
-            <meta property="og:description" content={t("meta.about.ogDescription")} />
-            <meta property="og:type" content="website" />
-            <meta property="og:url" content="https://gek-innovatech.netlify.app/about" />
-            <meta property="og:image" content="https://gek-innovatech.netlify.app/og-image.jpeg" />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={t("meta.about.ogTitle")} />
-            <meta name="twitter:description" content={t("meta.about.ogDescription")} />
-            <meta name="twitter:image" content="https://gek-innovatech.netlify.app/og-image.jpeg" />
-            <link rel="canonical" href="https://gek-innovatech.netlify.app/about" />
-         </Helmet>
+         <Seo page="about" path="/about" />
 
-         <section className="relative min-h-screen flex items-center justify-center text-white px-4 pt-36 z-10">
-            <motion.div
-               initial={{ opacity: 0, y: 40 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 1 }}
-               className="text-center max-w-3xl z-10"
-            >
-               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                  {t("about.title")}{" "}
-                  <span className="text-[#005BFF]">GEK INNOVATECH</span>
-               </h1>
-
-               <div className="text-lg md:text-xl text-gray-300 leading-relaxed space-y-4 text-left">
-                  <p>{t("about.p1")}</p>
-                  <p>{t("about.p2")}</p>
-                  <p>
-                     <Trans
-                        i18nKey="about.p3"
-                        components={{
-                           brand: <span className="text-[#005BFF] font-semibold" />,
-                        }}
-                     />
-                  </p>
-                  <p>{t("about.p4")}</p>
-                  <em className="text-white/70 block mt-4 text-base not-italic border-l-2 border-[#00D2A8] pl-4">
-                     {t("about.tagline")}
-                  </em>
-               </div>
-
-               <motion.div
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="mt-10 mb-3 w-full sm:w-auto sm:inline-block"
-               >
-                  <NavLink
-                     to="/services"
-                     className="block w-full sm:w-auto sm:inline-block px-8 py-3 sm:px-12 text-lg font-semibold text-center bg-[#005BFF] hover:bg-[#0044cc] transition-colors duration-300 rounded-lg shadow-xl cursor-pointer hover:shadow-[#0044cc]/40"
-                     onClick={() => handleLinkClick()}
-                  >
-                     {t("about.cta")}
-                  </NavLink>
-               </motion.div>
-            </motion.div>
+         <section className="stage mx-auto max-w-[1200px] px-5 pb-8 pt-14 sm:px-8 md:pt-20">
+            <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
+               <RevealGroup as="dl" stagger={0.08} delay={0.1} className="self-start">
+                  {facts.map((fact, index) => (
+                     <RevealItem
+                        key={index}
+                        ruleTop={index === 0}
+                        ruleBottom
+                        className="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6"
+                     >
+                        <dt className="w-32 flex-none text-[14px] text-subtle">{fact.label}</dt>
+                        <dd className="text-[16px] text-fg">{fact.value}</dd>
+                     </RevealItem>
+                  ))}
+               </RevealGroup>
+               <RevealGroup stagger={0.09} delay={0.15} className="space-y-5 text-[17px] leading-relaxed text-muted">
+                  <RevealItem as="p" className="text-[19px] text-fg/90">
+                     {t("about.p1")}
+                  </RevealItem>
+                  <RevealItem as="p">{t("about.p2", prices)}</RevealItem>
+                  <RevealItem as="p">
+                     <Trans i18nKey="about.p3" components={{ brand: <span className="font-medium text-fg" /> }} />
+                  </RevealItem>
+                  <RevealItem as="p">{t("about.p4")}</RevealItem>
+                  <RevealItem className="flex flex-col gap-3 pt-3 sm:flex-row">
+                     <Pill href={whatsappLink(t("common.whatsappMessage"))} variant="lit" size="lg" icon={FaWhatsapp}>
+                        {t("common.writeWhatsapp")}
+                     </Pill>
+                     <Pill to="/services" size="lg">
+                        {t("about.cta")}
+                     </Pill>
+                  </RevealItem>
+               </RevealGroup>
+            </div>
          </section>
+
+         <CommitmentsSection />
+         <ProofSection />
+         <ContactSection />
       </>
    );
 };

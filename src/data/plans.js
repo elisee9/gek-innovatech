@@ -1,28 +1,25 @@
+// Prix en euros (paiement unique). Les textes des offres sont dans les fichiers de traduction.
+// Si un prix change ici, mettre aussi à jour le prompt du chatbot (netlify/functions/chat.js)
+// et les textes de référencement (« meta » dans les fichiers de traduction : accueil et offres).
 const plans = [
    {
       id: 1,
-      price: "€89",
-      oldPrice: "€199",
+      amount: 89,
       recommended: false,
       example: "/notdone",
-      promotion: "-55%",
    },
    {
       id: 2,
-      price: "€189",
-      oldPrice: "€399",
+      amount: 189,
       recommended: true,
       example: "https://gek-beaute-elegance.netlify.app",
-      promotion: "-53%",
    },
    {
       id: 3,
-      price: "€349",
-      oldPrice: "€699",
+      amount: 349,
       recommended: false,
       premium: true,
       example: "/notdone",
-      promotion: "-50%",
    },
 ];
 
