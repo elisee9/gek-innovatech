@@ -16,6 +16,17 @@ const portfolioExamples = [
       },
    },
    {
+      id: 8,
+      link: "https://concept-bat92.com/",
+      planId: "quote",
+      screens: {
+         desktop: "/images/portfolio/concept-bat92-desktop.webp",
+         mobile: "/images/portfolio/concept-bat92-mobile.webp",
+         desktopSize: [1599, 3465],
+         mobileSize: [519, 4853],
+      },
+   },
+   {
       id: 1,
       link: "https://gek-beaute-elegance.netlify.app",
       planId: "basic",

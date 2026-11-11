@@ -41,6 +41,7 @@ Fixed, published prices and stated delivery times (1 week for Starter, 2 to 3 we
 
 ## Evidence on Hand
 
+- Live project https://concept-bat92.com/ (Concept Bat 92, renovation and construction company in Paris and Île-de-France), added at the owner's request on 2026-11-11; shown in the home Réalisations section and on the Réalisations page, with the chip "Sur devis" until the owner states its offer. Screenshots in `public/images/portfolio/concept-bat92-*.webp`.
 - One live demo site: https://gek-beaute-elegance.netlify.app (Starter plan example, owner's answer 2026-11-06; the Starter card's "See an example" link points to it), shown through real screenshots in `public/images/portfolio/beaute-elegance-*.webp`, in the home hero and in the Réalisations section. The owner will host another site for the hero (announced 2026-11-03): link, name, description, plan and whether it is a client site or a demo still to be supplied.
 - Five other site types are offered (restaurant, coaching, e-commerce, photographer, NGO) but have no live site yet: they are listed without imagery until real screenshots exist. The former stock photos were removed in the October 2026 redesign (still in git history).
 - Real figures and real client testimonials exist but have not been provided yet (owner will supply them). Until then, no figure or testimonial may be displayed; the stats and testimonials sections stay hidden when their data files are empty.

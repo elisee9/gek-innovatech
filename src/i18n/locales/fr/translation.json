@@ -356,6 +356,11 @@
         "id": 7,
         "title": "Twenty One Nexus",
         "description": "Site d'un logiciel de recrutement, en français et en anglais : recherche de profils, évaluation et premier contact automatisés."
+      },
+      {
+        "id": 8,
+        "title": "Concept Bat 92",
+        "description": "Site d'une entreprise de rénovation et de construction à Paris et en Île-de-France : services, réalisations, avis clients et demande de devis."
       }
     ]
   },

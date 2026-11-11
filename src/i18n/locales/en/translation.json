@@ -356,6 +356,11 @@
         "id": 7,
         "title": "Twenty One Nexus",
         "description": "Website for a recruitment software, in French and English: automated profile search, scoring and first contact."
+      },
+      {
+        "id": 8,
+        "title": "Concept Bat 92",
+        "description": "Website for a renovation and construction company in Paris and the Île-de-France region: services, past projects, client reviews and quote requests."
       }
     ]
   },
