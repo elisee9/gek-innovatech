@@ -11,7 +11,8 @@ import { EASE } from "../utils/motion";
 
 const LANGS = ["fr", "en"];
 
-const LanguageSwitcher = ({ layoutGroup, className = "" }) => {
+// size="lg" : boutons de 44 px de haut, à la taille d'un doigt, pour le menu du téléphone.
+const LanguageSwitcher = ({ layoutGroup, size = "sm", className = "" }) => {
    const { t, i18n } = useTranslation();
    const current = i18n.resolvedLanguage || i18n.language;
 
@@ -32,7 +33,9 @@ const LanguageSwitcher = ({ layoutGroup, className = "" }) => {
                type="button"
                onClick={() => switchLang(lang)}
                aria-pressed={current === lang}
-               className={`relative h-8 rounded-full px-3 text-[13px] font-medium uppercase tracking-wide transition-colors duration-300 ${
+               className={`relative rounded-full font-medium uppercase tracking-wide transition-colors duration-300 ${
+                  size === "lg" ? "h-11 min-w-14 px-4 text-[15px]" : "h-8 px-3 text-[13px]"
+               } ${
                   current === lang ? "text-ink" : "text-muted hover:text-fg"
                }`}
             >
@@ -206,6 +209,11 @@ const Header = () => {
                   onClick={(e) => e.target.closest("a") && setOpen(false)}
                   className="mx-auto mt-2 max-h-[calc(100dvh-6rem)] max-w-[1200px] overflow-y-auto overscroll-contain rounded-[28px] border border-line bg-ink-2 p-6 shadow-float lg:hidden"
                >
+                  {/* Sur téléphone, la langue se choisit en haut du menu, visible dès l'ouverture sans faire défiler. */}
+                  <div className="mb-2 flex items-center justify-between gap-4 border-b border-line pb-4 sm:hidden">
+                     <span className="text-[15px] text-muted">{t("header.language")}</span>
+                     <LanguageSwitcher layoutGroup="sheet" size="lg" className="flex" />
+                  </div>
                   <nav aria-label={t("header.navLabel")}>
                      <motion.ul
                         initial="hidden"
@@ -252,7 +260,6 @@ const Header = () => {
                      <Pill to={{ pathname: "/", hash: "#devis" }} size="lg">
                         {t("common.requestQuote")}
                      </Pill>
-                     <LanguageSwitcher layoutGroup="sheet" className="mt-2 flex self-start sm:hidden" />
                   </div>
                </motion.div>
             )}
