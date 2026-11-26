@@ -1,0 +1,47 @@
+@theme {
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+
+  /* Charte GEK : bleu, rouge, blanc, sur fond clair. Aucun noir : les textes prennent le bleu du bandeau.
+     Toutes les couleurs du site partent de ce bloc, lumières, halos, logo et paysage de points compris :
+     changer de charte, c'est changer ces lignes.
+     Le bandeau du haut de chaque page (.band-dark, plus bas) redéfinit les mêmes noms pour son fond marine. */
+  --color-ink: #f4f6fa;
+  --color-ink-2: #ffffff;
+  --color-ink-3: #edf1f7;
+  --color-line: rgb(29 70 123 / 0.12);
+  --color-line-strong: rgb(29 70 123 / 0.22);
+  --color-shade: rgb(18 48 92);
+
+  --color-fg: #1d467b;
+  --color-fg-hover: #143560;
+  --color-muted: #456189;
+  --color-dim: #526c92;
+  --color-subtle: #526c92;
+
+  /* Le bleu est la marque : logo, titres, textes, liens, focus, boutons de validation, bandeau du haut.
+     Le rouge est l'action : son fond (signal-fill) habille les boutons WhatsApp, en texte blanc ;
+     le rouge des marques (signal) sert aux coches, aux points « en ligne » et au mot mis en valeur d'un titre. */
+  --color-brand: #1d467b;
+  --color-brand-deep: #00182f;
+  --color-brand-band: #1d467b;
+  --color-brand-text: #1d467b;
+  --color-signal: #cc2219;
+  --color-signal-fill: #d42a1c;
+  --color-signal-fill-hover: #b81e15;
+  --color-on-signal: #ffffff;
+  --color-danger: #b42318;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Ombres et lueurs, tirées des couleurs ci-dessus (shade : l'encre marine des ombres, noire dans le bandeau). */
+  --shadow-card: 0 1px 2px color-mix(in oklab, var(--color-shade) 5%, transparent), 0 14px 34px -22px color-mix(in oklab, var(--color-shade) 30%, transparent);
+  --shadow-float: 0 1px 2px color-mix(in oklab, var(--color-shade) 6%, transparent), 0 28px 60px -30px color-mix(in oklab, var(--color-shade) 38%, transparent);
+  --shadow-frame: 0 40px 90px -42px color-mix(in oklab, var(--color-shade) 55%, transparent);
+  --shadow-lit: inset 0 1px 0 rgb(255 255 255 / 0.3), 0 12px 28px -14px color-mix(in oklab, var(--color-signal) 60%, transparent);
+  --shadow-lit-hover: inset 0 1px 0 rgb(255 255 255 / 0.3), 0 18px 38px -14px color-mix(in oklab, var(--color-signal) 75%, transparent);
+  --shadow-lit-bar: inset 0 1px 0 rgb(255 255 255 / 0.3), 0 18px 40px -14px color-mix(in oklab, var(--color-signal) 55%, transparent);
+  --shadow-spark: 0 0 10px 2px color-mix(in oklab, var(--color-signal) 40%, transparent);
+  --shadow-featured: 0 40px 90px -50px color-mix(in oklab, var(--color-brand) 60%, transparent);
+  --shadow-featured-hover: 0 50px 110px -46px color-mix(in oklab, var(--color-brand) 75%, transparent);
+  --shadow-chat: 0 14px 32px -8px color-mix(in oklab, var(--color-shade) 60%, transparent);
+}

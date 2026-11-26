@@ -4,11 +4,16 @@
 /plans              /plans.html              200
 /portfolio          /portfolio.html          200
 /contact            /contact.html            200
+/rendez-vous        /rendez-vous.html        200
 /mentions-legales   /mentions-legales.html   200
 /merci              /merci.html              200
 /paiement-annule    /paiement-annule.html    200
 /notdone            /notdone.html            200
 /notpay             /notpay.html             200
+
+# Tableau de bord : toutes ses adresses ouvrent la même application.
+/admin              /admin.html              200
+/admin/*            /admin.html              200
 
 # Une adresse inconnue renvoie une vraie erreur 404 : sinon, Google la prend pour une page normale sans contenu.
 /*                  /404.html                404

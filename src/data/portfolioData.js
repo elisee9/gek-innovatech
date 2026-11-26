@@ -1,3 +1,4 @@
+// Valeurs d'origine : le tableau de bord (Site > Réalisations) les remplace.
 // Réalisations. Seul un site réellement en ligne porte des captures ; les autres sont des types de sites proposés.
 // Pour ajouter une vraie réalisation : son lien public et deux captures pleine page en .webp (ordinateur 1600 px de large,
 // mobile 520 px), avec leurs dimensions exactes : le défilement dans les cadres en dépend.

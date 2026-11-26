@@ -2,14 +2,16 @@ import { Writable } from "node:stream";
 import { renderToPipeableStream } from "react-dom/server";
 import { HelmetProvider } from "react-helmet-async";
 import { createStaticHandler, createStaticRouter, StaticRouterProvider } from "react-router-dom";
-import "./i18n/i18n";
+import { applyContent } from "./content/apply";
 import { routes } from "./routes/AppRoutes";
 
 const handler = createStaticHandler(routes);
 
-// Rend une page à la compilation (voir scripts/prerender.mjs), avec les vrais composants :
-// son texte et ses balises SEO viennent de la même source que le site.
-export const prerender = async (path) => {
+// Rend une page avec les vrais composants : son texte et ses balises SEO viennent de la même source que le site.
+// Utilisé à la compilation (scripts/prerender.mjs) et à la demande, avec le contenu enregistré depuis le
+// tableau de bord (netlify/functions/site.mjs).
+export const prerender = async (path, saved = null) => {
+   applyContent(saved);
    const context = await handler.query(new Request(`https://gek-innovatech.netlify.app${path}`));
    const router = createStaticRouter(handler.dataRoutes, context);
    const helmetContext = {};

@@ -1,6 +1,6 @@
 // Prix en euros (paiement unique). Les textes des offres sont dans les fichiers de traduction.
-// Si un prix change ici, mettre aussi à jour le prompt du chatbot (netlify/functions/chat.js)
-// et les textes de référencement (« meta » dans les fichiers de traduction : accueil et offres).
+// Ce sont les valeurs d'origine : celles enregistrées depuis le tableau de bord les remplacent (src/content/).
+// Les prix cités dans les textes ({prix_min}, {prix_pro}…) et par l'assistant suivent automatiquement.
 const plans = [
    {
       id: 1,

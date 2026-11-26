@@ -10,7 +10,9 @@ import Select from "./Select";
 import DrawIcon from "./DrawIcon";
 import plans from "../data/plans";
 import { whatsappLink } from "../data/contact";
+import { FEATURES } from "../data/features";
 import { formatPrice } from "../utils/formatPrice";
+import { postJson } from "../utils/api";
 import { EASE } from "../utils/motion";
 
 const EMAILJS_SERVICE_ID = "service_uqzdlh2";
@@ -23,7 +25,7 @@ const PLANS = ["starter", "pro", "premium", "wordpress", "mobile", "unsure"];
 // Détail affiché à droite des demandes sur devis (pas de prix publié).
 const QUOTE_META = { wordpress: "pricing.wordpress.meta", mobile: "form.mobileMeta" };
 const MESSAGE_MAX_HEIGHT = 360; // au-delà, la zone de texte défile au lieu de grandir
-const EMPTY = { name: "", email: "", phone: "", plan: "unsure", message: "" };
+const EMPTY = { name: "", email: "", phone: "", plan: "unsure", message: "", marketing: false, website: "" };
 
 const validate = (v) => {
    const errors = {};
@@ -50,6 +52,7 @@ const ContactForm = ({ titleAs: Title = "h3" }) => {
    const [errors, setErrors] = useState({});
    const [status, setStatus] = useState("idle");
    const [sentTo, setSentTo] = useState(null);
+   const openedAt = useRef(Date.now());
    const lang = i18n.resolvedLanguage || i18n.language;
    const planTexts = t("pricing.plans", { returnObjects: true });
    const planOptions = PLANS.map((plan, i) => ({
@@ -104,13 +107,34 @@ const ContactForm = ({ titleAs: Title = "h3" }) => {
          `— ${t("form.langLabel")} : ${(i18n.resolvedLanguage || i18n.language).toUpperCase()}`,
       ].join("\n");
 
+      // La demande est rangée dans le tableau de bord. EmailJS prévient GEK si le serveur ne l'a pas déjà fait,
+      // et prend le relais s'il est indisponible : une demande n'est perdue que si les deux échouent.
+      const stored = await postJson("/api/demande", {
+         name: values.name,
+         email: values.email,
+         phone: values.phone,
+         plan: values.plan,
+         message: values.message,
+         marketing: values.marketing,
+         website: values.website,
+         lang,
+         page: window.location.pathname,
+         elapsed: Date.now() - openedAt.current,
+      }).catch(() => null);
+
       try {
-         await emailjs.send(
-            EMAILJS_SERVICE_ID,
-            EMAILJS_TEMPLATE_ID,
-            { name: values.name.trim(), email: values.email.trim(), message, phone: values.phone.trim(), plan: planLabel },
-            EMAILJS_PUBLIC_KEY
-         );
+         if (!stored?.notified) {
+            await emailjs
+               .send(
+                  EMAILJS_SERVICE_ID,
+                  EMAILJS_TEMPLATE_ID,
+                  { name: values.name.trim(), email: values.email.trim(), message, phone: values.phone.trim(), plan: planLabel },
+                  EMAILJS_PUBLIC_KEY
+               )
+               .catch((error) => {
+                  if (!stored) throw error;
+               });
+         }
          setSentTo({ name: values.name.trim(), email: values.email.trim() });
          setValues(EMPTY);
          setStatus("sent");
@@ -167,7 +191,7 @@ const ContactForm = ({ titleAs: Title = "h3" }) => {
          ref={formRef}
          onSubmit={onSubmit}
          noValidate
-         className="rounded-[28px] border border-line bg-ink-2 p-6 shadow-float sm:p-9"
+         className="relative rounded-[28px] border border-line bg-ink-2 p-6 shadow-float sm:p-9"
       >
          <Title className="text-[24px] font-semibold tracking-[-0.02em]">{t("form.title")}</Title>
          <p className="mt-2 text-[15px] text-muted">{t("form.intro")}</p>
@@ -264,6 +288,24 @@ const ContactForm = ({ titleAs: Title = "h3" }) => {
                {errorText("message")}
             </div>
          </div>
+
+         {/* Piège à robots : un champ que personne ne voit et que seul un programme remplit. */}
+         <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+            <label htmlFor={`${id}-website`}>Site</label>
+            <input id={`${id}-website`} name="website" type="text" tabIndex={-1} autoComplete="off" value={values.website} onChange={update("website")} />
+         </div>
+
+         {FEATURES.newsletter && (
+            <label className="mt-5 flex cursor-pointer items-start gap-3 text-[14px] leading-relaxed text-muted">
+               <input
+                  type="checkbox"
+                  checked={values.marketing}
+                  onChange={(e) => setValues((prev) => ({ ...prev, marketing: e.target.checked }))}
+                  className="mt-1 h-[18px] w-[18px] flex-none accent-brand"
+               />
+               {t("form.optIn")}
+            </label>
+         )}
 
          {status === "error" && (
             <motion.div

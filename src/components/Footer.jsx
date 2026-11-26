@@ -1,11 +1,16 @@
 ﻿import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTiktok, FaWhatsapp, FaYoutube } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import Logo from "./Logo";
 import Pill from "./Pill";
 import { RevealGroup, RevealItem } from "./Reveal";
+import Newsletter from "./Newsletter";
 import { CONTACT, whatsappLink } from "../data/contact";
+import { FEATURES, SOCIAL } from "../data/features";
+
+// Seuls les réseaux renseignés dans le tableau de bord s'affichent.
+const NETWORKS = { facebook: ["Facebook", FaFacebookF], instagram: ["Instagram", FaInstagram], linkedin: ["LinkedIn", FaLinkedinIn], tiktok: ["TikTok", FaTiktok], youtube: ["YouTube", FaYoutube] };
 
 const Footer = () => {
    const { t } = useTranslation();
@@ -18,7 +23,9 @@ const Footer = () => {
       { name: t("header.plans"), path: "/plans" },
       { name: t("header.portfolio"), path: "/portfolio" },
       { name: t("header.contact"), path: "/contact" },
+      ...(FEATURES.booking ? [{ name: t("booking.link"), path: "/rendez-vous" }] : []),
    ];
+   const networks = Object.entries(NETWORKS).filter(([key]) => SOCIAL[key]);
 
    const colTitle = "mb-5 text-[13px] font-medium uppercase tracking-[0.08em] text-subtle";
    const linkCls = "text-[15px] text-muted transition-colors hover:text-fg";
@@ -40,6 +47,23 @@ const Footer = () => {
                >
                   {t("common.writeWhatsapp")}
                </Pill>
+               {networks.length > 0 && (
+                  <ul className="mt-6 flex gap-2">
+                     {networks.map(([key, [name, Icon]]) => (
+                        <li key={key}>
+                           <a
+                              href={SOCIAL[key]}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={name}
+                              className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-brand-text transition-colors hover:border-fg/30 hover:bg-ink-3"
+                           >
+                              <Icon size={16} aria-hidden="true" />
+                           </a>
+                        </li>
+                     ))}
+                  </ul>
+               )}
             </RevealItem>
 
             <RevealItem>
@@ -101,6 +125,8 @@ const Footer = () => {
                </ul>
             </RevealItem>
          </RevealGroup>
+
+         {FEATURES.newsletter && <Newsletter />}
 
          <div className="border-t border-line">
             <div className="mx-auto flex max-w-[1200px] flex-col gap-3 px-5 py-6 text-[14px] text-subtle sm:flex-row sm:items-center sm:justify-between sm:px-8">

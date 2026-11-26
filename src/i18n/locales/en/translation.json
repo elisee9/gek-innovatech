@@ -12,9 +12,9 @@
   "meta": {
     "home": {
       "title": "Websites and Mobile Apps in Benin | GEK INNOVATECH",
-      "description": "Web and mobile agency based in Benin: professional websites at a fixed price from €95, delivered in as little as 1 week, and mobile apps on quote.",
+      "description": "Web and mobile agency based in Benin: professional websites at a fixed price from {prix_min}, delivered in as little as 1 week, and mobile apps on quote.",
       "ogTitle": "GEK INNOVATECH | Websites and Mobile Apps",
-      "ogDescription": "Websites at a fixed price from €95, delivered in as little as 1 week, and mobile apps on quote, for businesses in Africa and across the diaspora."
+      "ogDescription": "Websites at a fixed price from {prix_min}, delivered in as little as 1 week, and mobile apps on quote, for businesses in Africa and across the diaspora."
     },
     "about": {
       "title": "Web Agency in Benin: Who We Are | GEK INNOVATECH",
@@ -29,10 +29,10 @@
       "ogDescription": "Everything you need to be found online, from one team."
     },
     "plans": {
-      "title": "Website Pricing: Plans from €95 | GEK INNOVATECH",
-      "description": "Three fixed-price plans to build your website: Starter at €95, Pro at €170, Premium at €350. One-time payment, delivered in as little as 1 week.",
+      "title": "Website Pricing: Plans from {prix_min} | GEK INNOVATECH",
+      "description": "Three fixed-price plans to build your website: Starter at {prix_starter}, Pro at {prix_pro}, Premium at {prix_premium}. One-time payment, delivered in as little as 1 week.",
       "ogTitle": "Our Plans and Pricing | GEK INNOVATECH",
-      "ogDescription": "Starter at €95, Pro at €170, Premium at €350: compare our plans and choose the one that suits you."
+      "ogDescription": "Starter at {prix_starter}, Pro at {prix_pro}, Premium at {prix_premium}: compare our plans and choose the one that suits you."
     },
     "contact": {
       "title": "Request a Quote for Your Website | GEK INNOVATECH",
@@ -49,6 +49,10 @@
     "mentions": {
       "title": "Legal Notice | GEK INNOVATECH",
       "description": "Legal notice and privacy policy of GEK INNOVATECH."
+    },
+    "booking": {
+      "title": "Book a meeting | GEK INNOVATECH",
+      "description": "Choose a time to talk about your website or mobile app project with GEK INNOVATECH."
     },
     "merci": {
       "title": "Payment Successful | GEK INNOVATECH",
@@ -94,7 +98,7 @@
     "titleLine1": "Your business, credible on the web and on mobile,",
     "titleLine2": "clear price and timeline.",
     "lead": "GEK INNOVATECH builds websites and mobile apps for businesses in Africa and across the diaspora. Websites delivered in as little as 1 week, with a direct contact on WhatsApp.",
-    "priceFrom": "From €95",
+    "priceFrom": "From {prix_min}",
     "priceNote": "one-time payment",
     "points": [
       "Fixed, published prices",
@@ -410,9 +414,60 @@
       "email": "Enter a valid email address, for example you@example.com.",
       "message": "Describe your project in a few words (at least 10 characters)."
     },
-    "privacy": "Your details are only used to answer your request.",
+    "privacy": "Your details are used to reply to you and are never sold.",
     "privacyLink": "Legal notice",
+    "optIn": "I would also like to receive advice from GEK INNOVATECH by email (optional).",
     "langLabel": "Language"
+  },
+  "booking": {
+    "title": "Book a meeting",
+    "subtitle": "Choose a time and we will call you to talk about your project.",
+    "pickDay": "Choose a day",
+    "pickTime": "Choose a time",
+    "zone": "Times shown in your time zone: {{zone}}.",
+    "duration": "{{minutes}} minutes",
+    "detailsTitle": "Your details",
+    "chosen": "Chosen time",
+    "change": "Change",
+    "mode": "How to reach you",
+    "modes": {
+      "whatsapp": "WhatsApp call",
+      "phone": "Phone call",
+      "video": "Video call"
+    },
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone / WhatsApp",
+    "topic": "What would you like to talk about?",
+    "topicPh": "Your business, your project, your questions…",
+    "submit": "Confirm the meeting",
+    "sending": "Booking…",
+    "successTitle": "Meeting confirmed",
+    "successText": "Thank you {{name}}, speak to you on {{when}}.",
+    "successEmail": "The confirmation is on its way to {{email}}, with a link to cancel.",
+    "loading": "Loading available times…",
+    "loadError": "The available times could not be loaded. Try again, or message us on WhatsApp.",
+    "retry": "Try again",
+    "closedTitle": "Online booking is closed for now",
+    "closedText": "Message us on WhatsApp and we will agree on a time together.",
+    "emptyTitle": "No time available for now",
+    "errors": {
+      "name": "Enter your full name (at least 2 characters).",
+      "email": "Enter a valid email address, for example you@example.com.",
+      "phone": "Enter the number to call, with the country code."
+    },
+    "link": "Book a meeting"
+  },
+  "newsletter": {
+    "title": "Our advice by email",
+    "text": "Advice for your website and your online visibility. Unsubscribe in one click.",
+    "label": "Your email",
+    "placeholder": "you@example.com",
+    "submit": "Subscribe",
+    "sending": "Sending…",
+    "success": "You are subscribed, thank you.",
+    "invalid": "Enter a valid email address.",
+    "error": "The subscription failed. Try again in a moment."
   },
   "merci": {
     "title": "Payment successful",
@@ -465,8 +520,8 @@
     },
     "data": {
       "title": "Personal Data",
-      "text1": "Data collected via the contact form (full name, email, phone, message) is used solely to respond to your requests and is never sold. It is transmitted through EmailJS, our email delivery provider. Messages typed into the virtual assistant are processed by Google (Gemini) to generate replies.",
-      "text2": "In accordance with GDPR principles, you have the right to access, correct and delete your data.",
+      "text1": "The data collected through the contact form (full name, email, phone, message), online booking and email subscription is used to answer your requests, to organise our exchanges and, if you agreed to it, to send you our advice. It is never resold. It is stored with Netlify, our hosting provider, and passes through Google (Gmail) or EmailJS, our email services. Our replies may be prepared with the help of Google (Gemini), then reviewed by our team. Messages typed into the virtual assistant are processed by Google (Gemini) to generate the answers, and kept for 90 days.",
+      "text2": "In accordance with the principles of the GDPR, you have the right to access, correct and delete your data. Every information email contains a link to stop receiving them. The site also counts its visits and the clicks on its contact buttons, without identifying visitors.",
       "rights": "To exercise these rights, contact us"
     },
     "cookies": {

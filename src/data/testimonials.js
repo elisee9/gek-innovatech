@@ -1,3 +1,4 @@
+// Se remplit depuis le tableau de bord (Site > Avis et chiffres).
 // Avis de vrais clients (avec leur accord). Tant que la liste est vide, la section n'est pas affichée.
 // Exemple de format :
 // {

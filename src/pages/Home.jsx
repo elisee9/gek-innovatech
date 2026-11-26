@@ -11,23 +11,27 @@ import ProofSection from "../sections/ProofSection";
 import ContactSection from "../sections/ContactSection";
 import { CONTACT, SITE } from "../data/contact";
 import plans from "../data/plans";
+import { SOCIAL } from "../data/features";
 
-const amounts = plans.map((plan) => plan.amount);
-
-const STRUCTURED_DATA = {
-   "@context": "https://schema.org",
-   "@type": "ProfessionalService",
-   name: "GEK INNOVATECH",
-   url: `${SITE}/`,
-   logo: `${SITE}/logo.svg`,
-   image: `${SITE}/og-image.jpeg`,
-   description: "Agence web basée au Bénin, spécialisée dans la création de sites web performants, modernes et sur mesure.",
-   telephone: "+2290165426510",
-   email: CONTACT.email,
-   address: { "@type": "PostalAddress", addressCountry: "BJ" },
-   areaServed: ["Africa", "Europe"],
-   serviceType: ["Web Design", "Web Development", "SEO", "Mobile Applications"],
-   priceRange: `${Math.min(...amounts)} € - ${Math.max(...amounts)} €`,
+const structuredData = () => {
+   const amounts = plans.map((plan) => plan.amount);
+   const sameAs = Object.values(SOCIAL).filter(Boolean);
+   return {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: "GEK INNOVATECH",
+      url: `${SITE}/`,
+      logo: `${SITE}/logo.svg`,
+      image: `${SITE}/og-image.jpeg`,
+      description: "Agence web basée au Bénin, spécialisée dans la création de sites web performants, modernes et sur mesure.",
+      telephone: CONTACT.phoneHref.replace("tel:", ""),
+      email: CONTACT.email,
+      address: { "@type": "PostalAddress", addressCountry: "BJ" },
+      areaServed: ["Africa", "Europe"],
+      serviceType: ["Web Design", "Web Development", "SEO", "Mobile Applications"],
+      priceRange: `${Math.min(...amounts)} € - ${Math.max(...amounts)} €`,
+      ...(sameAs.length ? { sameAs } : {}),
+   };
 };
 
 // Aide Google à afficher le nom du site dans ses résultats.
@@ -55,7 +59,7 @@ const Home = () => {
    return (
       <>
          <Seo page="home" path="/">
-            <script type="application/ld+json">{JSON.stringify(STRUCTURED_DATA)}</script>
+            <script type="application/ld+json">{JSON.stringify(structuredData())}</script>
             <script type="application/ld+json">{JSON.stringify(WEBSITE_DATA)}</script>
          </Seo>
          <HeroSection />

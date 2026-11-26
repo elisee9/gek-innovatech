@@ -7,7 +7,9 @@ import Footer from "../components/Footer";
 import PageBanner from "../components/PageBanner";
 import QuietBoundary from "../components/QuietBoundary";
 import useStageLights from "../hooks/useStageLights";
+import { FEATURES } from "../data/features";
 import { afterPaint } from "../utils/afterPaint";
+import { countVisit, watchContactClicks } from "../utils/track";
 import { EASE } from "../utils/motion";
 
 // Éléments secondaires, téléchargés et montés une fois la page affichée : ils ne retardent jamais le premier écran.
@@ -56,8 +58,12 @@ const MainLayout = () => {
    useStageLights();
    useEffect(() => {
       firstPage.current = false;
-      return afterPaint(() => setExtras(true));
+      return afterPaint(() => {
+         setExtras(true);
+         countVisit();
+      });
    }, []);
+   useEffect(() => watchContactClicks(), []);
 
    return (
       <div className="relative isolate flex min-h-screen flex-col overflow-x-clip">
@@ -99,9 +105,11 @@ const MainLayout = () => {
                <QuietBoundary>
                   <StickyCta />
                </QuietBoundary>
-               <QuietBoundary>
-                  <ChatBot />
-               </QuietBoundary>
+               {FEATURES.chat && (
+                  <QuietBoundary>
+                     <ChatBot />
+                  </QuietBoundary>
+               )}
             </>
          )}
       </div>

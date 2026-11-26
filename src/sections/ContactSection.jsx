@@ -7,6 +7,7 @@ import LitCard from "../components/LitCard";
 import DrawIcon from "../components/DrawIcon";
 import { Reveal, RevealGroup, RevealItem, RevealText, RevealWords } from "../components/Reveal";
 import { CONTACT, whatsappLink } from "../data/contact";
+import { FEATURES } from "../data/features";
 
 // heading={false} : sur la page Contact, le titre et son texte sont déjà dans le bandeau.
 const ContactSection = ({ heading = true }) => {
@@ -61,6 +62,14 @@ const ContactSection = ({ heading = true }) => {
                      </Pill>
                   </LitCard>
                </Reveal>
+
+               {FEATURES.booking && (
+                  <Reveal delay={0.4} className="mt-4">
+                     <Pill to="/rendez-vous" size="lg" className="w-full">
+                        {t("booking.link")}
+                     </Pill>
+                  </Reveal>
+               )}
 
                <RevealGroup as="dl" stagger={0.1} delay={0.45} className="mt-8">
                   {rows.map(({ Icon, label, value, href, tabular }, index) => (

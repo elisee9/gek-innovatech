@@ -28,6 +28,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Données du tableau de bord en local (demandes et emails de test)
+.donnees/
+
 # Local Netlify folder
 .netlify
 

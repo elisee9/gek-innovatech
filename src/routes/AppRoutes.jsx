@@ -14,6 +14,9 @@ const NotFound = lazy(() => import("../pages/NotFound"));
 const NotDone = lazy(() => import("../pages/NotDone"));
 const NotPay = lazy(() => import("../pages/NotPay"));
 const MentionsLegales = lazy(() => import("../pages/MentionsLegales"));
+const Booking = lazy(() => import("../pages/Booking"));
+// Le tableau de bord n'est jamais rendu par le serveur : il ne part pas dans le fichier des fonctions.
+const Admin = import.meta.env.SSR ? null : lazy(() => import("../admin/AdminApp"));
 
 const Fallback = () => (
    <div className="min-h-screen bg-ink" />
@@ -40,11 +43,13 @@ export const routes = [
          { path: "plans", element: wrap(Plans), handle: banner("header.plans", "pricing.title", "pricing.subtitle") },
          { path: "contact", element: wrap(Contact), handle: banner("header.contact", "contactSection.title", "contactSection.subtitle") },
          { path: "portfolio", element: wrap(Portfolio), handle: banner("header.portfolio", "portfolio.sectionTitle", "portfolio.subtitle") },
+         { path: "rendez-vous", element: wrap(Booking), handle: banner("booking.title", "booking.title", "booking.subtitle") },
          { path: "mentions-legales", element: wrap(MentionsLegales), handle: banner("mentions.title", "mentions.title") },
          { path: "merci", element: wrap(Merci), handle: banner("merci.title", "merci.title") },
          { path: "paiement-annule", element: wrap(PaiementAnnule), handle: banner("paiementAnnule.title", "paiementAnnule.title") },
       ],
    },
+   ...(Admin ? [{ path: "/admin/*", element: wrap(Admin) }] : []),
    { path: "/notdone", element: wrap(NotDone) },
    { path: "/notpay", element: wrap(NotPay) },
    { path: "*", element: wrap(NotFound) },

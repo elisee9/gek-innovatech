@@ -1,0 +1,102 @@
+/* Feuille du tableau de bord, chargée seulement sous /admin. Même charte que le site (src/theme.css). */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "../theme.css";
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source "./";
+
+@theme {
+  /* États, toujours accompagnés d'un mot ou d'une icône. */
+  --color-ok: #1a7446;
+  --color-warn: #8a5800;
+  --color-info: #2b62ad;
+}
+
+@layer components {
+  .adm {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .adm dialog {
+    color: var(--color-fg);
+  }
+
+  .adm dialog::backdrop {
+    background: color-mix(in oklab, var(--color-brand-deep) 45%, transparent);
+  }
+
+  .adm dialog.adm-drawer {
+    margin: 0 0 0 auto;
+    height: 100dvh;
+    max-height: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .adm dialog[open] {
+      animation: adm-fade 0.18s ease-out;
+    }
+
+    .adm dialog.adm-drawer[open] {
+      animation: adm-slide 0.24s var(--ease-expo);
+    }
+
+    .adm-skeleton {
+      animation: adm-pulse 1.4s ease-in-out infinite;
+    }
+  }
+
+  .adm-skeleton {
+    border-radius: 10px;
+    background: var(--color-ink-3);
+  }
+
+  .adm input[type="date"],
+  .adm input[type="time"],
+  .adm input[type="datetime-local"] {
+    min-width: 0;
+    appearance: none;
+  }
+
+  .adm input[type="number"] {
+    appearance: textfield;
+  }
+
+  .adm input[type="search"]::-webkit-search-cancel-button,
+  .adm input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+  }
+
+  /* Barres de défilement discrètes, y compris sur le menu marine. */
+  .adm nav,
+  .adm ul,
+  .adm dialog div {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--color-fg) 22%, transparent) transparent;
+  }
+
+  /* Le champ qui contient un numéro ou un montant garde ses chiffres alignés. */
+  .adm .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes adm-fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes adm-slide {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+}
+
+@keyframes adm-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}

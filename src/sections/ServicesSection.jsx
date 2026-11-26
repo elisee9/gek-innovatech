@@ -1,12 +1,46 @@
-import { BarChart3, Cloud, Code2, LayoutTemplate, Palette, Rocket, Search, ShieldCheck, Smartphone } from "lucide-react";
+import {
+   BarChart3,
+   Bot,
+   Camera,
+   Cloud,
+   Code2,
+   LayoutTemplate,
+   Mail,
+   Megaphone,
+   Palette,
+   Rocket,
+   Search,
+   ShieldCheck,
+   ShoppingCart,
+   Smartphone,
+   Users,
+   Wrench,
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
 import SectionHeading from "../components/SectionHeading";
 import Pill from "../components/Pill";
 import DrawIcon from "../components/DrawIcon";
 import { RevealGroup, RevealItem, Unroll } from "../components/Reveal";
 
-// Dans l'ordre des services des fichiers de traduction.
-const ICONS = [Code2, LayoutTemplate, Smartphone, BarChart3, Rocket, Palette, Search, Cloud, ShieldCheck];
+// Icône choisie pour chaque service dans le tableau de bord (clés : SERVICE_ICONS de src/content/model.js).
+const ICONS = {
+   code: Code2,
+   layout: LayoutTemplate,
+   phone: Smartphone,
+   chart: BarChart3,
+   rocket: Rocket,
+   palette: Palette,
+   search: Search,
+   cloud: Cloud,
+   shield: ShieldCheck,
+   cart: ShoppingCart,
+   mail: Mail,
+   megaphone: Megaphone,
+   camera: Camera,
+   users: Users,
+   wrench: Wrench,
+   bot: Bot,
+};
 
 // Tableau réglé : service, description, et dans quelles offres il est inclus (d'après le détail des offres).
 // Il se déroule à son arrivée, chaque icône se dessine, et la rangée survolée s'éclaire sous la souris.
@@ -39,7 +73,7 @@ const ServicesSection = ({ heading = true }) => {
             </div>
             <RevealGroup as="ul" stagger={0.07} delay={0.25}>
                {items.map((service, index) => {
-                  const Icon = ICONS[index];
+                  const Icon = ICONS[service.icon] || Code2;
                   const quote = service.includedKey === "quote";
                   const chip = quote ? "border border-line-strong text-muted" : "bg-signal/12 text-signal group-hover:bg-signal/20";
                   return (

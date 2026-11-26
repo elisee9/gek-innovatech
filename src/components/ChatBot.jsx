@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, Send, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Logo from "./Logo";
+import { postJson } from "../utils/api";
 
 const TypingDots = () => (
    <div className="flex justify-start" aria-hidden="true">
@@ -22,8 +23,10 @@ const TypingDots = () => (
 );
 
 const ChatBot = () => {
-   const { t } = useTranslation();
+   const { t, i18n } = useTranslation();
    const [isOpen, setIsOpen] = useState(false);
+   // Regroupe les messages d'une même conversation dans le tableau de bord ; rien n'est gardé dans le navigateur.
+   const conversation = useRef(Array.from({ length: 16 }, () => Math.floor(Math.random() * 36).toString(36)).join(""));
    // Seulement les échanges réels : le message d'accueil est rendu à part, dans la langue courante.
    const [messages, setMessages] = useState([]);
    const [input, setInput] = useState("");
@@ -63,13 +66,11 @@ const ChatBot = () => {
       setLoading(true);
 
       try {
-         const response = await fetch("/.netlify/functions/chat", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ messages: updatedMessages }),
+         const data = await postJson("/.netlify/functions/chat", {
+            messages: updatedMessages,
+            id: conversation.current,
+            lang: i18n.resolvedLanguage || i18n.language,
          });
-         if (!response.ok) throw new Error("API error");
-         const data = await response.json();
          setMessages((prev) => [...prev, { role: "assistant", content: data.content }]);
       } catch {
          setMessages((prev) => [...prev, { role: "assistant", content: t("chatbot.error") }]);

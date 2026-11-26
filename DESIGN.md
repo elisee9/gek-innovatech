@@ -348,6 +348,16 @@ One shared curve (`cubic-bezier(0.16, 1, 0.3, 1)`, token `--ease-expo`, a firm d
 
 **The Moving Light Rule.** Motion is light and matter answering the visitor. Entrances run once; only the point terrain, the marquee, the orbit ring, the scrolling screenshots and the pill shine loop, each paused off-screen. Nothing replays on scroll back.
 
+## Admin dashboard (/admin)
+
+An Operate surface for the owner, built in the same world rather than a second one: the same tokens (`src/theme.css`, shared with the site), Barlow, blue text and hairlines, with its own stylesheet (`src/admin/admin.css`) so none of its classes reach the public pages. The left rail is the site's navy band (`.band-dark`), so the brand reads at a glance; everything else is the pale ground with white 20px panels. Familiarity wins over expression: tables, ruled lists, tabs, side drawers (native `<dialog>`), a search palette (Ctrl K) and a bottom bar of five shortcuts on phones.
+
+- **Color jobs.** Navy fills confirm (save, send); red stays the WhatsApp fill and the "unread / new" dot, never a generic button. States use three extra tokens, always with a word: `ok` (green, done, paid, on), `warn` (amber, to complete, expired) and `info` (blue, in progress); `danger` stays for errors and destructive actions.
+- **Saving.** Nothing goes live while typing: a sticky bar appears only when a page has unsaved changes, and leaving the page asks first. Every save is undoable from Settings > Backup.
+- **Assistant.** Every AI action is an outlined button with a sparkle icon; its output lands in an editable field with a note asking to proofread it. Nothing is sent by the assistant alone.
+- **Charts.** One series, Brand Navy columns at most 24px wide with 4px rounded tops, hairline grid, a tooltip on hover and keyboard focus, and the figures in a table behind "Voir les chiffres".
+- **Motion.** State only: 150 to 250ms color and transform transitions, a drawer that slides in, skeletons while loading; no entrance choreography.
+
 ## Do's and Don'ts
 
 ### Do:

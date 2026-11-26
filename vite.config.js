@@ -20,8 +20,26 @@ const preloadFonts = () => ({
 });
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
    plugins: [react(), tailwindcss(), preloadFonts()],
-   // La génération des pages (scripts/prerender.mjs) embarque toutes ses dépendances dans un seul fichier.
+   // La génération des pages embarque toutes ses dépendances : les fonctions n'ont rien d'autre à charger.
    ssr: { noExternal: true },
-});
+   build: isSsrBuild
+      ? {
+           copyPublicDir: false,
+           rollupOptions: {
+              // entry-prerender rend les pages ; content donne le contenu du site au chat et au tableau de bord.
+              input: { "entry-prerender": "src/entry-prerender.jsx", content: "src/content/model.js" },
+              output: { entryFileNames: "[name].mjs", chunkFileNames: "chunks/[name]-[hash].mjs" },
+           },
+        }
+      : {},
+   // En développement, l'API du tableau de bord vient du serveur local (npm run local).
+   server: {
+      proxy: {
+         "/api": "http://localhost:4330",
+         "/media": "http://localhost:4330",
+         "/.netlify/functions": "http://localhost:4330",
+      },
+   },
+}));

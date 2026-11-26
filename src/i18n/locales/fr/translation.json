@@ -12,9 +12,9 @@
   "meta": {
     "home": {
       "title": "Sites web et applications mobiles au Bénin | GEK INNOVATECH",
-      "description": "Agence web et mobile basée au Bénin : sites professionnels à prix fixe dès 95 €, livrés dès 1 semaine, et applications mobiles sur devis.",
+      "description": "Agence web et mobile basée au Bénin : sites professionnels à prix fixe dès {prix_min}, livrés dès 1 semaine, et applications mobiles sur devis.",
       "ogTitle": "GEK INNOVATECH | Sites web et applications mobiles",
-      "ogDescription": "Sites web à prix fixe dès 95 €, livrés dès 1 semaine, et applications mobiles sur devis, pour les entreprises d'Afrique et de la diaspora."
+      "ogDescription": "Sites web à prix fixe dès {prix_min}, livrés dès 1 semaine, et applications mobiles sur devis, pour les entreprises d'Afrique et de la diaspora."
     },
     "about": {
       "title": "Agence web au Bénin : qui sommes-nous | GEK INNOVATECH",
@@ -29,10 +29,10 @@
       "ogDescription": "Tout pour exister en ligne, d'un seul interlocuteur."
     },
     "plans": {
-      "title": "Prix d'un site web : offres dès 95 € | GEK INNOVATECH",
-      "description": "Trois offres à prix fixe pour créer votre site web : Starter à 95 €, Pro à 170 €, Premium à 350 €. Paiement unique, livraison dès 1 semaine.",
+      "title": "Prix d'un site web : offres dès {prix_min} | GEK INNOVATECH",
+      "description": "Trois offres à prix fixe pour créer votre site web : Starter à {prix_starter}, Pro à {prix_pro}, Premium à {prix_premium}. Paiement unique, livraison dès 1 semaine.",
       "ogTitle": "Nos offres et nos prix | GEK INNOVATECH",
-      "ogDescription": "Starter à 95 €, Pro à 170 €, Premium à 350 € : comparez nos offres et choisissez celle qui vous convient."
+      "ogDescription": "Starter à {prix_starter}, Pro à {prix_pro}, Premium à {prix_premium} : comparez nos offres et choisissez celle qui vous convient."
     },
     "contact": {
       "title": "Demander un devis pour votre site web | GEK INNOVATECH",
@@ -49,6 +49,10 @@
     "mentions": {
       "title": "Mentions légales | GEK INNOVATECH",
       "description": "Mentions légales et politique de confidentialité de GEK INNOVATECH."
+    },
+    "booking": {
+      "title": "Prendre rendez-vous | GEK INNOVATECH",
+      "description": "Choisissez un créneau pour parler de votre projet de site web ou d'application mobile avec GEK INNOVATECH."
     },
     "merci": {
       "title": "Paiement réussi | GEK INNOVATECH",
@@ -94,7 +98,7 @@
     "titleLine1": "Votre entreprise crédible sur le web et sur mobile,",
     "titleLine2": "prix et délai clairs.",
     "lead": "GEK INNOVATECH conçoit des sites web et des applications mobiles pour les entreprises d'Afrique et de la diaspora. Sites livrés dès 1 semaine, avec un interlocuteur direct sur WhatsApp.",
-    "priceFrom": "À partir de 95 €",
+    "priceFrom": "À partir de {prix_min}",
     "priceNote": "paiement unique",
     "points": [
       "Prix fixes affichés",
@@ -410,9 +414,60 @@
       "email": "Indiquez une adresse email valide, par exemple vous@exemple.com.",
       "message": "Décrivez votre projet en quelques mots (10 caractères minimum)."
     },
-    "privacy": "Vos informations servent uniquement à répondre à votre demande.",
+    "privacy": "Vos informations servent à vous répondre et ne sont jamais revendues.",
     "privacyLink": "Mentions légales",
+    "optIn": "Je souhaite aussi recevoir les conseils de GEK INNOVATECH par email (facultatif).",
     "langLabel": "Langue"
+  },
+  "booking": {
+    "title": "Prendre rendez-vous",
+    "subtitle": "Choisissez un créneau : nous vous appelons pour parler de votre projet.",
+    "pickDay": "Choisissez un jour",
+    "pickTime": "Choisissez une heure",
+    "zone": "Heures affichées dans votre fuseau horaire : {{zone}}.",
+    "duration": "{{minutes}} minutes",
+    "detailsTitle": "Vos coordonnées",
+    "chosen": "Créneau choisi",
+    "change": "Changer",
+    "mode": "Comment vous joindre",
+    "modes": {
+      "whatsapp": "Appel WhatsApp",
+      "phone": "Appel téléphonique",
+      "video": "Visioconférence"
+    },
+    "name": "Nom et prénom(s)",
+    "email": "Email",
+    "phone": "Téléphone / WhatsApp",
+    "topic": "De quoi souhaitez-vous parler ?",
+    "topicPh": "Votre activité, votre projet, vos questions…",
+    "submit": "Confirmer le rendez-vous",
+    "sending": "Réservation en cours…",
+    "successTitle": "Rendez-vous confirmé",
+    "successText": "Merci {{name}}, rendez-vous {{when}}.",
+    "successEmail": "La confirmation part à {{email}}, avec un lien pour annuler.",
+    "loading": "Chargement des créneaux…",
+    "loadError": "Les créneaux n'ont pas pu être chargés. Réessayez, ou écrivez-nous sur WhatsApp.",
+    "retry": "Réessayer",
+    "closedTitle": "La prise de rendez-vous en ligne est fermée pour le moment",
+    "closedText": "Écrivez-nous sur WhatsApp : nous convenons d'un horaire ensemble.",
+    "emptyTitle": "Aucun créneau libre pour le moment",
+    "errors": {
+      "name": "Indiquez votre nom et votre prénom (2 caractères minimum).",
+      "email": "Indiquez une adresse email valide, par exemple vous@exemple.com.",
+      "phone": "Indiquez le numéro à appeler, avec l'indicatif du pays."
+    },
+    "link": "Prendre rendez-vous"
+  },
+  "newsletter": {
+    "title": "Nos conseils par email",
+    "text": "Des conseils pour votre site et votre visibilité en ligne. Désinscription en un clic.",
+    "label": "Votre email",
+    "placeholder": "vous@exemple.com",
+    "submit": "S'inscrire",
+    "sending": "Envoi…",
+    "success": "Inscription enregistrée, merci.",
+    "invalid": "Indiquez une adresse email valide.",
+    "error": "L'inscription a échoué. Réessayez dans un instant."
   },
   "merci": {
     "title": "Paiement réussi",
@@ -465,8 +520,8 @@
     },
     "data": {
       "title": "Données personnelles",
-      "text1": "Les données collectées via le formulaire de contact (nom et prénoms, email, téléphone, message) sont utilisées uniquement pour répondre à vos demandes et ne sont jamais revendues. Elles transitent par EmailJS, notre prestataire d'envoi d'emails. Les messages saisis dans l'assistant virtuel sont traités par Google (Gemini) pour générer les réponses.",
-      "text2": "Conformément aux principes du RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données.",
+      "text1": "Les données collectées via le formulaire de contact (nom et prénoms, email, téléphone, message), la prise de rendez-vous et l'inscription à nos emails servent à répondre à vos demandes, à organiser nos échanges et, si vous l'avez accepté, à vous envoyer nos conseils. Elles ne sont jamais revendues. Elles sont enregistrées chez Netlify, notre hébergeur, et transitent par Google (Gmail) ou EmailJS, nos services d'envoi d'emails. Nos réponses peuvent être préparées avec l'aide de Google (Gemini), puis relues par notre équipe. Les messages saisis dans l'assistant virtuel sont traités par Google (Gemini) pour générer les réponses, et conservés 90 jours.",
+      "text2": "Conformément aux principes du RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Chaque email d'information contient un lien pour ne plus en recevoir. Le site compte aussi ses visites et les clics sur ses boutons de contact, sans identifier les visiteurs.",
       "rights": "Pour exercer ces droits, contactez-nous"
     },
     "cookies": {
